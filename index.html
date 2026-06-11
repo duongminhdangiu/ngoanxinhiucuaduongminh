@@ -9,688 +9,399 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* Giữ nguyên toàn bộ CSS của anh */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-    }
-    html, body {
-      height: 100dvh;
-      width: 100dvw;
-      overflow: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
+    html, body { height: 100dvh; width: 100dvw; overflow: hidden; }
     body {
-      display: grid;
-      place-items: center;
-      color: white;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-      position: relative;
+      display: grid; place-items: center; color: white; touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent; position: relative;
       background: radial-gradient(circle at top, #3b0f42 0%, #120014 60%, #050007 100%);
       animation: bgMove 8s ease-in-out infinite alternate;
     }
-    @keyframes bgMove {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(30deg); }
+    @keyframes bgMove { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(30deg); } }
+    body::before, body::after {
+      content: ""; position: absolute; width: 500px; height: 500px; filter: blur(120px);
+      pointer-events: none; animation: floatGlow 6s ease-in-out infinite alternate;
     }
-    body::before,
-    body::after {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      filter: blur(120px);
-      pointer-events: none;
-      animation: floatGlow 6s ease-in-out infinite alternate;
-    }
-    body::before {
-      top: -150px;
-      left: -120px;
-      background: rgba(255,100,200,0.18);
-    }
-    body::after {
-      bottom: -200px;
-      right: -200px;
-      background: rgba(140,80,255,0.18);
-    }
-    @keyframes floatGlow {
-      0% { transform: translate(0,0) scale(1); }
-      100% { transform: translate(50px,-40px) scale(1.2); }
-    }
-    .particles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .particle {
-      position: absolute;
-      opacity: 0;
-      animation: gentleFall linear infinite;
-      transform-origin: center;
-    }
-    .star {
-      width: 3px;
-      height: 3px;
-      background: #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 6px rgba(255,255,255,0.8);
-    }
-    .heart {
-      width: 12px;
-      height: 11px;
-      background: #ffb6dd;
-      position: relative;
-      transform: rotate(45deg);
-      box-shadow: 0 0 8px rgba(255,182,217,0.7);
-    }
-    .heart::before,
-    .heart::after {
-      content: "";
-      width: 12px;
-      height: 12px;
-      background: #ffb6dd;
-      border-radius: 50%;
-      position: absolute;
-      top: -6px;
-    }
-    .heart::before { left: -6px; }
-    .heart::after { right: -6px; }
-    @keyframes gentleFall {
-      0% { opacity: 0; transform: translateY(-20vh) scale(0.5) rotate(0deg); }
-      20% { opacity: 0.8; }
-      80% { opacity: 0.8; }
-      100% { opacity: 0; transform: translateY(120vh) scale(0.8) rotate(360deg); }
-    }
-    .screen {
-      width: min(92vw, 900px);
-      max-height: 95dvh;
-      overflow-y: auto;
-      padding: clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px);
-      border-radius: 24px;
-      background: rgba(35,10,45,0.78);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    /* Chỉ riêng màn Password thì nhỏ lại */
-    .screen.password-mode {
-      width: min(90vw, 360px);
-      max-height: 95dvh;
-    }
+    body::before { top: -150px; left: -120px; background: rgba(255,100,200,0.18); }
+    body::after { bottom: -200px; right: -200px; background: rgba(140,80,255,0.18); }
+    @keyframes floatGlow { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,-40px) scale(1.2); } }
     
-    /* Cho chuyển đổi mượt hơn */
-    .screen {
-      transition: width 0.35s ease, height 0.35s ease;
-    }
+    .particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .particle { position: absolute; opacity: 0; animation: gentleFall linear infinite; transform-origin: center; }
+    .star { width: 3px; height: 3px; background: #fff; border-radius: 50%; box-shadow: 0 0 6px rgba(255,255,255,0.8); }
+    .heart { width: 12px; height: 11px; background: #ffb6dd; position: relative; transform: rotate(45deg); box-shadow: 0 0 8px rgba(255,182,217,0.7); }
+    .heart::before, .heart::after { content: ""; width: 12px; height: 12px; background: #ffb6dd; border-radius: 50%; position: absolute; top: -6px; }
+    .heart::before { left: -6px; } .heart::after { right: -6px; }
+    @keyframes gentleFall { 0% { opacity: 0; transform: translateY(-20vh) scale(0.5) rotate(0deg); } 20% { opacity: 0.8; } 80% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(120vh) scale(0.8) rotate(360deg); } }
     
-    .title {
-      font-size: clamp(20px, 5vw, 26px);
-      font-weight: 700;
-      color: #ffd1e8;
-      margin-bottom: 20px;
-      font-family: cursive;
-      letter-spacing: 0.3px;
+    .screen {
+      width: min(92vw, 900px); max-height: 95dvh; overflow-y: auto; padding: clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px);
+      border-radius: 24px; background: rgba(35,10,45,0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6); text-align: center; position: relative; z-index: 1; transition: width 0.35s ease, height 0.35s ease;
     }
-    .step { display: none; }
-    .step.active { display: block; }
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-    .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2.5px solid rgba(255,255,255,0.55);
-      transition: all 0.25s ease;
-    }
-    .dot.filled {
-      background: white;
-      border-color: white;
-      box-shadow: 0 0 12px rgba(255,255,255,0.7);
-    }
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 12px 0 20px;
-    }
-    .btn {
-      aspect-ratio: 1;
-      border-radius: 20px;
-      border: none;
-      font-size: clamp(20px, 6vw, 24px);
-      font-weight: 600;
-      background: rgba(255,255,255,0.09);
-      color: white;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      user-select: none;
-    }
+    .screen.password-mode { width: min(90vw, 360px); max-height: 95dvh; }
+    .title { font-size: clamp(20px, 5vw, 26px); font-weight: 700; color: #ffd1e8; margin-bottom: 20px; font-family: cursive; letter-spacing: 0.3px; }
+    .step { display: none; } .step.active { display: block; }
+    .dots { display: flex; justify-content: center; gap: 14px; margin-bottom: 24px; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,0.55); transition: all 0.25s ease; }
+    .dot.filled { background: white; border-color: white; box-shadow: 0 0 12px rgba(255,255,255,0.7); }
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 12px 0 20px; }
+    .btn { aspect-ratio: 1; border-radius: 20px; border: none; font-size: clamp(20px, 6vw, 24px); font-weight: 600; background: rgba(255,255,255,0.09); color: white; display: grid; place-items: center; cursor: pointer; transition: all 0.18s ease; user-select: none; }
     .btn:hover { background: rgba(255,255,255,0.18); transform: scale(1.06); }
     .btn:active { transform: scale(0.94); background: rgba(255,255,255,0.25); }
     .btn.empty { background: transparent; cursor: default; pointer-events: none; }
     .btn.delete { font-size: clamp(22px, 6.5vw, 26px); }
-    .message {
-      min-height: 24px;
-      font-size: clamp(13px, 3.5vw, 15px);
-      font-weight: 500;
-      opacity: 0.92;
-      margin: 16px 0;
-    }
+    .message { min-height: 24px; font-size: clamp(13px, 3.5vw, 15px); font-weight: 500; opacity: 0.92; margin: 16px 0; }
+    
     .shake { animation: shake 0.4s cubic-bezier(0.36,0.07,0.19,0.97) both; }
-    @keyframes shake {
-      10%, 90% { transform: translateX(-6px); }
-      20%, 80% { transform: translateX(6px); }
-      30%, 50%, 70% { transform: translateX(-4px); }
-      40%, 60% { transform: translateX(4px); }
-    }
-    .loading {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 3px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-left: 10px;
-      vertical-align: middle;
-    }
+    @keyframes shake { 10%, 90% { transform: translateX(-6px); } 20%, 80% { transform: translateX(6px); } 30%, 50%, 70% { transform: translateX(-4px); } 40%, 60% { transform: translateX(4px); } }
+    .error-glow { animation: errorGlow 0.5s ease-out; }
+    @keyframes errorGlow { 0%, 100% { box-shadow: 0 10px 40px rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.1); } 50% { box-shadow: 0 0 50px rgba(255, 107, 107, 0.8); border-color: #ff6b6b; } }
+    .success-glow { animation: successGlow 0.6s ease-out; }
+    @keyframes successGlow { 0%, 100% { box-shadow: 0 10px 40px rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.1); } 50% { box-shadow: 0 0 50px rgba(124, 255, 179, 0.8); border-color: #7CFFB3; } }
+    
+    .loading { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; margin-left: 10px; vertical-align: middle; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .footer {
-      font-size: clamp(11px, 3vw, 13px);
-      opacity: 0.6;
-      margin-top: 16px;
-    }
+    .footer { font-size: clamp(11px, 3vw, 13px); opacity: 0.6; margin-top: 16px; }
+    
     .quiz-box { text-align: left; margin-top: 12px; }
-    .question {
-      font-size: clamp(14px, 4vw, 16px);
-      font-weight: 600;
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-    .answers {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .answer-btn {
-      width: 100%;
-      padding: clamp(14px, 4vw, 18px) 18px;
-      border-radius: 18px;
-      border: 1.5px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: clamp(15px, 4.2vw, 17px);
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      line-height: 1.4;
-    }
+    .question { font-size: clamp(14px, 4vw, 16px); font-weight: 600; margin-bottom: 16px; line-height: 1.4; }
+    .answers { display: flex; flex-direction: column; gap: 14px; }
+    .answer-btn { width: 100%; padding: clamp(14px, 4vw, 18px) 18px; border-radius: 18px; border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.1); color: white; font-size: clamp(15px, 4.2vw, 17px); text-align: left; cursor: pointer; transition: all 0.2s ease; line-height: 1.4; }
     .answer-btn:hover { background: rgba(255,255,255,0.18); }
     .answer-btn:active { transform: scale(0.98); }
     .answer-btn.correct { background: rgba(124,255,179,0.28); border-color: #7CFFB3; }
     .answer-btn.wrong { background: rgba(255,107,107,0.28); border-color: #ff6b6b; }
-    .next-btn {
-      margin-top: 20px;
-      width: 100%;
-      height: clamp(48px, 12vw, 56px);
-      border: none;
-      border-radius: 18px;
-      background: rgba(255,182,217,0.25);
-      color: #ffb6d9;
-      font-weight: 700;
-      font-size: clamp(15px, 4vw, 16px);
-      cursor: pointer;
-      transition: all 0.2s;
-      display: none;
+    .next-btn { display: none !important; }
+
+    /* CSS CHO INPUT ĐIỀN TỪ CHÍNH XÁC */
+    .exact-input {
+      width: 100%; padding: 18px; border-radius: 18px;
+      border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.1);
+      color: white; font-size: clamp(16px, 4.5vw, 18px); outline: none;
+      margin-bottom: 10px; text-align: center; font-weight: bold;
     }
-    .next-btn:hover {
-      background: rgba(255,182,217,0.4);
-      transform: scale(1.03);
+    .exact-input::placeholder { color: rgba(255,255,255,0.4); font-weight: normal; font-size: 14px; }
+    .exact-input:focus { border-color: #ffb6dd; background: rgba(255,255,255,0.15); }
+
+    /* CSS CHO CÂU HỎI MỞ (GỬI MAIL) */
+    .open-text {
+      width: 100%; min-height: 120px; padding: 16px; border-radius: 18px;
+      border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.1);
+      color: white; font-size: clamp(15px, 4vw, 16px); resize: none; outline: none;
+      margin-bottom: 10px; line-height: 1.5;
     }
-    #musicBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      background: rgba(255,182,217,0.3);
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      color: #ffb6d9;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      transition: all 0.3s;
-    }
-    #musicBtn:hover {
-      background: rgba(255,182,217,0.5);
-      transform: scale(1.1);
-    }
-    /* ===========================
-       STEP LETTER (LỜI NHẮN NHỦ)
-    ============================ */
-    .letter-layout {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 18px;
-      align-items: center;
-      margin-top: 10px;
-    }
-    @media (max-width: 720px) {
-      .letter-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-    .letter-box {
-      text-align: left;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.4);
-      min-height: 260px;
-      position: relative;
-    }
-    .letter-text {
-      font-size: clamp(13px, 3.6vw, 15px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.92);
-      white-space: pre-line;
-    }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 18px;
-      background: rgba(255,255,255,0.75);
-      margin-left: 3px;
-      animation: blink 0.7s infinite;
-      border-radius: 2px;
-      transform: translateY(2px);
-    }
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-    .img-box {
-      display: grid;
-      place-items: center;
-    }
-    .img-box img {
-      width: 100%;
-      max-width: 330px;
-      border-radius: 22px;
-      border: 4px solid rgba(255,255,255,0.85);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      cursor: pointer;
-      transition: transform 0.25s ease;
-    }
-    .img-box img:hover {
-      transform: scale(1.03);
-    }
-    .photo-hint {
-      margin-top: 10px;
-      font-size: 13px;
-      opacity: 0.75;
-      text-align: center;
-    }
-    #doneBtn {
-      display: none;
-      margin-top: 18px;
-    }
+    .open-text::placeholder { color: rgba(255,255,255,0.5); }
+    .open-text:focus { border-color: #ffb6dd; background: rgba(255,255,255,0.15); }
+    .action-submit { text-align: center; justify-content: center; background: rgba(255,182,217,0.25); color: #ffd1e8; font-weight: bold; }
+    .action-submit:hover { background: rgba(255,182,217,0.4); }
+
+    #musicBtn { position: fixed; bottom: 20px; right: 20px; z-index: 100; background: rgba(255,182,217,0.3); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 20px; color: #ffb6d9; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transition: all 0.3s; }
+    #musicBtn:hover { background: rgba(255,182,217,0.5); transform: scale(1.1); }
+    
+    .letter-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; align-items: center; margin-top: 10px; }
+    @media (max-width: 720px) { .letter-layout { grid-template-columns: 1fr; } }
+    .letter-box { text-align: left; padding: 18px; border-radius: 20px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 10px 24px rgba(0,0,0,0.4); min-height: 260px; position: relative; }
+    .letter-text { font-size: clamp(13px, 3.6vw, 15px); line-height: 1.7; color: rgba(255,255,255,0.92); white-space: pre-line; }
+    .cursor { display: inline-block; width: 10px; height: 18px; background: rgba(255,255,255,0.75); margin-left: 3px; animation: blink 0.7s infinite; border-radius: 2px; transform: translateY(2px); }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .img-box { display: grid; place-items: center; }
+    .img-box img { width: 100%; max-width: 330px; border-radius: 22px; border: 4px solid rgba(255,255,255,0.85); box-shadow: 0 10px 30px rgba(0,0,0,0.6); cursor: pointer; transition: transform 0.25s ease; }
+    .img-box img:hover { transform: scale(1.03); }
+    .photo-hint { margin-top: 10px; font-size: 13px; opacity: 0.75; text-align: center; }
+    #doneBtn { display: none; margin-top: 18px; width: 100%; height: clamp(48px, 12vw, 56px); border: none; border-radius: 18px; background: rgba(255,182,217,0.25); color: #ffb6d9; font-weight: 700; font-size: clamp(15px, 4vw, 16px); cursor: pointer; transition: all 0.2s; }
+    #doneBtn:hover { background: rgba(255,182,217,0.4); transform: scale(1.03); }
   </style>
 </head>
 <body>
   <div class="particles" id="particles"></div>
   <div class="screen password-mode" id="screen">
 
-    <!-- STEP PASSWORD -->
     <div class="step active" id="stepPassword">
-      <div class="title">Sẵn sàng chưa bây bi ơiii💗</div>
-      <div class="dots" id="dots">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
-
+      <div class="title">Sẵn sàng chưa baby ơi💗</div>
+      <div class="dots" id="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       <div class="keypad" id="keypad">
-        <button class="btn" data-num="1">1</button>
-        <button class="btn" data-num="2">2</button>
-        <button class="btn" data-num="3">3</button>
-        <button class="btn" data-num="4">4</button>
-        <button class="btn" data-num="5">5</button>
-        <button class="btn" data-num="6">6</button>
-        <button class="btn" data-num="7">7</button>
-        <button class="btn" data-num="8">8</button>
-        <button class="btn" data-num="9">9</button>
-        <button class="btn empty"></button>
-        <button class="btn" data-num="0">0</button>
-        <button class="btn delete" id="delBtn"><i class="fa-solid fa-delete-left"></i></button>
+        <button class="btn" data-num="1">1</button><button class="btn" data-num="2">2</button><button class="btn" data-num="3">3</button>
+        <button class="btn" data-num="4">4</button><button class="btn" data-num="5">5</button><button class="btn" data-num="6">6</button>
+        <button class="btn" data-num="7">7</button><button class="btn" data-num="8">8</button><button class="btn" data-num="9">9</button>
+        <button class="btn empty"></button><button class="btn" data-num="0">0</button><button class="btn delete" id="delBtn"><i class="fa-solid fa-delete-left"></i></button>
       </div>
-
       <div class="message" id="msg"></div>
       <div class="footer">Gợi ý: Ngày kỷ niệm của chúng mình</div>
     </div>
 
-    <!-- STEP QUIZ -->
     <div class="step" id="stepQuiz">
       <div class="title">Quizizz Love</div>
       <div class="quiz-box">
         <div class="question" id="qText"></div>
         <div class="answers" id="answers"></div>
-        <button class="next-btn" id="nextBtn">Tiếp tục nhó </button>
         <div class="message" id="quizMsg"></div>
       </div>
-      <div class="footer">Không đúng anh hong cho qua đou💕</div>
+      <div class="footer">Trúng hay trượt cũng hong cho qua âuu💕</div>
     </div>
 
-    <!-- STEP LETTER -->
     <div class="step" id="stepLetter">
       <div class="title">Gửi em, nàng công chúa của anh💗</div>
-
       <div class="letter-layout">
-        <div class="letter-box">
-          <div class="letter-text" id="letterText"></div>
-        </div>
-
+        <div class="letter-box"><div class="letter-text" id="letterText"></div></div>
         <div class="img-box">
-          <!-- CHỈ SỬA ẢNH Ở ĐÂY -->
           <img id="loveImg" src="emhunanh.jpg" alt="Ảnh tụi mình">
           <div class="photo-hint">Nhấp dô là có điều bất ngờ đóa😘</div>
         </div>
       </div>
-
-      <button class="next-btn" id="doneBtn">
-        Hoàn thành 💞
-      </button>
-
+      <button id="doneBtn">Hoàn thành 💞</button>
       <div class="footer">Xem hết i hỏng hết thì hỏng cho qua âuu 😝</div>
     </div>
 
-    <!-- STEP FINISH -->
     <div class="step" id="stepFinish">
       <div class="title">Quá đỉnh lunn</div>
-      <div class="message" style="color:#7CFFB3; font-size: clamp(14px,4vw,16px);">
-        Có bất ngờ đang đến cho bé ... <span class="loading"></span>
-      </div>
+      <div class="message" style="color:#7CFFB3; font-size: clamp(14px,4vw,16px);">Có bất ngờ đang đến cho bé ... <span class="loading"></span></div>
       <div class="footer">Chờ anh một tẹo nhó 😍</div>
     </div>
 
   </div>
 
-  <!-- AUDIO -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="Khongthoigiannew.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ audio.
-  </audio>
-
-  <button id="musicBtn" title="Phát / Dừng nhạc">
-    <i class="fas fa-music"></i>
-  </button>
+  <audio id="bgMusic" loop preload="auto"><source src="Khongthoigiannew.mp3" type="audio/mpeg"></audio>
+  <button id="musicBtn" title="Phát / Dừng nhạc"><i class="fas fa-music"></i></button>
 
   <script>
+    // ==========================================
+    // CÀI ĐẶT LINK FORMSPREE CỦA BẠN VÀO ĐÂY
+    // ==========================================
+    const FORMSPREE_URL = "https://formspree.io/f/xjgdenrp";
+    
     const PASS = "0703";
     const REDIRECT = "https://panbap.github.io/HeartBeat/lovequiz.html?id=eyJsIjoiIiwibSI6IiIsIm4iOiJFbSBpdXV1IMahaSBhbmggY8OzIMSRaeG7gXUgbXXhu5FuIG7Ds2lpaWlpIiwibyI6IkFuaCB5w6p1IGVtbW0gdGjGsMahbmcgaOG6v3QgbuG6pWMgbHVubm4iLCJnIjoiROG6oSBiw6kgbmdoZWUiLCJoIjoiTmdoZSBsw6AgY8OzIHRoxrDhu59uZyBuaMOhYSJ9";
+    
+    // Đã thêm câu hỏi bắt nhập chữ ở vị trí số 2
     const quiz = [
       { q: "1) Tin nhắn mở màn định mệnh của tụi mình là gì nè💌", a: ["Helu Bèo","Hellu Bèo","Dô nghiện","Helu Tiêu😒"], c:0 },
-      
+      { q: "2) Đố em biết ATE là viết tắt của từ gì? 😏", type: "exact", expected: "anh thương em" },
+      { q: "3) Em ấn tượng nhất ở anh là gì? 🥰 (Ghi thật lòng nhaa)", type: "open" }
     ];
 
-    // LỜI NHẮN NHỦ (giữ nguyên)
     const loveMessage = `Anh là một thằng khờ, dù đã ôm em trong lòng rồi mà vẫn nhớ em đến nghẹn cả những ngày chưa kịp tới.
 Yêu anh thì đừng hỏi tình yêu màu gì, vì em sẽ thấy nó trong từng ánh mắt, từng cái nắm tay và từng phút giây em ở cạnh anh.
-Anh biết phía trước còn dài và sẽ có nhiều khó khăn, nhưng tất cả sẽ nhẹ qua thôi nếu chúng mình vẫn chọn đi cùng nhau.
-Dù cuộc đời bắt anh học thêm bao nhiêu điều đi nữa, anh vẫn sẽ không bao giờ quên một điều, đó là yêu em hơn cả chính mình.
-Mong rằng nụ cười và hạnh phúc của em sẽ luôn có anh ở đó, có đôi ta bên nhau mãi nhé cô công chúa của anh 💗.
+Anh biết phía trước còn dài và sẽ có nhiều điều làm mình mệt, nhưng rồi tất cả sẽ nhẹ thôi nếu chúng mình vẫn chọn đi cùng nhau.
+Dù cuộc đời có bắt anh học thêm bao nhiêu bài học nữa, anh vẫn sẽ không bao giờ quên một điều, đó là yêu em hơn cả chính mình.
+Mong rằng nụ cười và hạnh phúc của em luôn có anh ở đó, có đôi ta bên nhau mãi nhé cô công chúa bé nhỏ của anh 💗.
 Và cũng may mắn lắm mình mới tìm thấy nhau, tìm đúng người thực sự rất khó nhưng anh chỉ ước rằng anh sẽ tìm được người phù hợp nhất với anh và may quá anh tìm thấy em rồi.
-Cùng tận hưởng ngày Valentine tuyệt vời nhó 💗`;
+Tận hưởng ngày Valentine dui dẻ nhó 💗`;
 
-    /* ==========================
-       CHỈ SỬA ẢNH Ở ĐÂY
-       ========================== */
-    const images = [
-      "anhdoimu.jpg",
-      "choem.jpg",
-      "emhunanh.jpg",
-      "photobook.jpg",
-      "xemphim.jpg"
-    ];
+    const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
 
     let imgIndex = 0;
-
     const el = {
-      screen: document.getElementById("screen"),
-      msg: document.getElementById("msg"),
-      quizMsg: document.getElementById("quizMsg"),
-      dots: document.querySelectorAll("#dots .dot"),
-      keypad: document.getElementById("keypad"),
-      delBtn: document.getElementById("delBtn"),
-      nextBtn: document.getElementById("nextBtn"),
-      answers: document.getElementById("answers"),
-      qText: document.getElementById("qText"),
-      musicBtn: document.getElementById("musicBtn"),
-      audio: document.getElementById("bgMusic"),
-      letterText: document.getElementById("letterText"),
-      loveImg: document.getElementById("loveImg"),
+      screen: document.getElementById("screen"), msg: document.getElementById("msg"),
+      quizMsg: document.getElementById("quizMsg"), dots: document.querySelectorAll("#dots .dot"),
+      keypad: document.getElementById("keypad"), delBtn: document.getElementById("delBtn"),
+      answers: document.getElementById("answers"), qText: document.getElementById("qText"),
+      musicBtn: document.getElementById("musicBtn"), audio: document.getElementById("bgMusic"),
+      letterText: document.getElementById("letterText"), loveImg: document.getElementById("loveImg"),
       doneBtn: document.getElementById("doneBtn")
     };
 
-    let pin = "";
-    let qIndex = 0;
-    let answered = false;
+    let pin = ""; let qIndex = 0; let answered = false;
 
-    function updateDots() {
-      el.dots.forEach((d, i) => d.classList.toggle("filled", i < pin.length));
-    }
+    function updateDots() { el.dots.forEach((d, i) => d.classList.toggle("filled", i < pin.length)); }
 
     function playMusicSafe() {
       el.audio.volume = 0.85;
-      el.audio.play()
-        .then(() => {
-          el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        })
-        .catch(() => {
-          el.msg.style.color = "#ffd1e8";
-          el.msg.innerText = "Bé bấm nút 🎵 để bật nhạc nha 😘";
-        });
+      el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; })
+      .catch(() => { el.msg.style.color = "#ffd1e8"; el.msg.innerText = "Bé bấm nút 🎵 để bật nhạc nha 😘"; });
     }
 
-    function addNum(num) {
-      if (pin.length >= 4) return;
-      pin += num;
-      updateDots();
-      if (pin.length === 4) checkPin();
-    }
-
-    function removeLast() {
-      pin = pin.slice(0, -1);
-      updateDots();
-      el.msg.textContent = "";
-    }
+    function addNum(num) { if (pin.length >= 4) return; pin += num; updateDots(); if (pin.length === 4) checkPin(); }
+    function removeLast() { pin = pin.slice(0, -1); updateDots(); el.msg.textContent = ""; }
 
     function checkPin() {
       if (pin === PASS) {
-        el.msg.style.color = "#7CFFB3";
-        el.msg.innerHTML = "Gút chop ... <span class='loading'></span>";
-        playMusicSafe();
-        setTimeout(() => {
-          show("stepQuiz");
-          startQuiz();
-        }, 900);
+        el.msg.style.color = "#7CFFB3"; el.msg.innerHTML = "Gút chop ... <span class='loading'></span>"; playMusicSafe();
+        setTimeout(() => { show("stepQuiz"); startQuiz(); }, 900);
       } else {
-        el.msg.style.color = "#ff6b6b";
-        el.msg.textContent = "Tẹt tẹt😭";
-        el.screen.classList.add("shake");
-        setTimeout(() => {
-          el.screen.classList.remove("shake");
-          pin = "";
-          updateDots();
-          el.msg.textContent = "";
-        }, 900);
+        el.msg.style.color = "#ff6b6b"; el.msg.textContent = "Tẹt tẹt😭"; el.screen.classList.add("shake");
+        setTimeout(() => { el.screen.classList.remove("shake"); pin = ""; updateDots(); el.msg.textContent = ""; }, 900);
       }
     }
 
     function show(id) {
       document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
-    
-      // Nếu là stepPassword => screen nhỏ
-      if (id === "stepPassword") {
-        el.screen.classList.add("password-mode");
-      } else {
-        el.screen.classList.remove("password-mode");
-      }
+      if (id === "stepPassword") el.screen.classList.add("password-mode");
+      else el.screen.classList.remove("password-mode");
     }
 
-    function startQuiz() {
-      qIndex = 0;
-      loadQ();
-    }
+    function startQuiz() { qIndex = 0; loadQ(); }
 
     function loadQ() {
       answered = false;
       el.quizMsg.textContent = "";
-      el.nextBtn.style.display = "none";
       const curr = quiz[qIndex];
       el.qText.textContent = curr.q;
       el.answers.innerHTML = "";
-      curr.a.forEach((txt, i) => {
-        const b = document.createElement("button");
-        b.className = "answer-btn";
-        b.textContent = txt;
-        b.addEventListener("click", () => pick(i, b));
-        el.answers.appendChild(b);
-      });
+
+      // NẾU LÀ CÂU HỎI MỞ (LƯU KẾT QUẢ FORMSPREE)
+      if (curr.type === "open") {
+        const textarea = document.createElement("textarea");
+        textarea.className = "open-text";
+        textarea.placeholder = "Gõ nhè nhẹ câu trả lời của bé vào đây nha...";
+        
+        const submitBtn = document.createElement("button");
+        submitBtn.className = "answer-btn action-submit";
+        submitBtn.textContent = "Gửi cho anh nè 💌";
+        
+        submitBtn.addEventListener("click", () => {
+          const val = textarea.value.trim();
+          if(!val) {
+            el.quizMsg.style.color = "#ff6b6b"; el.quizMsg.textContent = "Bé chưa nhập gì kìa 🥺"; return;
+          }
+          submitBtn.textContent = "Đang gửi đi... 🚀"; submitBtn.disabled = true;
+
+          fetch(FORMSPREE_URL, {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "Câu trả lời của bé": val })
+          }).then(response => {
+             el.quizMsg.style.color = "#7CFFB3"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰";
+             el.screen.classList.add("success-glow");
+             setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600);
+             setTimeout(nextQ, 1500); 
+          }).catch(error => {
+             el.quizMsg.style.color = "#ff6b6b"; el.quizMsg.textContent = "Lỗi mạng xíu, nhưng anh vẫn cho qua 😆";
+             setTimeout(nextQ, 1500);
+          });
+        });
+
+        el.answers.appendChild(textarea); el.answers.appendChild(submitBtn);
+
+      // NẾU LÀ CÂU HỎI NHẬP TỪ KHÓA CHÍNH XÁC (ATE)
+      } else if (curr.type === "exact") {
+        const inputBox = document.createElement("input");
+        inputBox.type = "text";
+        inputBox.className = "exact-input";
+        inputBox.placeholder = "(Nhập vào đây nhó ...)";
+        
+        const submitBtn = document.createElement("button");
+        submitBtn.className = "answer-btn action-submit";
+        submitBtn.textContent = "Trả lời anh xem nàoo 🔍";
+        
+        submitBtn.addEventListener("click", () => {
+          if(answered) return;
+          // .toLowerCase() để không phân biệt viết hoa viết thường
+          // .trim() để lỡ có lỡ gõ thêm dấu cách ở cuối cũng không bị tính sai
+          const val = inputBox.value.trim().toLowerCase(); 
+          const expectedAns = curr.expected.toLowerCase();
+          
+          if(val === expectedAns) {
+            answered = true;
+            submitBtn.classList.add("correct");
+            el.quizMsg.style.color = "#7CFFB3";
+            el.quizMsg.textContent = "Hiểu anh quá ta!";
+            inputBox.disabled = true; submitBtn.disabled = true;
+
+            el.screen.classList.add("success-glow");
+            spawnEmojis(submitBtn, 'correct');
+            setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600);
+            setTimeout(nextQ, 1800);
+          } else {
+            submitBtn.classList.add("wrong");
+            el.quizMsg.style.color = "#ff6b6b";
+            el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý anh dồi 😝";
+            
+            el.screen.classList.add("shake");
+            el.screen.classList.add("error-glow");
+            spawnEmojis(submitBtn, 'wrong');
+
+            setTimeout(() => {
+              submitBtn.classList.remove("wrong");
+              el.screen.classList.remove("shake");
+              el.screen.classList.remove("error-glow");
+              el.quizMsg.textContent = "";
+            }, 600);
+          }
+        });
+
+        el.answers.appendChild(inputBox); el.answers.appendChild(submitBtn);
+
+      // NẾU LÀ CÂU HỎI TRẮC NGHIỆM
+      } else {
+        curr.a.forEach((txt, i) => {
+          const b = document.createElement("button");
+          b.className = "answer-btn"; b.textContent = txt;
+          b.addEventListener("click", () => pick(i, b));
+          el.answers.appendChild(b);
+        });
+      }
+    }
+
+    function spawnEmojis(btn, type) {
+      const rect = btn.getBoundingClientRect(); const isCorrect = type === 'correct';
+      const emojiList = isCorrect ? ["💖", "😍", "🥰", "✨"] : ["😭", "💔", "🙄"];
+      const count = isCorrect ? 12 : 8;
+
+      for (let i = 0; i < count; i++) {
+        const emoji = document.createElement("div");
+        emoji.innerText = emojiList[Math.floor(Math.random() * emojiList.length)];
+        emoji.style.position = "fixed"; emoji.style.left = (rect.left + rect.width / 2) + "px";
+        emoji.style.top = (rect.top + rect.height / 2) + "px"; emoji.style.fontSize = isCorrect ? "26px" : "22px";
+        emoji.style.pointerEvents = "none"; emoji.style.zIndex = "9999";
+        emoji.style.transition = isCorrect ? "transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease-out" : "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out";
+        document.body.appendChild(emoji);
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * (isCorrect ? 80 : 60) + 40;
+        const tx = Math.cos(angle) * distance; const ty = Math.sin(angle) * distance - (isCorrect ? 60 : 40);
+        requestAnimationFrame(() => { emoji.style.transform = `translate(${tx}px, ${ty}px) scale(1.2)`; emoji.style.opacity = "0"; });
+        setTimeout(() => emoji.remove(), isCorrect ? 800 : 600);
+      }
     }
 
     function pick(idx, btn) {
-      if (answered) return;
-      const curr = quiz[qIndex];
-      const all = el.answers.querySelectorAll(".answer-btn");
+      if (answered) return; const curr = quiz[qIndex]; const all = el.answers.querySelectorAll(".answer-btn");
       if (idx === curr.c) {
-        answered = true;
-        btn.classList.add("correct");
-        el.quizMsg.style.color = "#7CFFB3";
-        el.quizMsg.textContent = "Hay quá ta";
+        answered = true; btn.classList.add("correct");
+        el.quizMsg.style.color = "#7CFFB3"; el.quizMsg.textContent = "Hay quá ta";
         all.forEach(b => b.disabled = true);
-        el.nextBtn.style.display = "block";
+        el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct');
+        setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600);
+        setTimeout(() => { nextQ(); }, 1500);
       } else {
-        btn.classList.add("wrong");
-        el.quizMsg.style.color = "#ff6b6b";
-        el.quizMsg.textContent = "Shao bé lại shine😭!";
-        setTimeout(() => {
-          btn.classList.remove("wrong");
-          el.quizMsg.textContent = "";
-        }, 600);
+        btn.classList.add("wrong"); el.quizMsg.style.color = "#ff6b6b"; el.quizMsg.textContent = "Shao bé lại shine😭!";
+        el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(btn, 'wrong');
+        setTimeout(() => { btn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
       }
     }
 
-    function nextQ() {
-      qIndex++;
-      if (qIndex >= quiz.length) {
-        show("stepLetter");
-        startTypingLetter();
-      } else {
-        loadQ();
-      }
-    }
+    function nextQ() { qIndex++; if (qIndex >= quiz.length) { show("stepLetter"); startTypingLetter(); } else { loadQ(); } }
 
-    // HIỆU ỨNG GÕ TỪ TỪ
-    let typingIndex = 0;
-    let typingDone = false;
-
-    function startTypingLetter() {
-      typingIndex = 0;
-      typingDone = false;
-      el.letterText.innerHTML = "";
-      el.doneBtn.style.display = "none";
-      typeOneChar();
-    }
-
+    let typingIndex = 0; let typingDone = false;
+    function startTypingLetter() { typingIndex = 0; typingDone = false; el.letterText.innerHTML = ""; el.doneBtn.style.display = "none"; typeOneChar(); }
     function typeOneChar() {
       if (typingIndex < loveMessage.length) {
         const currentText = loveMessage.slice(0, typingIndex + 1);
         el.letterText.innerHTML = currentText + `<span class="cursor"></span>`;
-        typingIndex++;
-        setTimeout(typeOneChar, 35);
-      } else {
-        typingDone = true;
-        el.letterText.innerHTML = loveMessage;
-        el.doneBtn.style.display = "block";
-      }
+        typingIndex++; setTimeout(typeOneChar, 35);
+      } else { typingDone = true; el.letterText.innerHTML = loveMessage; el.doneBtn.style.display = "block"; }
     }
 
-    // ẢNH CLICK ĐỔI (5 ẢNH LOOP)
-    el.loveImg.addEventListener("click", () => {
-      imgIndex++;
-      if (imgIndex >= images.length) imgIndex = 0;
-      el.loveImg.src = images[imgIndex];
-    });
-
-    // HOÀN THÀNH => QUA LINK
-    el.doneBtn.addEventListener("click", () => {
-      show("stepFinish");
-      setTimeout(() => {
-        location.href = REDIRECT;
-      }, 1500);
-    });
-
-    // EVENTS
-    el.keypad.addEventListener("click", e => {
-      const b = e.target.closest(".btn");
-      if (!b || b.classList.contains("empty")) return;
-      if (b.dataset.num) addNum(b.dataset.num);
-    });
-
+    el.loveImg.addEventListener("click", () => { imgIndex++; if (imgIndex >= images.length) imgIndex = 0; el.loveImg.src = images[imgIndex]; });
+    el.doneBtn.addEventListener("click", () => { show("stepFinish"); setTimeout(() => { location.href = REDIRECT; }, 1500); });
+    el.keypad.addEventListener("click", e => { const b = e.target.closest(".btn"); if (!b || b.classList.contains("empty")) return; if (b.dataset.num) addNum(b.dataset.num); });
     el.delBtn.addEventListener("click", removeLast);
-    el.nextBtn.addEventListener("click", nextQ);
+    document.addEventListener("keydown", e => { if (!document.getElementById("stepPassword").classList.contains("active")) return; if (e.key >= "0" && e.key <= "9") addNum(e.key); if (e.key === "Backspace") removeLast(); });
 
-    document.addEventListener("keydown", e => {
-      if (!document.getElementById("stepPassword").classList.contains("active")) return;
-      if (e.key >= "0" && e.key <= "9") addNum(e.key);
-      if (e.key === "Backspace") removeLast();
-    });
-
-    // PARTICLES
     function createParticles() {
       const container = document.getElementById("particles");
       for (let i = 0; i < 120; i++) {
-        const particle = document.createElement("div");
-        particle.className = "particle";
-        if (Math.random() > 0.6) particle.classList.add("heart");
-        else particle.classList.add("star");
-        const size = Math.random() * 3 + 0.8;
-        particle.style.width = particle.style.height = size + "px";
-        particle.style.left = Math.random() * 100 + "vw";
-        particle.style.top = Math.random() * -30 + "vh";
-        particle.style.animationDuration = (Math.random() * 16 + 12) + "s";
-        particle.style.animationDelay = "-" + Math.random() * 25 + "s";
+        const particle = document.createElement("div"); particle.className = "particle";
+        if (Math.random() > 0.6) particle.classList.add("heart"); else particle.classList.add("star");
+        const size = Math.random() * 3 + 0.8; particle.style.width = particle.style.height = size + "px";
+        particle.style.left = Math.random() * 100 + "vw"; particle.style.top = Math.random() * -30 + "vh";
+        particle.style.animationDuration = (Math.random() * 16 + 12) + "s"; particle.style.animationDelay = "-" + Math.random() * 25 + "s";
         container.appendChild(particle);
       }
     }
     createParticles();
 
-    // NÚT NHẠC
-    el.musicBtn.onclick = () => {
-      if (el.audio.paused) {
-        el.audio.play().then(() => {
-          el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        });
-      } else {
-        el.audio.pause();
-        el.musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-      }
-    };
+    el.musicBtn.onclick = () => { if (el.audio.paused) { el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }); } else { el.audio.pause(); el.musicBtn.innerHTML = '<i class="fas fa-music"></i>'; } };
   </script>
 </body>
 </html>
