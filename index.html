@@ -358,7 +358,7 @@
 
     <!-- STEP PASSWORD -->
     <div class="step active" id="stepPassword">
-      <div class="title">Một ngày khó quên💗</div>
+      <div class="title">Sẵn sàng chưa bây bi ơiii💗</div>
       <div class="dots" id="dots">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
       </div>
@@ -388,7 +388,7 @@
       <div class="quiz-box">
         <div class="question" id="qText"></div>
         <div class="answers" id="answers"></div>
-        <button class="next-btn" id="nextBtn">Tiếp nhó ➜</button>
+        <button class="next-btn" id="nextBtn">Tiếp tục nhó </button>
         <div class="message" id="quizMsg"></div>
       </div>
       <div class="footer">Không đúng anh hong cho qua đou💕</div>
@@ -396,7 +396,7 @@
 
     <!-- STEP LETTER -->
     <div class="step" id="stepLetter">
-      <div class="title">Gửi em, cô công chúa của anh💗</div>
+      <div class="title">Gửi em, nàng công chúa của anh💗</div>
 
       <div class="letter-layout">
         <div class="letter-box">
@@ -406,7 +406,7 @@
         <div class="img-box">
           <!-- CHỈ SỬA ẢNH Ở ĐÂY -->
           <img id="loveImg" src="emhunanh.jpg" alt="Ảnh tụi mình">
-          <div class="photo-hint">Chạm vào ảnh để đổi ảnh nha bé 😘</div>
+          <div class="photo-hint">Nhấp dô là có điều bất ngờ đóa😘</div>
         </div>
       </div>
 
@@ -414,12 +414,12 @@
         Hoàn thành 💞
       </button>
 
-      <div class="footer">Xem hết rồi mới được qua nhaaaa 😝</div>
+      <div class="footer">Xem hết i hỏng hết thì hỏng cho qua âuu 😝</div>
     </div>
 
     <!-- STEP FINISH -->
     <div class="step" id="stepFinish">
-      <div class="title">Giỏi lắm bây bi</div>
+      <div class="title">Quá đỉnh lunn</div>
       <div class="message" style="color:#7CFFB3; font-size: clamp(14px,4vw,16px);">
         Có bất ngờ đang đến cho bé ... <span class="loading"></span>
       </div>
@@ -443,24 +443,17 @@
     const REDIRECT = "https://panbap.github.io/HeartBeat/lovequiz.html?id=eyJsIjoiIiwibSI6IiIsIm4iOiJFbSBpdXV1IMahaSBhbmggY8OzIMSRaeG7gXUgbXXhu5FuIG7Ds2lpaWlpIiwibyI6IkFuaCB5w6p1IGVtbW0gdGjGsMahbmcgaOG6v3QgbuG6pWMgbHVubm4iLCJnIjoiROG6oSBiw6kgbmdoZWUiLCJoIjoiTmdoZSBsw6AgY8OzIHRoxrDhu59uZyBuaMOhYSJ9";
     const quiz = [
       { q: "1) Tin nhắn mở màn định mệnh của tụi mình là gì nè💌", a: ["Helu Bèo","Hellu Bèo","Dô nghiện","Helu Tiêu😒"], c:0 },
-      { q: "2) Anh sinh ngày mấy và thuộc cung hoàng đạo nào?", a: ["07/03 cung Thiên Bình","07/03 cung Song Ngư","11/07 cung Cự Giải","Bé hong nhớ"], c:1 },
-      { q: "3) Ngày SetLove của tụi mình là ngày nào? (Sai là anh buồn nguyên kiếp 😭)", a: ["18/10","19/08","18/09","Bé hong nhớ"], c:2 },
-      { q: "4) Theo em, điều anh “tệ” nhất là gì?", a: ["Hay ghen","Hay khóc","Không chiều chuộng em","On core roét"], c:3 },
-      { q: "5) Trong muôn vàn lý do, em biết vì sao anh lại muổn ở bên em không? 🌷", a: ["Sự đồng cảm","Vì xinh","Sự ngây ngô","Em yêu anh"], c:0 },
-      { q: "6) Khoảnh khắc nào của tụi mình khiến em nhớ nhất? 🥺💞", a: ["Em nói anh nghe nè"], c:0 },
-      { q: "7) Lý do em chọn anh là gì… (không được trả lời cho có nha bé 😤💗)", a: ["...."], c:0 },
-      { q: "8) Buổi FirstDate huyền thoại: tụi mình đã đi đâu và làm gì? 😳💘", a: ["Đi cà phơ","Đi tô tượng","Hun nhau","Dạ tất cả đều đúng ạ"], c:3 },
-      { q: "9) Em thấy bản thân em là người như thế nào? (câu này dễ mà sai là anh dỗi 😌)", a: ["Quá xinh","Quá tâm lý","Yêu Dương Minh nhất","Bé lấy hết"], c:3 },
-      { q: "10) Cuối cùng… anh muốn nói với em điều này? 💖", a: ["ATEM"], c:0 }
+      
     ];
 
     // LỜI NHẮN NHỦ (giữ nguyên)
     const loveMessage = `Anh là một thằng khờ, dù đã ôm em trong lòng rồi mà vẫn nhớ em đến nghẹn cả những ngày chưa kịp tới.
 Yêu anh thì đừng hỏi tình yêu màu gì, vì em sẽ thấy nó trong từng ánh mắt, từng cái nắm tay và từng phút giây em ở cạnh anh.
-Anh biết phía trước còn dài và sẽ có nhiều điều làm mình mệt, nhưng rồi tất cả sẽ nhẹ thôi nếu chúng mình vẫn chọn đi cùng nhau.
-Dù cuộc đời có bắt anh học thêm bao nhiêu bài học nữa, anh vẫn sẽ không bao giờ quên một điều, đó là yêu em hơn cả chính mình.
-Mong rằng nụ cười và hạnh phúc của em luôn có anh ở đó, có đôi ta bên nhau mãi nhé cô công chúa bé nhỏ của anh 💗.
-Tận hưởng ngày Valentine dui dẻ nhó 💗`;
+Anh biết phía trước còn dài và sẽ có nhiều khó khăn, nhưng tất cả sẽ nhẹ qua thôi nếu chúng mình vẫn chọn đi cùng nhau.
+Dù cuộc đời bắt anh học thêm bao nhiêu điều đi nữa, anh vẫn sẽ không bao giờ quên một điều, đó là yêu em hơn cả chính mình.
+Mong rằng nụ cười và hạnh phúc của em sẽ luôn có anh ở đó, có đôi ta bên nhau mãi nhé cô công chúa của anh 💗.
+Và cũng may mắn lắm mình mới tìm thấy nhau, tìm đúng người thực sự rất khó nhưng anh chỉ ước rằng anh sẽ tìm được người phù hợp nhất với anh và may quá anh tìm thấy em rồi.
+Cùng tận hưởng ngày Valentine tuyệt vời nhó 💗`;
 
     /* ==========================
        CHỈ SỬA ẢNH Ở ĐÂY
@@ -536,7 +529,7 @@ Tận hưởng ngày Valentine dui dẻ nhó 💗`;
         }, 900);
       } else {
         el.msg.style.color = "#ff6b6b";
-        el.msg.textContent = "Sai gòi😭";
+        el.msg.textContent = "Tẹt tẹt😭";
         el.screen.classList.add("shake");
         setTimeout(() => {
           el.screen.classList.remove("shake");
