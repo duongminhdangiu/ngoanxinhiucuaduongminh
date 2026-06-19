@@ -46,18 +46,30 @@
     .pw-layout { display: flex; flex-direction: row; width: 100%; align-items: center; }
     .pw-left { flex: 1; display: flex; align-items: center; justify-content: center; padding: 35px 20px; position: relative; }
 
-    .ig-post { width: 100%; max-width: 300px; background: white; border: 4px solid #2b2b2b; border-radius: 12px; box-shadow: 8px 8px 0px #e63946; position: relative; }
+    .ig-post { width: 100%; max-width: 320px; background: white; border: 4px solid #2b2b2b; border-radius: 12px; box-shadow: 8px 8px 0px #e63946; position: relative; }
     .ig-top-bar { background: #ff758f; border-bottom: 4px solid #2b2b2b; border-radius: 8px 8px 0 0; padding: 10px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 18px; align-items: center; }
     .ig-user-bar { padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; color: #2b2b2b; font-size: 20px; border-bottom: 4px solid #2b2b2b; }
     .ig-image-wrap { width: 100%; border-bottom: 4px solid #2b2b2b; display: block; position: relative; }
+    /* CHỈNH LẠI KHUNG ẢNH THÀNH VUÔNG CHUẨN 1:1 VÀ HIỂN THỊ RÕ */
     .ig-image-wrap img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
     .ig-bottom-bar { padding: 12px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 20px; border-radius: 0 0 8px 8px; background: #fff; }
 
-    .ig-poll-wrapper { position: absolute; top: 50%; right: -25px; transform: translateY(-50%); z-index: 10; }
+    /* ĐÃ ĐẨY STICKER RA NGOÀI XA HƠN HẲN ĐỂ KHÔNG BỊ CHE ẢNH */
+    .ig-poll-wrapper { position: absolute; top: 60%; right: -85px; transform: translateY(-50%); z-index: 10; }
     .ig-poll { background: #ffb3c6; border: 3px solid #2b2b2b; border-radius: 10px; padding: 10px 16px; box-shadow: 5px 5px 0px #e63946; position: relative; }
-    .poll-q-icon { position: absolute; top: -14px; right: -14px; width: 28px; height: 28px; background: white; border: 3px solid #2b2b2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #ff4d6d; box-shadow: 2px 2px 0px #2b2b2b; font-size: 14px; }
-    .poll-opt { background: white; border: 2px solid #2b2b2b; border-radius: 20px; padding: 5px 16px; margin: 6px 0; font-size: 12px; font-weight: 800; color: #2b2b2b; display: flex; gap: 8px; align-items: center; text-transform: uppercase; }
-    .poll-opt span { color: #ff4d6d; background: #ffe5ec; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+    .poll-q-icon { position: absolute; top: -14px; right: -14px; width: 28px; height: 28px; background: white; border: 3px solid #2b2b2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #ff4d6d; box-shadow: 2px 2px 0px #2b2b2b; font-size: 14px; z-index: 2;}
+    .poll-opt { 
+      background: white; border: 2px solid #2b2b2b; border-radius: 20px; padding: 5px 16px; margin: 6px 0; 
+      font-size: 12px; font-weight: 800; color: #2b2b2b; display: flex; gap: 8px; align-items: center; text-transform: uppercase;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .poll-opt:hover { transform: scale(1.05) translate(-1px, -1px); box-shadow: 2px 2px 0px #e63946; }
+    .poll-opt:active { transform: scale(0.95); }
+    .poll-opt span { color: #ff4d6d; background: #ffe5ec; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.2s;}
+    
+    /* Trạng thái được Tick chọn */
+    .poll-opt.selected { background: #f92f60; color: white; border-color: #2b2b2b; box-shadow: 2px 2px 0px #2b2b2b;}
+    .poll-opt.selected span { background: white; color: #f92f60; }
 
     .pw-right { flex: 1.1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 35px 25px; }
     .pw-main-title { font-size: clamp(24px, 3.5vw, 36px); color: #2b2b2b; font-weight: 900; margin-bottom: 10px; line-height: 1.2; font-family: "Inter", sans-serif; text-transform: uppercase; }
@@ -80,7 +92,8 @@
       .pw-layout { flex-direction: column; }
       .pw-left { padding: 15px 20px 25px; }
       .pw-right { padding: 15px 20px 25px; }
-      .ig-poll-wrapper { right: -10px; transform: translateY(-20%); scale: 0.85; transform-origin: right center;}
+      /* Đẩy sticker trên điện thoại ra xa hơn */
+      .ig-poll-wrapper { right: -50px; transform: translateY(-50%) scale(0.85); transform-origin: right center;}
     }
 
     /* CÁC THÀNH PHẦN BÊN TRONG */
@@ -119,34 +132,26 @@
     .exact-input::placeholder, .open-text::placeholder { color: rgba(43, 43, 43, 0.4); font-weight: 600; font-size: clamp(13px, 2.5vh, 15px); }
     .exact-input:focus, .open-text:focus { border-color: #e63946; background: #fff9fa; }
 
-    /* ======================================================== */
-    /* STYLING MẢNH GIẤY MEMO CARD VÀ ẢNH STICKER TỰ TẠO        */
-    /* ======================================================== */
+    /* STYLING MẢNH GIẤY MEMO CARD */
     .memo-card {
       background: #ffffff; border: 3px solid #2b2b2b; border-radius: 14px;
       padding: clamp(25px, 4vh, 30px) clamp(15px, 3vh, 22px) clamp(15px, 3vh, 22px); 
       box-shadow: 6px 6px 0px #ff758f; margin-bottom: 15px; text-align: left; position: relative;
     }
     
-    /* Băng keo dán phía trên */
     .washi-tape {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg);
       width: 110px; height: 32px; background: #ffb3c6; opacity: 0.95;
       border: 3px solid #2b2b2b; box-shadow: 3px 3px 0px #e63946; z-index: 5;
     }
     
-    /* CẤU HÌNH CHO ẢNH STICKER (Làm tròn, viền trắng, đổ bóng) */
     .img-sticker {
       position: absolute; z-index: 10;
       width: 60px; height: 60px; object-fit: cover;
-      border-radius: 50%; /* Cắt tròn ảnh */
-      border: 3px solid white; /* Viền trắng như mép sticker */
-      box-shadow: 3px 3px 0px #2b2b2b; /* Đổ bóng đen cho nổi bật */
+      border-radius: 50%; border: 3px solid white; box-shadow: 3px 3px 0px #2b2b2b; 
       transition: transform 0.3s ease;
     }
     .img-sticker:hover { transform: scale(1.15) rotate(0deg) !important; z-index: 20; }
-    
-    /* Vị trí các ảnh sticker */
     .img-sticker-1 { top: -15px; left: -15px; transform: rotate(-10deg); }
     .img-sticker-2 { bottom: 20px; right: -25px; transform: rotate(15deg); width: 75px; height: 75px; }
     .img-sticker-3 { bottom: -20px; left: 20px; transform: rotate(-8deg); width: 65px; height: 65px;}
@@ -241,7 +246,7 @@
             </div>
             <div class="ig-image-wrap">
               <!-- ✅ BẠN THAY TÊN ẢNH CÔ GÁI Ở ĐÂY NHA ✅ -->
-              <img src="emhunanh.jpg" alt="Ảnh của ấy">
+              <img src="cogaido.jpg" alt="Ảnh của ấy">
               <div class="ig-poll-wrapper">
                 <div class="ig-poll">
                   <div class="poll-q-icon"><i class="fa-solid fa-question"></i></div>
@@ -413,6 +418,14 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       else el.screen.classList.remove("password-mode");
     }
 
+    // Lệnh tương tác Click cho các nút CÓ / ĐỒNG Ý
+    document.querySelectorAll('.poll-opt').forEach(opt => {
+      opt.addEventListener('click', function() {
+        document.querySelectorAll('.poll-opt').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
     el.startQuizBtn.addEventListener("click", () => {
       el.loveDoors.classList.add("ready");
       show("stepQuiz"); startQuiz(); void el.loveDoors.offsetWidth;
@@ -429,7 +442,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       answered = false; el.quizMsg.textContent = "";
       const curr = quiz[qIndex]; el.qText.textContent = curr.q; el.answers.innerHTML = "";
 
-      // XỬ LÝ DẠNG CÂU HỎI MỞ
+      // XỬ LÝ DẠNG CÂU HỎI MỞ NHẬP TEXT TỰ DO
       if (curr.type === "open") {
         const textarea = document.createElement("textarea"); textarea.className = "open-text"; textarea.placeholder = "Gõ nhè nhẹ câu trả lời vào đây nha...";
         const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit";
@@ -468,16 +481,13 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
         el.answers.appendChild(inputBox); el.answers.appendChild(submitBtn);
 
       } 
-      // XỬ LÝ DẠNG CÂU HỎI ĐẶC BIỆT MEMO CARD CÓ 3 ẢNH STICKER CỦA BẠN
+      // XỬ LÝ DẠNG CÂU HỎI ĐẶC BIỆT MEMO CARD (Đã khôi phục sticker gốc 🌸 🧸 và Formspree Track Tick)
       else if (curr.type === "todo_notes") {
         const memoCard = document.createElement("div"); memoCard.className = "memo-card";
         memoCard.innerHTML = `
           <div class="washi-tape"></div>
-          
-          <!-- BA ẢNH CỦA BẠN ĐƯỢC CHÈN VÀO ĐÂY NHƯ STICKER -->
-          <img src="image_3a1dab.jpg" class="img-sticker img-sticker-1" alt="Sticker 1">
-          <img src="image_3a1d86.jpg" class="img-sticker img-sticker-2" alt="Sticker 2">
-          <img src="image_3a1d6b.jpg" class="img-sticker img-sticker-3" alt="Sticker 3">
+          <div class="memo-sticker sticker-1">🌸</div>
+          <div class="memo-sticker sticker-2">🧸</div>
           
           <div class="memo-quote">“though she be but little, she loves you big”</div>
           <div class="memo-section-title"><i class="fa-solid fa-list-check"></i> Việc cần làm:</div>
@@ -492,6 +502,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
         submitBtn.textContent = "Gửi cho tớ nè 💌";
         
         submitBtn.addEventListener("click", () => {
+          const checkboxes = memoCard.querySelectorAll(".memo-checkbox");
           const todoInputs = memoCard.querySelectorAll(".todo-in");
           const noteInput = memoCard.querySelector(".note-in");
           
@@ -510,10 +521,11 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
           const payload = {};
           quiz.forEach((qObj, index) => {
             if (index === 4) {
-              payload["Câu 5 - Việc 1"] = todoInputs[0].value.trim() || "(trống)";
-              payload["Câu 5 - Việc 2"] = todoInputs[1].value.trim() || "(trống)";
-              payload["Câu 5 - Việc 3"] = todoInputs[2].value.trim() || "(trống)";
-              payload["Câu 5 - Ghi chú"] = noteInput.value.trim() || "(trống)";
+              // Báo cáo rõ ràng việc Có Tick hay Không Tick về Formspree
+              payload["Câu 5 - Việc 1"] = (checkboxes[0].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[0].value.trim() || "(Không viết gì)");
+              payload["Câu 5 - Việc 2"] = (checkboxes[1].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[1].value.trim() || "(Không viết gì)");
+              payload["Câu 5 - Việc 3"] = (checkboxes[2].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[2].value.trim() || "(Không viết gì)");
+              payload["Câu 5 - Ghi chú"] = noteInput.value.trim() || "(Không viết gì)";
             } else {
               payload[qObj.q] = userAnswers[index];
             }
@@ -532,7 +544,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
         
         el.answers.appendChild(memoCard); el.answers.appendChild(submitBtn);
       } 
-      // XỬ LÝ DẠNG TRẮC NGHIỆM
+      // XỬ LÝ DẠNG TRẮC NGHIỆM A, B, C
       else {
         curr.a.forEach((txt, i) => {
           const b = document.createElement("button"); b.className = "answer-btn"; b.textContent = txt;
@@ -563,7 +575,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       if (answered) return; const curr = quiz[qIndex]; const all = el.answers.querySelectorAll(".answer-btn");
       if (idx === curr.c) {
         answered = true; btn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Biết ngay mờ!"; all.forEach(b => b.disabled = true);
-        userAnswers[qIndex] = curr.a[idx]; 
+        userAnswers[qIndex] = curr.a[idx]; // Lưu lại đáp án
         el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct'); setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(() => { nextQ(); }, 1500);
       } else {
         btn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Shao lại chọn cái này kìa 😭!";
