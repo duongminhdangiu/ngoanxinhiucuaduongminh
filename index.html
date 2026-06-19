@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Ê đằng ấy ơi, có cái này nè 👀</title>
+  <title>Đằng ấy ơi, có cái này nè 👀</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -262,8 +262,8 @@
         </div>
 
         <div class="pw-right">
-          <div class="pw-main-title">Mật khẩu để<br>vào tim tớ là gì?</div>
-          <div class="pw-sub-title">Một câu đố ngốc nghếch cho người đặc biệt</div>
+          <div class="pw-main-title">Mật khẩu để<br>vào tim anh là gì?</div>
+          <div class="pw-sub-title">Gợi ý: Một ngày rất đặc biệt</div>
           
           <div class="dots" id="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
           
@@ -280,10 +280,10 @@
 
     <!-- BƯỚC 2: LỜI CHÀO INTRO -->
     <div class="step" id="stepIntro">
-      <div class="title">Heluuu đằng ấy 👋</div>
+      <div class="title">Đằng ấy oiii 👋</div>
       <div class="intro-box">
         <div class="intro-text">
-          Chắc cậu hơi bất ngờ (và có chút hoang mang) khi tự nhiên nhận được cái link này đúng hong? 😆
+          Chắc em hơi bất ngờ (và có chút hoang mang) khi tự nhiên nhận được cái link này đúng hong? 😆
 
           Thật ra tớ tình cờ lướt thấy in4 của cậu và thấy cậu rất thú vị. Tớ không muốn bắt chuyện bằng mấy câu "Hi cậu" nhàm chán, nên tớ quyết định làm cái web nhỏ này thay cho một lời chào chính thức.
 
@@ -291,12 +291,12 @@
         </div>
       </div>
       <button class="start-btn" id="startQuizBtn">Bắt đầu khám phá thui 💕</button>
-      <div class="footer">Cứ trả lời tự nhiên nha!</div>
+      <div class="footer"></div>
     </div>
 
     <!-- BƯỚC 3: QUIZ TRẮC NGHIỆM / ĐIỀN CHỮ -->
     <div class="step" id="stepQuiz">
-      <div class="title">Tâm tình chút nhó</div>
+      <div class="title">Hỏi đáp chút nhó</div>
       <div class="quiz-box">
         <div class="question" id="qText"></div>
         <div class="answers" id="answers"></div>
@@ -318,7 +318,7 @@
         </div>
         <div class="letter-box"><div class="letter-text" id="letterText"></div></div>
       </div>
-      <button id="doneBtn">Hoàn thành 💞</button>
+      <button id="doneBtn">Em xem xong gòi 💞</button>
       <div class="footer">Xem hết i hỏng hết thì hỏng cho qua âuu 😝</div>
     </div>
 
@@ -326,7 +326,7 @@
     <div class="step" id="stepFinish">
       <div class="title">Quá đỉnh lunn</div>
       <div class="message" style="color:#386641; font-size: clamp(14px,4vw,16px);">Đang gửi thông điệp mật ... <span class="loading"></span></div>
-      <div class="footer">Chờ tớ một tẹo nhó 😍</div>
+      <div class="footer">Chờ anh một tẹo nhó 😍</div>
     </div>
 
   </div>
@@ -366,12 +366,9 @@
 
     let userAnswers = [];
 
-    const loveMessage = `Ting ting! Lời nhắn của cậu đã được tớ lưu lại một cách cẩn thận gòi đó 📩.
-
-Cảm ơn cậu vì đã chịu khó nhấp vào chiếc link này và kiên nhẫn trả lời từng câu hỏi ngô nghê của tớ. Chỉ một chút sự dễ thương đó của cậu thui cũng đủ làm ngày hôm nay của tớ rực rỡ hơn nhiều lắm luôn!
-
-Nếu cậu đọc được tới dòng này, thì màn hình bên kia đang có một người rất mong chờ tin nhắn phản hồi từ cậu đó. Quay lại khung chat và cho tớ biết cảm nhận của cậu về "sự làm quen cồng kềnh" này nha 😉.
-
+    const loveMessage = `Ting ting! Lời nhắn của em đã được anh lưu lại một cách cẩn thận gòi đó 📩.
+Cảm ơn em vì đã chịu khó nhấp vào chiếc link này và kiên nhẫn trả lời từng câu hỏi ngô nghê của anh. Chỉ một chút sự dễ thương đó của em thui cũng đủ làm ngày hôm nay của anh rực rỡ hơn nhiều lắm luôn!
+Nếu em đọc được tới dòng này, thì màn hình bên kia đang có một người rất mong chờ tin nhắn phản hồi từ em đó. Quay lại khung chat và cho anh biết cảm nhận của em về "sự làm quen cồng kềnh" này nha 😉.
 Chúc đằng ấy một ngày thật vui! 🌸`;
 
     const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
@@ -446,11 +443,11 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       if (curr.type === "open") {
         const textarea = document.createElement("textarea"); textarea.className = "open-text"; textarea.placeholder = "Gõ nhè nhẹ câu trả lời vào đây nha...";
         const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit";
-        submitBtn.textContent = "Lưu & Tiếp tục ➜";
+        submitBtn.textContent = "Tiếp tục nào 🚀";
         
         submitBtn.addEventListener("click", () => {
           const val = textarea.value.trim();
-          if(!val) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Cậu chưa nhập gì kìa 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
+          if(!val) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em chưa nhập gì kìa 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
           userAnswers[qIndex] = val; qIndex++; loadQ();
         });
         el.answers.appendChild(textarea); el.answers.appendChild(submitBtn);
@@ -459,7 +456,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       // XỬ LÝ DẠNG CÂU HỎI ĐIỀN TỪ CHÍNH XÁC
       else if (curr.type === "exact") {
         const inputBox = document.createElement("input"); inputBox.type = "text"; inputBox.className = "exact-input"; inputBox.placeholder = "(Nhập tiếng Việt có dấu nhó...)";
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Trả lời xem nàoo 🔍";
+        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Anh xem nàoo 🔍";
         
         submitBtn.addEventListener("click", () => {
           if(answered) return;
@@ -499,7 +496,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
         `;
         
         const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit";
-        submitBtn.textContent = "Gửi cho tớ nè 💌";
+        submitBtn.textContent = "Gửi cho anh nè 💌";
         
         submitBtn.addEventListener("click", () => {
           const checkboxes = memoCard.querySelectorAll(".memo-checkbox");
@@ -511,7 +508,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
           if(noteInput.value.trim()) valid = true;
           
           if(!valid) {
-            el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Cậu điền sương sương vài chữ cho tớ biết với nha 🥺";
+            el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em điền sương sương vài chữ cho anh biết với nha 🥺";
             el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return;
           }
           
@@ -534,7 +531,7 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
           fetch(FORMSPREE_URL, {
             method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
           }).then(response => {
-             el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Tớ đã nhận được kế hoạch rồi nha! 🥰";
+             el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰";
              el.screen.style.borderColor = "#a7c957"; setTimeout(() => { el.screen.style.borderColor = "#2b2b2b"; }, 600);
              setTimeout(nextQ, 1500); 
           }).catch(error => {
