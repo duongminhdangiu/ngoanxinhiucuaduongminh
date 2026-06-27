@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Đằng ấy ơi, có cái này nè 👀</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;600;700;800;900&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
@@ -23,12 +23,10 @@
         linear-gradient(90deg, rgba(249, 47, 96, 0.15) 1.5px, transparent 1.5px);
       background-size: 35px 35px;
     }
-
     /* HIỆU ỨNG HẠT RƠI MƯA TRÁI TIM */
     .particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .particle { position: absolute; opacity: 0; animation: gentleFall linear infinite; transform-origin: center; display: flex; align-items: center; justify-content: center; }
     @keyframes gentleFall { 0% { opacity: 0; transform: translateY(-10vh) scale(0.5) rotate(0deg); } 20% { opacity: 0.8; } 80% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(110vh) scale(0.8) rotate(360deg); } }
-
     /* CONTAINER CHUNG (INTRO, QUIZ, LETTER) */
     .screen {
       width: min(92vw, 800px); max-height: 95dvh; overflow-y: auto; 
@@ -39,13 +37,10 @@
     }
     .screen::-webkit-scrollbar { display: none; }
     .step { display: none; } .step.active { display: block; }
-
     /* MÀN HÌNH MẬT KHẨU TRONG SUỐT */
     .screen.password-mode { width: min(95vw, 950px); padding: 0; background: transparent; border: none; box-shadow: none; }
-
     .pw-layout { display: flex; flex-direction: row; width: 100%; align-items: center; }
     .pw-left { flex: 1; display: flex; align-items: center; justify-content: center; padding: 35px 20px; position: relative; }
-
     .ig-post { width: 100%; max-width: 320px; background: white; border: 4px solid #2b2b2b; border-radius: 12px; box-shadow: 8px 8px 0px #e63946; position: relative; }
     .ig-top-bar { background: #ff758f; border-bottom: 4px solid #2b2b2b; border-radius: 8px 8px 0 0; padding: 10px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 18px; align-items: center; }
     .ig-user-bar { padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; color: #2b2b2b; font-size: 20px; border-bottom: 4px solid #2b2b2b; }
@@ -53,7 +48,6 @@
     /* CHỈNH LẠI KHUNG ẢNH THÀNH VUÔNG CHUẨN 1:1 VÀ HIỂN THỊ RÕ */
     .ig-image-wrap img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
     .ig-bottom-bar { padding: 12px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 20px; border-radius: 0 0 8px 8px; background: #fff; }
-
     /* ĐÃ ĐẨY STICKER RA NGOÀI XA HƠN HẲN ĐỂ KHÔNG BỊ CHE ẢNH */
     .ig-poll-wrapper { position: absolute; top: 60%; right: -85px; transform: translateY(-50%); z-index: 10; }
     .ig-poll { background: #ffb3c6; border: 3px solid #2b2b2b; border-radius: 10px; padding: 10px 16px; box-shadow: 5px 5px 0px #e63946; position: relative; }
@@ -70,24 +64,19 @@
     /* Trạng thái được Tick chọn */
     .poll-opt.selected { background: #f92f60; color: white; border-color: #2b2b2b; box-shadow: 2px 2px 0px #2b2b2b;}
     .poll-opt.selected span { background: white; color: #f92f60; }
-
     .pw-right { flex: 1.1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 35px 25px; }
     .pw-main-title { font-size: clamp(24px, 3.5vw, 36px); color: #2b2b2b; font-weight: 900; margin-bottom: 10px; line-height: 1.2; font-family: "Inter", sans-serif; text-transform: uppercase; }
     .pw-sub-title { font-size: clamp(12px, 1.8vw, 13px); color: #2b2b2b; font-weight: 700; margin-bottom: 25px; opacity: 0.8; }
-
     .pw-right .dots { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
     .pw-right .dot { width: 16px; height: 16px; border-radius: 50%; border: 3px solid #2b2b2b; background: white; transition: all 0.2s; box-shadow: 2px 2px 0px #2b2b2b; }
     .pw-right .dot.filled { background: #ff4d6d; transform: scale(1.1); box-shadow: 2px 2px 0px #e63946; }
-
     .pw-right .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 2vw, 18px); width: 100%; max-width: 260px; margin: 0 auto; }
     .pw-right .btn { aspect-ratio: 1; border-radius: 14px; border: 3px solid #2b2b2b; font-size: clamp(20px, 3.5vh, 24px); font-weight: 800; background: white; color: #2b2b2b; display: grid; place-items: center; cursor: pointer; transition: all 0.1s ease; user-select: none; box-shadow: 4px 4px 0px #e63946; }
     .pw-right .btn:hover { background: #ffe5ec; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #e63946; }
     .pw-right .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0px #e63946; background: #ffb3c6; }
     .pw-right .btn.empty { border: none; background: transparent; box-shadow: none; cursor: default; pointer-events: none;}
     .pw-right .btn.delete { font-size: 20px; background: #ffccd5; }
-
     .pw-right .message { min-height: 20px; font-size: 15px; font-weight: 800; margin: 15px 0 5px; color: #e63946; }
-
     @media (max-width: 768px) {
       .pw-layout { flex-direction: column; }
       .pw-left { padding: 15px 20px 25px; }
@@ -95,8 +84,85 @@
       /* Đẩy sticker trên điện thoại ra xa hơn */
       .ig-poll-wrapper { right: -50px; transform: translateY(-50%) scale(0.85); transform-origin: right center;}
     }
-
-    /* CÁC THÀNH PHẦN BÊN TRONG */
+    /* ========================================================================= */
+    /* 🌟 CSS NÂNG CẤP DÀNH RIÊNG CHO MÀN HÌNH BƯỚC 2 (SCRAPBOOK TORN PAPER) 🌟 */
+    /* ========================================================================= */
+    .scrapbook-layout {
+      position: relative; width: 100%; background: #fdfaf6; 
+      border: 4px solid #2b2b2b; border-radius: 16px;
+      padding: clamp(25px, 5vh, 45px) clamp(20px, 4vw, 35px) 30px;
+      box-shadow: 10px 10px 0px #2b2b2b; display: flex; flex-direction: row;
+      align-items: center; justify-content: space-between; gap: 20px; overflow: hidden;
+      margin-bottom: 25px;
+    }
+    
+    .top-pinned-note {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateY(-10px);
+      background: #ffffff; border: 2.5px solid #2b2b2b; padding: 4px 16px;
+      font-size: 11px; font-weight: 900; letter-spacing: 1px; color: #555;
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.15); z-index: 10;
+    }
+    .top-pinned-note::before {
+      content: ""; position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
+      width: 10px; height: 100%; border-radius: 50%; background: #2b2b2b; box-shadow: 1px 1.5px 0px rgba(0,0,0,0.2);
+    }
+    .underlay-pink-grid {
+      position: absolute; bottom: -15px; left: -15px; width: 220px; height: 220px;
+      background-color: #ffe5ec; z-index: 1; border: 3px solid #2b2b2b;
+      background-image: linear-gradient(rgba(249, 47, 96, 0.12) 1.5px, transparent 1.5px),
+                        linear-gradient(90deg, rgba(249, 47, 96, 0.12) 1.5px, transparent 1.5px);
+      background-size: 20px 25px; transform: rotate(-8deg); box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    }
+    .torn-paper-wrapper {
+      flex: 1.2; position: relative; z-index: 2; filter: drop-shadow(6px 6px 0px #2b2b2b); 
+    }
+    .scrapbook-torn-paper {
+      background: #ffffff; padding: clamp(20px, 4vh, 32px); text-align: left;
+      border-left: 3.5px solid #2b2b2b; border-top: 3.5px solid #2b2b2b; border-bottom: 3.5px solid #2b2b2b;
+      clip-path: polygon(
+        0% 0%, calc(100% - 10px) 0%, 100% 4%, calc(100% - 6px) 8%, 100% 12%, calc(100% - 12px) 16%, 
+        100% 20%, calc(100% - 5px) 24%, 100% 28%, calc(100% - 14px) 32%, 100% 36%, calc(100% - 8px) 40%, 
+        100% 44%, calc(100% - 11px) 48%, 100% 52%, calc(100% - 5px) 56%, 100% 60%, calc(100% - 13px) 64%, 
+        100% 68%, calc(100% - 7px) 72%, 100% 76%, calc(100% - 10px) 80%, 100% 84%, calc(100% - 4px) 88%, 
+        100% 92%, calc(100% - 12px) 96%, calc(100% - 2px) 100%, 0% 100%
+      );
+    }
+    .scrapbook-names { font-size: 14px; font-weight: 900; color: #444; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+    .scrapbook-headline { font-family: 'Dancing Script', cursive; font-size: clamp(32px, 5.5vh, 46px); color: #2b2b2b; font-weight: 700; line-height: 1.1; margin-bottom: 15px; }
+    .scrapbook-typing-box { font-size: clamp(14px, 2.3vh, 16px); line-height: 1.6; color: #333; font-weight: 600; min-height: 90px; }
+    
+    .scrapbook-photo-frame { flex: 0.9; position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; }
+    .scrapbook-photo-frame img { width: 100%; max-width: 290px; aspect-ratio: 4 / 5; object-fit: cover; border: 8px solid #ffffff; outline: 3.5px solid #2b2b2b; box-shadow: 6px 6px 0px rgba(0,0,0,0.2); background: white; }
+    .pressed-flower-purple { position: absolute; top: -35px; right: -25px; font-size: 52px; transform: rotate(18deg); filter: drop-shadow(3px 3px 0px #2b2b2b); z-index: 5; }
+    .pressed-leaf-green { position: absolute; bottom: -22px; left: 15px; font-size: 38px; transform: rotate(-20deg); filter: drop-shadow(2px 2px 0px #2b2b2b); z-index: 5; }
+    .step.active .scrapbook-layout { animation: cardBounceIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    .step.active .top-pinned-note { animation: pinDropDown 0.6s ease-out 0.3s both; }
+    .step.active .underlay-pink-grid { animation: gridSlideLeft 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0.2s both; }
+    .step.active .torn-paper-wrapper { animation: paperPopLeft 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.4s both; }
+    .step.active .scrapbook-photo-frame { animation: photoPopRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0.5s both; }
+    .step.active .pressed-flower-purple { animation: flowerGrow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.5) 0.9s both; }
+    @keyframes cardBounceIn { 0% { opacity: 0; transform: scale(0.9) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+    @keyframes pinDropDown { 0% { transform: translateX(-50%) translateY(-50px); opacity: 0; } 100% { transform: translateX(-50%) translateY(-10px); opacity: 1; } }
+    @keyframes gridSlideLeft { 0% { transform: translate(-40px, 40px) rotate(0deg); opacity: 0; } 100% { transform: translate(0, 0) rotate(-8deg); opacity: 1; } }
+    @keyframes paperPopLeft { 0% { transform: translateX(-30px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+    @keyframes photoPopRight { 0% { transform: translateX(50px) rotate(0deg) scale(0.8); opacity: 0; } 100% { transform: translateX(0) rotate(4deg); opacity: 1; } }
+    @keyframes flowerGrow { 0% { transform: rotate(0deg) scale(0); opacity: 0; } 100% { transform: rotate(18deg) scale(1); opacity: 1; } }
+    .typing-cursor { display: inline-block; width: 2.5px; height: 17px; background-color: #f92f60; margin-left: 3px; animation: blinkCursor 0.7s infinite; vertical-align: middle; }
+    @keyframes blinkCursor { 50% { opacity: 0; } }
+    @media (max-width: 768px) {
+      .scrapbook-layout { flex-direction: column-reverse; padding: 40px 15px 25px; max-height: 85dvh; }
+      .torn-paper-wrapper { width: 100%; transform: translateY(-20px); }
+      .scrapbook-torn-paper { padding: 20px 15px 35px; border-bottom: none; border-right: 3.5px solid #2b2b2b; clip-path: polygon( 0% 0%, 100% 0%, 100% calc(100% - 10px), 96% 100%, 92% calc(100% - 6px), 88% 100%, 84% calc(100% - 12px), 80% 100%, 76% calc(100% - 5px), 72% 100%, 68% calc(100% - 14px), 64% 100%, 60% calc(100% - 8px), 56% 100%, 52% calc(100% - 11px), 48% 100%, 44% calc(100% - 5px), 40% 100%, 36% calc(100% - 13px), 32% 100%, 28% calc(100% - 7px), 24% 100%, 20% calc(100% - 10px), 16% 100%, 12% calc(100% - 4px), 8% 100%, 4% calc(100% - 12px), 0% calc(100% - 2px) ); }
+      .scrapbook-photo-frame { transform: rotate(2deg) !important; width: 70%; margin-bottom: 5px; }
+      .underlay-pink-grid { width: 140px; height: 140px; }
+      .step.active .torn-paper-wrapper { animation: paperPopUp 0.6s ease-out 0.4s both; }
+      .step.active .scrapbook-photo-frame { animation: photoPopMobile 0.8s ease-out 0.5s both; }
+      .pressed-flower-purple { right: 10px; top: -10px; font-size: 38px; }
+    }
+    @keyframes paperPopUp { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(-20px); opacity: 1; } }
+    @keyframes photoPopMobile { 0% { transform: translateY(-20px) scale(0.8); opacity: 0; } 100% { transform: translateY(0) rotate(2deg) scale(1); opacity: 1; } }
+    /* ========================================================================= */
+    /* CÁC THÀNH PHẦN QUIZ, LETTER GIỮ NGUYÊN */
     .title { font-size: clamp(22px, 4.5vh, 30px); font-weight: 900; color: #2b2b2b; margin-bottom: clamp(15px, 3vh, 25px); text-transform: uppercase; }
     
     .intro-box, .letter-box, .quiz-box { 
@@ -109,7 +175,7 @@
     
     .answers { display: flex; flex-direction: column; gap: clamp(12px, 2vh, 16px); }
     
-    .start-btn, .answer-btn, .action-submit, #doneBtn { 
+    .start-btn, .answer-btn, .action-submit, #doneBtn, .pb-action-btn { 
       width: 100%; padding: clamp(12px, 2.5vh, 18px) 18px; border-radius: 14px; 
       border: 3px solid #2b2b2b; background: #fff; color: #2b2b2b; 
       font-size: clamp(15px, 2.8vh, 18px); font-weight: 800; text-align: center; 
@@ -117,99 +183,59 @@
       box-shadow: 4px 4px 0px #e63946;
     }
     .answer-btn { text-align: left; display: flex; align-items: center; gap: 10px; }
-    .start-btn:hover, .answer-btn:hover, .action-submit:hover, #doneBtn:hover { background: #ffe5ec; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #e63946; }
-    .start-btn:active, .answer-btn:active, .action-submit:active, #doneBtn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0px #e63946; background: #ffb3c6; }
+    .start-btn:hover, .answer-btn:hover, .action-submit:hover, #doneBtn:hover, .pb-action-btn:hover { background: #ffe5ec; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #e63946; }
+    .start-btn:active, .answer-btn:active, .action-submit:active, #doneBtn:active, .pb-action-btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0px #e63946; background: #ffb3c6; }
     
     .answer-btn.correct { background: #a7c957 !important; color: #fff; box-shadow: 4px 4px 0px #386641 !important; border-color: #2b2b2b; }
     .answer-btn.wrong { background: #e63946 !important; color: #fff; box-shadow: 4px 4px 0px #780000 !important; border-color: #2b2b2b; }
-
     .exact-input, .open-text { 
       width: 100%; border-radius: 14px; border: 3px solid #2b2b2b; background: #fff; color: #2b2b2b; 
       font-size: clamp(15px, 3vh, 18px); outline: none; margin-bottom: 15px; font-weight: 700; box-shadow: inset 3px 3px 0px rgba(0,0,0,0.05);
     }
     .exact-input { padding: clamp(14px, 3vh, 18px); text-align: center; }
     .open-text { min-height: clamp(80px, 15vh, 120px); padding: 16px; resize: none; line-height: 1.5; }
-    .exact-input::placeholder, .open-text::placeholder { color: rgba(43, 43, 43, 0.4); font-weight: 600; font-size: clamp(13px, 2.5vh, 15px); }
     .exact-input:focus, .open-text:focus { border-color: #e63946; background: #fff9fa; }
-
-    /* STYLING MẢNH GIẤY MEMO CARD */
+    /* STYLING MẢNH GIẤY MEMO CARD CÂU 5 */
     .memo-card {
       background: #ffffff; border: 3px solid #2b2b2b; border-radius: 14px;
       padding: clamp(25px, 4vh, 30px) clamp(15px, 3vh, 22px) clamp(15px, 3vh, 22px); 
       box-shadow: 6px 6px 0px #ff758f; margin-bottom: 15px; text-align: left; position: relative;
     }
-    
-    .washi-tape {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg);
-      width: 110px; height: 32px; background: #ffb3c6; opacity: 0.95;
-      border: 3px solid #2b2b2b; box-shadow: 3px 3px 0px #e63946; z-index: 5;
-    }
-    
-    .img-sticker {
-      position: absolute; z-index: 10;
-      width: 60px; height: 60px; object-fit: cover;
-      border-radius: 50%; border: 3px solid white; box-shadow: 3px 3px 0px #2b2b2b; 
-      transition: transform 0.3s ease;
-    }
-    .img-sticker:hover { transform: scale(1.15) rotate(0deg) !important; z-index: 20; }
-    .img-sticker-1 { top: -15px; left: -15px; transform: rotate(-10deg); }
-    .img-sticker-2 { bottom: 20px; right: -25px; transform: rotate(15deg); width: 75px; height: 75px; }
-    .img-sticker-3 { bottom: -20px; left: 20px; transform: rotate(-8deg); width: 65px; height: 65px;}
-
-    .memo-quote {
-      font-size: clamp(14px, 2.5vh, 16px); font-weight: 900; color: #f92f60;
-      text-align: center; margin-bottom: 15px; border-bottom: 3px dashed #2b2b2b;
-      padding-bottom: 10px; font-family: cursive; position: relative; z-index: 2;
-    }
-    .memo-section-title {
-      font-size: clamp(13px, 2.3vh, 15px); font-weight: 900; color: #2b2b2b;
-      margin: 12px 0 8px; text-transform: uppercase; display: flex; align-items: center; gap: 6px;
-    }
+    .washi-tape { position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 110px; height: 32px; background: #ffb3c6; opacity: 0.95; border: 3px solid #2b2b2b; box-shadow: 3px 3px 0px #e63946; z-index: 5; }
+    .memo-sticker { position: absolute; font-size: 32px; z-index: 5; user-select: none; filter: drop-shadow(3px 3px 0px #2b2b2b); }
+    .sticker-1 { top: -12px; left: -10px; transform: rotate(-15deg); }
+    .sticker-2 { bottom: 18px; right: -15px; transform: rotate(15deg); }
+    .memo-quote { font-size: clamp(14px, 2.5vh, 16px); font-weight: 900; color: #f92f60; text-align: center; margin-bottom: 15px; border-bottom: 3px dashed #2b2b2b; padding-bottom: 10px; font-family: cursive; position: relative; z-index: 2; }
+    .memo-section-title { font-size: clamp(13px, 2.3vh, 15px); font-weight: 900; color: #2b2b2b; margin: 12px 0 8px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
     .memo-todo-item { display: flex; align-items: center; gap: 10px; margin-bottom: clamp(6px, 1.5vh, 10px); position: relative; z-index: 2;}
     .memo-checkbox { width: 18px; height: 18px; border: 2px solid #2b2b2b; accent-color: #ff4d6d; cursor: pointer; }
-    .memo-input {
-      flex: 1; border: none; border-bottom: 2px dashed rgba(43, 43, 43, 0.3);
-      background: transparent; padding: 2px 4px; font-size: 14px; font-weight: 700;
-      color: #2b2b2b; outline: none;
-    }
+    .memo-input { flex: 1; border: none; border-bottom: 2px dashed rgba(43, 43, 43, 0.3); background: transparent; padding: 2px 4px; font-size: 14px; font-weight: 700; color: #2b2b2b; outline: none; }
     .memo-input:focus { border-bottom-style: solid; border-bottom-color: #f92f60; }
     .note-in { position: relative; z-index: 2; }
-
-    .message { min-height: 20px; font-size: 15px; font-weight: 800; margin: 15px 0; color: #e63946; }
+    .message { min-height: 20px; font-size: 15px; font-weight: 800; margin: 15px 0 5px; color: #e63946; }
     .footer { font-size: clamp(12px, 2vh, 14px); opacity: 0.8; margin-top: clamp(10px, 2vh, 20px); font-weight: 600; color: #2b2b2b;}
     
     .shake { animation: shake 0.4s cubic-bezier(0.36,0.07,0.19,0.97) both; }
     @keyframes shake { 10%, 90% { transform: translateX(-6px); } 20%, 80% { transform: translateX(6px); } 30%, 50%, 70% { transform: translateX(-4px); } 40%, 60% { transform: translateX(4px); } }
-    
     .error-glow { animation: errorGlow 0.5s ease-out; }
     @keyframes errorGlow { 0%, 100% { border-color: #2b2b2b; box-shadow: 8px 8px 0px #e63946; } 50% { border-color: #e63946; box-shadow: 8px 8px 0px #e63946, 0 0 30px rgba(230,57,70,0.6); } }
     .success-glow { animation: successGlow 0.6s ease-out; }
     @keyframes successGlow { 0%, 100% { border-color: #2b2b2b; box-shadow: 8px 8px 0px #e63946; } 50% { border-color: #a7c957; box-shadow: 8px 8px 0px #a7c957, 0 0 30px rgba(167,201,87,0.6); } }
-    
     .loading { display: inline-block; width: 18px; height: 18px; border: 4px solid #ffb3c6; border-top-color: #e63946; border-radius: 50%; animation: spin 0.8s linear infinite; margin-left: 10px; vertical-align: middle; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* LAYOUT BỨC THƯ & ẢNH POLAROID */
     .letter-layout { display: flex; flex-direction: column-reverse; gap: 30px; align-items: center; margin-bottom: 10px; }
-    @media (min-width: 768px) {
-      .letter-layout { flex-direction: row; align-items: stretch; justify-content: center; }
-      .letter-box { flex: 1.3; display: flex; align-items: center; margin-bottom: 0; }
-      .img-wrap-container { flex: 1; display: flex; align-items: center; justify-content: center; }
-    }
-    .letter-box { width: 100%; }
-    
+    @media (min-width: 768px) { .letter-layout { flex-direction: row; align-items: stretch; justify-content: center; } .letter-box { flex: 1.3; display: flex; align-items: center; margin-bottom: 0; } .img-wrap-container { flex: 1; display: flex; align-items: center; justify-content: center; } }
     .img-box { background: #fff; padding: 12px 12px 35px 12px; border: 4px solid #2b2b2b; border-radius: 12px; box-shadow: 6px 6px 0px #e63946; transform: rotate(3deg); transition: transform 0.3s ease; display: inline-block; }
     .img-box:hover { transform: rotate(0deg) scale(1.03); }
     .img-box img { width: 100%; max-width: 250px; aspect-ratio: 1 / 1; object-fit: cover; border: 3px solid #2b2b2b; border-radius: 8px; display: block; }
     .photo-hint { margin-top: 10px; font-family: cursive; font-weight: 800; font-size: 16px; color: #e63946; text-align: center; }
-
     .cursor { display: inline-block; width: 10px; height: 18px; background: #2b2b2b; margin-left: 3px; animation: blink 0.7s infinite; border-radius: 2px; transform: translateY(2px); }
     @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-
+    
     #musicBtn { position: fixed; bottom: 20px; right: 20px; z-index: 100; border-radius: 50%; width: 50px; height: 50px; font-size: 20px; cursor: pointer; transition: all 0.1s; display: grid; place-items: center; background: #fff; border: 3px solid #2b2b2b; box-shadow: 4px 4px 0px #e63946; color: #e63946; }
     #musicBtn:hover { background: #ffe5ec; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #e63946; }
 
-    /* HIỆU ỨNG CỬA THẦN KỲ */
     .love-doors { position: fixed; inset: 0; z-index: 9999; pointer-events: none; display: flex; visibility: hidden; overflow: hidden; perspective: 1500px; }
     .love-doors.ready { visibility: visible; pointer-events: all; }
     .door-left, .door-right { width: 50%; height: 100%; background: #ffdce3; display: flex; align-items: center; position: relative; border: 6px solid #2b2b2b; transform: rotateY(0deg); }
@@ -225,6 +251,56 @@
     .magic-light { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 0px; height: 120vh; background: #fff; box-shadow: 0 0 50px 20px #fff, 0 0 100px 50px #ffb6dd, 0 0 200px 100px #ff7eb3; opacity: 0; z-index: 9999; pointer-events: none; }
     .love-doors.opening .magic-light { animation: magicFlash 1.4s ease-out forwards; }
     @keyframes magicFlash { 0% { opacity: 0; width: 0px; } 10% { opacity: 1; width: 10px; } 35% { opacity: 1; width: 200vw; } 100% { opacity: 0; width: 200vw; } }
+
+    /* ========================================================================= */
+    /* CSS DÀNH CHO PHOTOBOOTH (BƯỚC 5) */
+    /* ========================================================================= */
+    .pb-main-container { display: flex; gap: 20px; width: 100%; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .pb-camera-section { background: #fff; border: 4px solid #2b2b2b; border-radius: 20px; padding: 15px; box-shadow: 6px 6px 0px #e63946; width: 350px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px;}
+    .pb-video-wrap { width: 100%; height: 240px; background: #000; border: 4px solid #2b2b2b; border-radius: 12px; overflow: hidden; position: relative; }
+    .pb-video-wrap video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+    .pb-countdown-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 80px; font-weight: 900; color: #fff; opacity: 0; z-index:10;}
+    .pb-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index:20;}
+    
+    .pb-layout-options { display: flex; gap: 10px; width: 100%; }
+    .pb-layout-btn { flex: 1; padding: 10px 5px; border: 3px solid #2b2b2b; border-radius: 12px; background: #fdfaf6; font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.1s; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .pb-layout-btn small { font-size: 11px; font-weight: 600; opacity: 0.8; }
+    .pb-layout-btn.active { background: #ffe5ec; border-color: #f92f60; box-shadow: inset 3px 3px 0px rgba(0,0,0,0.1); transform: translateY(2px); }
+
+    .pb-btn-capture { width: 100%; padding: 12px; background: #ff4d6d; border: 3px solid #2b2b2b; border-radius: 12px; color: #fff; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 4px 4px 0px #2b2b2b; }
+    
+    .pb-selection-section { display: none; background: #fff; border: 4px solid #2b2b2b; padding: 15px; border-radius: 20px; width: 350px; flex-shrink: 0; flex-direction: column; gap: 10px;}
+    .pb-thumbnails-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+    .pb-thumbnail-wrap { aspect-ratio: 4/3; border: 3px solid #2b2b2b; border-radius: 8px; cursor: pointer; overflow: hidden; position: relative;}
+    .pb-thumbnail-wrap.selected { border-color: #a7c957; }
+    .pb-thumbnail-wrap.selected::after { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; top: 5px; right: 5px; width: 22px; height: 22px; background: #a7c957; color: #fff; border: 2px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .pb-thumbnail-wrap img { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+
+    /* CSS ĐIỀU CHỈNH RIÊNG KHU VỰC KẾT QUẢ ĐỂ LINH HOẠT THEO LAYOUT CHỌN (HÀNG NGANG HOẶC CỘT DỌC) */
+    .pb-strip-section { display: none; gap: 20px; flex-shrink: 0; justify-content: center; }
+    .pb-strip-row { flex-direction: row; align-items: center; width: auto; }
+    .pb-strip-col { flex-direction: column; align-items: center; width: auto; max-width: 575px; }
+    
+    .pb-canvas { background: #fff; border: 4px solid #2b2b2b; box-shadow: 6px 6px 0px #2b2b2b; }
+    /* GIỚI HẠN CHIỀU CAO CHO 4 ẢNH DỌC ĐỂ KHÔNG PHẢI TRƯỢT MÀN HÌNH */
+    .pb-strip-row .pb-canvas { max-height: 70vh; width: auto; object-fit: contain; }
+    .pb-strip-col .pb-canvas { width: 100%; max-width: 575px; }
+
+    .pb-frame-selector { background: #fff; border: 4px solid #2b2b2b; padding: 15px; border-radius: 15px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box;}
+    .pb-strip-row .pb-frame-selector { width: 320px; }
+    .pb-strip-col .pb-frame-selector { width: 100%; }
+
+    .pb-frame-options { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+    .pb-frame-btn { padding: 5px; border: 2px solid #2b2b2b; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 800; background: #fdfaf6;}
+    .pb-frame-btn.active { background: #ffe5ec; border-color: #f92f60;}
+    
+    /* MOBILE RESPONSIVE CHO KHU VỰC PHOTOBOOTH */
+    @media (max-width: 900px) {
+      .pb-strip-row { flex-direction: column !important; align-items: center !important; }
+      .pb-strip-row .pb-frame-selector { width: 100% !important; max-width: 350px; }
+      .pb-strip-col .pb-canvas { max-width: 100%; }
+      .pb-strip-row .pb-canvas { max-height: 60vh; width: auto; max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -245,13 +321,12 @@
               <i class="fa-solid fa-ellipsis"></i>
             </div>
             <div class="ig-image-wrap">
-              <!-- ✅ BẠN THAY TÊN ẢNH CÔ GÁI Ở ĐÂY NHA ✅ -->
               <img src="emhunanh.jpg" alt="Ảnh của ấy">
               <div class="ig-poll-wrapper">
                 <div class="ig-poll">
                   <div class="poll-q-icon"><i class="fa-solid fa-question"></i></div>
                   <div class="poll-opt"><span>A</span> CÓ</div>
-                  <div class="poll-opt"><span>B</span> ĐỒNG Ý</div>
+                  <div class="poll-opt"><span>B</span> KHÔNG</div>
                 </div>
               </div>
             </div>
@@ -264,9 +339,7 @@
         <div class="pw-right">
           <div class="pw-main-title">Mật khẩu để<br>vào tim anh là gì?</div>
           <div class="pw-sub-title">Gợi ý: Một ngày rất đặc biệt</div>
-          
           <div class="dots" id="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-          
           <div class="keypad" id="keypad">
             <button class="btn" data-num="1">1</button><button class="btn" data-num="2">2</button><button class="btn" data-num="3">3</button>
             <button class="btn" data-num="4">4</button><button class="btn" data-num="5">5</button><button class="btn" data-num="6">6</button>
@@ -278,20 +351,27 @@
       </div>
     </div>
 
-    <!-- BƯỚC 2: LỜI CHÀO INTRO -->
+    <!-- BƯỚC 2: LỜI CHÀO INTRO (SCRAPBOOK) -->
     <div class="step" id="stepIntro">
-      <div class="title">Đằng ấy oiii 👋</div>
-      <div class="intro-box">
-        <div class="intro-text">
-          Chắc em hơi bất ngờ (và có chút hoang mang) khi tự nhiên nhận được cái link này đúng hong? 😆
-
-          Thật ra tớ tình cờ lướt thấy in4 của cậu và thấy cậu rất thú vị. Tớ không muốn bắt chuyện bằng mấy câu "Hi cậu" nhàm chán, nên tớ quyết định làm cái web nhỏ này thay cho một lời chào chính thức.
-
-          Nếu cậu không phiền, hãy lướt qua vài câu hỏi vu vơ dưới đây để tớ biết thêm chút xíu về cậu nha. Yên tâm là tớ hiền khô à! ✨
+      <div class="scrapbook-wrapper">
+        <div class="scrapbook-layout">
+          <div class="top-pinned-note">MEMORIES</div>
+          <div class="underlay-pink-grid"></div>
+          <div class="torn-paper-wrapper">
+            <div class="scrapbook-torn-paper">
+              <div class="scrapbook-names">DŨNG VÀ HÀ</div>
+              <div class="scrapbook-headline">Khoảnh khắc yêu thích</div>
+              <div class="scrapbook-typing-box" id="introTypingBox"></div>
+            </div>
+          </div>
+          <div class="scrapbook-photo-frame">
+            <img src="khoanhkhac.jpg" alt="Khoảnh khắc kỉ niệm của tụi mình">
+            <div class="pressed-flower-purple">🌸</div>
+            <div class="pressed-leaf-green">🌿</div>
+          </div>
         </div>
       </div>
       <button class="start-btn" id="startQuizBtn">Bắt đầu khám phá thui 💕</button>
-      <div class="footer"></div>
     </div>
 
     <!-- BƯỚC 3: QUIZ TRẮC NGHIỆM / ĐIỀN CHỮ -->
@@ -311,18 +391,72 @@
       <div class="letter-layout">
         <div class="img-wrap-container">
           <div class="img-box">
-            <!-- ✅ BẠN THAY ẢNH POLAROID BÊN TRONG NÀY NHÉ ✅ -->
             <img id="loveImg" src="emhunanh.jpg" alt="Ảnh mượn tạm đỡ trống">
             <div class="photo-hint">Click vào nha 😘</div>
           </div>
         </div>
         <div class="letter-box"><div class="letter-text" id="letterText"></div></div>
       </div>
-      <button id="doneBtn">Em xem xong gòi 💞</button>
+      <button id="doneBtn" class="pb-action-btn" style="display: none;">Tiếp tục làm kỉ niệm nào 💞</button>
       <div class="footer">Xem hết i hỏng hết thì hỏng cho qua âuu 😝</div>
     </div>
 
-    <!-- BƯỚC 5: MÀN HÌNH CHỜ CHUYỂN TRANG -->
+    <!-- BƯỚC 5: TRẠM CHỤP ẢNH PHOTOBOOTH -->
+    <div class="step" id="stepPhotobooth">
+      <div class="title" style="margin-bottom: 20px;">Photobooth Kỉ Niệm 🎞️</div>
+      <div class="pb-main-container">
+        <!-- Cột Camera -->
+        <div class="pb-camera-section">
+          <div style="font-size: 13px; font-weight: 800; text-transform: uppercase;">✨ Chọn kiểu khung ✨</div>
+          <div class="pb-layout-options">
+            <button class="pb-layout-btn active" data-layout="4"><i class="fa-solid fa-film"></i> 4 Ảnh Dọc<br><small>(Chụp 6 chọn 4)</small></button>
+            <button class="pb-layout-btn" data-layout="2"><i class="fa-solid fa-images"></i> Khung Đôi<br><small>(Chụp 4 chọn 2 ngang)</small></button>
+          </div>
+          <div class="pb-video-wrap">
+            <video id="pb-video" autoplay playsinline></video>
+            <div id="pb-countdown" class="pb-countdown-overlay">3</div>
+            <div id="pb-flash" class="pb-flash"></div>
+          </div>
+          <button id="pb-btnCapture" class="pb-btn-capture"><i class="fa-solid fa-camera"></i> Bắt đầu chụp (6 tấm)</button>
+          <div id="pb-status" style="font-size:13px; font-weight:700; color:#e63946;">Hãy tạo dáng thật xinh nhé! ✨</div>
+        </div>
+
+        <!-- Cột Chọn Ảnh -->
+        <div id="pb-selectionSection" class="pb-selection-section">
+          <div id="pb-selectTitle" style="font-size:14px; font-weight:900; text-align:center;">✨ Chọn 4 tấm đỉnh nhất ✨</div>
+          <div class="pb-thumbnails-grid" id="pb-thumbnailsGrid">
+            <div class="pb-thumbnail-wrap" data-index="0"><img src=""></div>
+            <div class="pb-thumbnail-wrap" data-index="1"><img src=""></div>
+            <div class="pb-thumbnail-wrap" data-index="2"><img src=""></div>
+            <div class="pb-thumbnail-wrap" data-index="3"><img src=""></div>
+            <div class="pb-thumbnail-wrap" data-index="4"><img src=""></div>
+            <div class="pb-thumbnail-wrap" data-index="5"><img src=""></div>
+          </div>
+          <button id="pb-btnConfirm" style="width:100%; padding:10px; background:#a7c957; border:3px solid #2b2b2b; color:#fff; font-weight:800; border-radius:10px; cursor:pointer; display:none;">Xác nhận chọn 🎉</button>
+        </div>
+
+        <!-- Cột Kết Quả -->
+        <div id="pb-stripSection" class="pb-strip-section pb-strip-row">
+          <canvas id="pb-photoStrip" class="pb-canvas"></canvas>
+          <div class="pb-frame-selector">
+            <div style="font-size:13px; font-weight:900; text-align:center;">✨ Mặc áo mới cho ảnh ✨</div>
+            <div class="pb-frame-options">
+              <button class="pb-frame-btn active" data-theme="0">🌸 Pink</button>
+              <button class="pb-frame-btn" data-theme="1">🎞️ Film</button>
+              <button class="pb-frame-btn" data-theme="2">🧸 Bear</button>
+              <button class="frame-btn pb-frame-btn" data-theme="3">🎀 Blue</button>
+            </div>
+            <input type="text" id="pb-customText" placeholder="Gõ lời nhắn..." style="width:100%; padding:10px; border:3px solid #2b2b2b; border-radius:8px; font-weight:700; text-align:center; outline:none;">
+            <div style="display:flex; gap:10px;">
+              <button id="pb-btnDownload" style="flex:1; padding:10px; background:#a7c957; border:3px solid #2b2b2b; color:#fff; font-weight:800; border-radius:10px; cursor:pointer;"><i class="fa-solid fa-download"></i> Tải ảnh</button>
+              <button id="finalFinishBtn" style="flex:1; padding:10px; background:#2b2b2b; border:3px solid #2b2b2b; color:#fff; font-weight:800; border-radius:10px; cursor:pointer;">Hoàn tất 🚀</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BƯỚC 6: MÀN HÌNH CHỜ CHUYỂN TRANG -->
     <div class="step" id="stepFinish">
       <div class="title">Quá đỉnh lunn</div>
       <div class="message" style="color:#386641; font-size: clamp(14px,4vw,16px);">Đang gửi thông điệp mật ... <span class="loading"></span></div>
@@ -331,33 +465,24 @@
 
   </div>
 
-  <!-- CỬA THẦN KỲ 3D -->
+  <!-- CỬA THẦN KỲ 3D & NHẠC -->
   <div class="love-doors" id="loveDoors">
     <div class="door-left"><div class="knob"></div><i class="fas fa-heart"></i></div>
     <div class="door-right"><div class="knob"></div><i class="fas fa-heart"></i></div>
     <div class="magic-light"></div>
   </div>
-
   <audio id="bgMusic" loop preload="auto"><source src="Khongthoigiannew.mp3" type="audio/mpeg"></audio>
   <button id="musicBtn" title="Phát / Dừng nhạc"><i class="fas fa-music"></i></button>
 
   <script>
-    // ==========================================
-    // BẠN HÃY ĐIỀN LINK FORMSPREE CỦA MÌNH VÀO ĐÂY NHÉ
-    // ==========================================
     const FORMSPREE_URL = "https://formspree.io/f/xjgdenrp";
-    
-    // Mật khẩu mở cửa
     const PASS = "1234";
     const REDIRECT = "https://panbap.github.io/HeartBeat/lovequiz.html?id=eyJsIjoiIiwibSI6IiIsIm4iOiJFbSBpdXV1IMahaSBhbmggY8OzIMSRaeG7gXUgbXXhu5FuIG7Ds2lpaWlpIiwibyI6IkFuaCB5w6p1IGVtbW0gdGjGsMahbmcgaOG6v3QgbuG6pWMgbHVubm4iLCJnIjoiROG6oSBiw6kgbmdoZWUiLCJoIjoiTmdoZSBsw6AgY8OzIHRoxrDhu59uZyBuaMOhYSJ9";
-    
-    // BỘ CÂU HỎI ĐÃ ĐƯỢC CẬP NHẬT
+
+    const introMessage = `Chắc em hơi bất ngờ khi tự nhiên nhận được cái link này đúng hong? \n😆 \n\nAnh tình cờ biết được in4 của em và thấy em rất đáng yêu.\nAnh không muốn bắt chuyện kiểu nhàm chán, nên anh tự tay làm cái thiệp nhỏ này thay cho lời chào chính thức.\n\nCùng nhau có thêm nhiều kĩ niệm nhé!\n✨`;
+
     const quiz = [
-      { 
-        q: "Câu 1: Đố đằng ấy biết, ấn tượng đầu tiên của tớ về đằng ấy là gì? 👀", 
-        a: ["A. Cực kỳ dễ thương 🐰", "B. Thú vị, mặn mòi ✨", "C. Cả A và B đều chuẩn 🤭"], 
-        c: 2 
-      },
+      { q: "Câu 1: Đố đằng ấy biết, ấn tượng đầu tiên của tớ về đằng ấy là gì? 👀", a: ["A. Cực kỳ dễ thương 🐰", "B. Thú vị, mặn mòi ✨", "C. Cả A và B đều chuẩn 🤭"], c: 2 },
       { q: "Câu 2: Đố em biết ATE là viết tắt của từ gì? 😏", type: "exact", expected: "anh thương em" },
       { q: "Câu 3: Lần đầu có người nhắn tin làm quen bằng nguyên cái web thế này, đằng ấy thấy tớ thú vị hay là hơi... 'có vấn đề' dợ? 😆", type: "open" },
       { q: "Câu 4: Nếu dùng 3 từ khóa ngắn gọn để miêu tả về sở thích của đằng ấy, thì đó sẽ là gì? ✨", type: "open" },
@@ -365,12 +490,7 @@
     ];
 
     let userAnswers = [];
-
-    const loveMessage = `Ting ting! Lời nhắn của em đã được anh lưu lại một cách cẩn thận gòi đó 📩.
-Cảm ơn em vì đã chịu khó nhấp vào chiếc link này và kiên nhẫn trả lời từng câu hỏi ngô nghê của anh. Chỉ một chút sự dễ thương đó của em thui cũng đủ làm ngày hôm nay của anh rực rỡ hơn nhiều lắm luôn!
-Nếu em đọc được tới dòng này, thì màn hình bên kia đang có một người rất mong chờ tin nhắn phản hồi từ em đó. Quay lại khung chat và cho anh biết cảm nhận của em về "sự làm quen cồng kềnh" này nha 😉.
-Chúc đằng ấy một ngày thật vui! 🌸`;
-
+    const loveMessage = `Ting ting! Lời nhắn của em đã được anh lưu lại một cách cẩn thận gòi đó 📩.\nCảm ơn em vì đã chịu khó nhấp vào chiếc link này và kiên nhẫn trả lời từng câu hỏi ngô nghê của anh.\nChỉ một chút sự dễ thương đó của em thui cũng đủ làm ngày hôm nay của anh rực rỡ hơn nhiều lắm luôn!\nNếu em đọc được tới dòng này, thì màn hình bên kia đang có một người rất mong chờ tin nhắn phản hồi từ em đó.\nQuay lại khung chat và cho anh biết cảm nhận của em về "sự làm quen cồng kềnh" này nha 😉.\nChúc đằng ấy một ngày thật vui! 🌸`;
     const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
 
     let imgIndex = 0;
@@ -378,32 +498,26 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       screen: document.getElementById("screen"), msg: document.getElementById("msg"),
       quizMsg: document.getElementById("quizMsg"), dots: document.querySelectorAll("#dots .dot"),
       keypad: document.getElementById("keypad"), delBtn: document.getElementById("delBtn"),
-      startQuizBtn: document.getElementById("startQuizBtn"), loveDoors: document.getElementById("loveDoors"), 
+      startQuizBtn: document.getElementById("startQuizBtn"), loveDoors: document.getElementById("loveDoors"),
       answers: document.getElementById("answers"), qText: document.getElementById("qText"),
       musicBtn: document.getElementById("musicBtn"), audio: document.getElementById("bgMusic"),
       letterText: document.getElementById("letterText"), loveImg: document.getElementById("loveImg"),
-      doneBtn: document.getElementById("doneBtn")
+      doneBtn: document.getElementById("doneBtn"), introTypingBox: document.getElementById("introTypingBox")
     };
 
     let pin = ""; let qIndex = 0; let answered = false;
 
     function updateDots() { el.dots.forEach((d, i) => d.classList.toggle("filled", i < pin.length)); }
-
-    function playMusicSafe() {
-      el.audio.volume = 0.85;
-      el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; })
-      .catch(() => { el.msg.style.color = "#e63946"; el.msg.innerText = "Cậu bấm nút 🎵 để bật nhạc nha 😘"; });
-    }
-
+    function playMusicSafe() { el.audio.volume = 0.85; el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(() => { el.msg.style.color = "#e63946"; el.msg.innerText = "Cậu bấm nút 🎵 để bật nhạc nha 😘"; }); }
     function addNum(num) { if (pin.length >= 4) return; pin += num; updateDots(); if (pin.length === 4) checkPin(); }
     function removeLast() { pin = pin.slice(0, -1); updateDots(); el.msg.textContent = ""; }
 
     function checkPin() {
       if (pin === PASS) {
         el.msg.style.color = "#386641"; el.msg.innerHTML = "Tuyệt vời ... <span class='loading'></span>"; playMusicSafe();
-        setTimeout(() => { show("stepIntro"); }, 900);
+        setTimeout(() => { show("stepIntro"); startTypingIntro(); }, 900);
       } else {
-        el.msg.style.color = "#e63946"; el.msg.textContent = "Chưa đúng mật mã dồi😭"; el.screen.classList.add("shake");
+        el.msg.style.color = "#e63946"; el.msg.textContent = "Chưa đúng mật mã dồi 😭"; el.screen.classList.add("shake");
         setTimeout(() => { el.screen.classList.remove("shake"); pin = ""; updateDots(); el.msg.textContent = ""; }, 900);
       }
     }
@@ -412,25 +526,39 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
       if (id === "stepPassword") el.screen.classList.add("password-mode");
-      else el.screen.classList.remove("password-mode");
+      else if (id === "stepPhotobooth") el.screen.style.width = "min(95vw, 1100px)"; // Mở rộng màn hình cho Photobooth
+      else { el.screen.classList.remove("password-mode"); el.screen.style.width = "min(92vw, 800px)"; }
     }
 
-    // Lệnh tương tác Click cho các nút CÓ / ĐỒNG Ý
-    document.querySelectorAll('.poll-opt').forEach(opt => {
-      opt.addEventListener('click', function() {
-        document.querySelectorAll('.poll-opt').forEach(o => o.classList.remove('selected'));
-        this.classList.add('selected');
+    let introIndex = 0;
+    function startTypingIntro() {
+      introIndex = 0; el.introTypingBox.innerHTML = ""; typeIntroChar();
+    }
+    function typeIntroChar() {
+      if (introIndex < introMessage.length) {
+        let char = introMessage[introIndex];
+        if (char === "\n") { el.introTypingBox.innerHTML += "<br>"; } else { el.introTypingBox.innerHTML += char; }
+        let currentHTML = el.introTypingBox.innerHTML;
+        el.introTypingBox.innerHTML = currentHTML.replace('<span class="typing-cursor"></span>', '') + `<span class="typing-cursor"></span>`;
+        introIndex++; setTimeout(typeIntroChar, 40);
+      } else { el.introTypingBox.innerHTML = el.introTypingBox.innerHTML.replace('<span class="typing-cursor"></span>', ''); }
+    }
+
+    const pollOpts = document.querySelectorAll('.poll-opt');
+    if (pollOpts.length >= 2) {
+      pollOpts[0].addEventListener('click', function() { pollOpts.forEach(o => o.classList.remove('selected')); this.classList.add('selected'); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, zIndex: 10000 }); });
+      pollOpts[1].addEventListener('click', function() {
+        pollOpts.forEach(o => o.classList.remove('selected')); this.classList.add('selected'); el.screen.classList.add("shake", "error-glow"); spawnEmojis(this, 'wrong');
+        setTimeout(() => { el.screen.classList.remove("shake", "error-glow"); this.classList.remove('selected'); }, 600);
       });
-    });
+    }
 
     el.startQuizBtn.addEventListener("click", () => {
-      el.loveDoors.classList.add("ready");
-      show("stepQuiz"); startQuiz(); void el.loveDoors.offsetWidth;
+      el.loveDoors.classList.add("ready"); show("stepQuiz"); startQuiz(); void el.loveDoors.offsetWidth;
       setTimeout(() => {
-        el.loveDoors.classList.add("opening");
-        confetti({ particleCount: 150, spread: 120, origin: { y: 0.5 }, colors: ['#ff4d6d', '#ffb3c6', '#ffe259'], zIndex: 10000 });
+        el.loveDoors.classList.add("opening"); confetti({ particleCount: 150, spread: 120, origin: { y: 0.5 }, colors: ['#ff4d6d', '#ffb3c6', '#ffe259'], zIndex: 10000 });
         setTimeout(() => { el.loveDoors.classList.remove("ready", "opening"); }, 1400);
-      }, 500); 
+      }, 500);
     });
 
     function startQuiz() { qIndex = 0; userAnswers = []; loadQ(); }
@@ -439,130 +567,67 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
       answered = false; el.quizMsg.textContent = "";
       const curr = quiz[qIndex]; el.qText.textContent = curr.q; el.answers.innerHTML = "";
 
-      // XỬ LÝ DẠNG CÂU HỎI MỞ NHẬP TEXT TỰ DO
       if (curr.type === "open") {
         const textarea = document.createElement("textarea"); textarea.className = "open-text"; textarea.placeholder = "Gõ nhè nhẹ câu trả lời vào đây nha...";
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit";
-        submitBtn.textContent = "Tiếp tục nào 🚀";
-        
+        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Tiếp tục nào 🚀";
         submitBtn.addEventListener("click", () => {
           const val = textarea.value.trim();
           if(!val) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em chưa nhập gì kìa 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
           userAnswers[qIndex] = val; qIndex++; loadQ();
         });
         el.answers.appendChild(textarea); el.answers.appendChild(submitBtn);
-
-      } 
-      // XỬ LÝ DẠNG CÂU HỎI ĐIỀN TỪ CHÍNH XÁC
-      else if (curr.type === "exact") {
+      } else if (curr.type === "exact") {
         const inputBox = document.createElement("input"); inputBox.type = "text"; inputBox.className = "exact-input"; inputBox.placeholder = "(Nhập tiếng Việt có dấu nhó...)";
         const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Anh xem nàoo 🔍";
-        
         submitBtn.addEventListener("click", () => {
           if(answered) return;
           const val = inputBox.value.trim().toLowerCase(); const expectedAns = curr.expected.toLowerCase();
-          
           if(val === expectedAns) {
-            answered = true; submitBtn.classList.add("correct");
-            el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Chính xác luônnn!";
-            inputBox.disabled = true; submitBtn.disabled = true;
-            userAnswers[qIndex] = val; 
-            el.screen.classList.add("success-glow"); spawnEmojis(submitBtn, 'correct');
+            answered = true; submitBtn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Chính xác luônnn!";
+            inputBox.disabled = true; submitBtn.disabled = true; userAnswers[qIndex] = val; el.screen.classList.add("success-glow"); spawnEmojis(submitBtn, 'correct');
             setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(nextQ, 1800);
           } else {
-            submitBtn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý dồi 😝";
-            el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(submitBtn, 'wrong');
+            submitBtn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý dồi 😝"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(submitBtn, 'wrong');
             setTimeout(() => { submitBtn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
           }
         });
         el.answers.appendChild(inputBox); el.answers.appendChild(submitBtn);
-
-      } 
-      // XỬ LÝ DẠNG CÂU HỎI ĐẶC BIỆT MEMO CARD (Đã khôi phục sticker gốc 🌸 🧸 và Formspree Track Tick)
-      else if (curr.type === "todo_notes") {
+      } else if (curr.type === "todo_notes") {
         const memoCard = document.createElement("div"); memoCard.className = "memo-card";
-        memoCard.innerHTML = `
-          <div class="washi-tape"></div>
-          <div class="memo-sticker sticker-1">🌸</div>
-          <div class="memo-sticker sticker-2">🧸</div>
-          
-          <div class="memo-quote">“though she be but little, she loves you big”</div>
-          <div class="memo-section-title"><i class="fa-solid fa-list-check"></i> Việc cần làm:</div>
-          <div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 1 mún đi cùng tớ..."></div>
-          <div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 2 mún đi cùng tớ..."></div>
-          <div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 3 mún đi cùng tớ..."></div>
-          <div class="memo-section-title" style="margin-top: 15px;"><i class="fa-solid fa-pen-to-square"></i> Ghi chú thêm:</div>
-          <textarea class="open-text note-in" style="min-height: 80px; margin-bottom: 5px;" placeholder="Ghi chú hay nhắn nhủ thêm gì đó dới tớ nhó..."></textarea>
-        `;
-        
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit";
-        submitBtn.textContent = "Gửi cho anh nè 💌";
-        
+        memoCard.innerHTML = `<div class="washi-tape"></div><div class="memo-sticker sticker-1">🌸</div><div class="memo-sticker sticker-2">🧸</div><div class="memo-quote">“though she be but little, she loves you big”</div><div class="memo-section-title"><i class="fa-solid fa-list-check"></i> Việc cần làm:</div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 1 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 2 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 3 mún đi cùng tớ..."></div><div class="memo-section-title" style="margin-top: 15px;"><i class="fa-solid fa-pen-to-square"></i> Ghi chú thêm:</div><textarea class="open-text note-in" style="min-height: 80px; margin-bottom: 5px;" placeholder="Ghi chú hay nhắn nhủ thêm gì đó dới tớ nhó..."></textarea>`;
+        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Gửi cho anh nè 💌";
         submitBtn.addEventListener("click", () => {
-          const checkboxes = memoCard.querySelectorAll(".memo-checkbox");
-          const todoInputs = memoCard.querySelectorAll(".todo-in");
-          const noteInput = memoCard.querySelector(".note-in");
-          
-          let valid = false;
-          todoInputs.forEach(i => { if(i.value.trim()) valid = true; });
-          if(noteInput.value.trim()) valid = true;
-          
-          if(!valid) {
-            el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em điền sương sương vài chữ cho anh biết với nha 🥺";
-            el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return;
-          }
-          
-          submitBtn.textContent = "Đang gửi đi... 🚀"; submitBtn.disabled = true;
-          memoCard.querySelectorAll("input, textarea").forEach(i => i.disabled = true);
-
+          const checkboxes = memoCard.querySelectorAll(".memo-checkbox"); const todoInputs = memoCard.querySelectorAll(".todo-in"); const noteInput = memoCard.querySelector(".note-in");
+          let valid = false; todoInputs.forEach(i => { if(i.value.trim()) valid = true; }); if(noteInput.value.trim()) valid = true;
+          if(!valid) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em điền sương sương vài chữ cho anh biết với nha 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
+          submitBtn.textContent = "Đang gửi đi... 🚀"; submitBtn.disabled = true; memoCard.querySelectorAll("input, textarea").forEach(i => i.disabled = true);
           const payload = {};
           quiz.forEach((qObj, index) => {
             if (index === 4) {
-              // Báo cáo rõ ràng việc Có Tick hay Không Tick về Formspree
               payload["Câu 5 - Việc 1"] = (checkboxes[0].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[0].value.trim() || "(Không viết gì)");
               payload["Câu 5 - Việc 2"] = (checkboxes[1].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[1].value.trim() || "(Không viết gì)");
               payload["Câu 5 - Việc 3"] = (checkboxes[2].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[2].value.trim() || "(Không viết gì)");
               payload["Câu 5 - Ghi chú"] = noteInput.value.trim() || "(Không viết gì)";
-            } else {
-              payload[qObj.q] = userAnswers[index];
-            }
+            } else { payload[qObj.q] = userAnswers[index]; }
           });
-
-          fetch(FORMSPREE_URL, {
-            method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
-          }).then(response => {
-             el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰";
-             el.screen.style.borderColor = "#a7c957"; setTimeout(() => { el.screen.style.borderColor = "#2b2b2b"; }, 600);
-             setTimeout(nextQ, 1500); 
-          }).catch(error => {
-             setTimeout(nextQ, 1500); 
-          });
+          fetch(FORMSPREE_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+          .then(response => { el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰"; el.screen.style.borderColor = "#a7c957"; setTimeout(() => { el.screen.style.borderColor = "#2b2b2b"; }, 600); setTimeout(nextQ, 1500); })
+          .catch(error => { setTimeout(nextQ, 1500); });
         });
-        
         el.answers.appendChild(memoCard); el.answers.appendChild(submitBtn);
-      } 
-      // XỬ LÝ DẠNG TRẮC NGHIỆM A, B, C
-      else {
-        curr.a.forEach((txt, i) => {
-          const b = document.createElement("button"); b.className = "answer-btn"; b.textContent = txt;
-          b.addEventListener("click", () => pick(i, b)); el.answers.appendChild(b);
-        });
+      } else {
+        curr.a.forEach((txt, i) => { const b = document.createElement("button"); b.className = "answer-btn"; b.textContent = txt; b.addEventListener("click", () => pick(i, b)); el.answers.appendChild(b); });
       }
     }
 
     function spawnEmojis(btn, type) {
       const rect = btn.getBoundingClientRect(); const isCorrect = type === 'correct';
-      const emojiList = isCorrect ? ["💖", "😍", "🥰", "✨"] : ["😭", "💔", "🙄"];
-      const count = isCorrect ? 12 : 8;
-
+      const emojiList = isCorrect ? ["💖", "😍", "🥰", "✨"] : ["😭", "💔", "🙄"]; const count = isCorrect ? 12 : 8;
       for (let i = 0; i < count; i++) {
         const emoji = document.createElement("div"); emoji.innerText = emojiList[Math.floor(Math.random() * emojiList.length)];
-        emoji.style.position = "fixed"; emoji.style.left = (rect.left + rect.width / 2) + "px"; emoji.style.top = (rect.top + rect.height / 2) + "px"; emoji.style.fontSize = isCorrect ? "26px" : "22px";
-        emoji.style.pointerEvents = "none"; emoji.style.zIndex = "9999"; emoji.style.textShadow = "2px 2px 0px #2b2b2b";
-        emoji.style.transition = isCorrect ? "transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease-out" : "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out";
+        emoji.style.position = "fixed"; emoji.style.left = (rect.left + rect.width / 2) + "px"; emoji.style.top = (rect.top + rect.height / 2) + "px"; emoji.style.fontSize = isCorrect ? "26px" : "22px"; emoji.style.pointerEvents = "none"; emoji.style.zIndex = "9999"; emoji.style.textShadow = "2px 2px 0px #2b2b2b"; emoji.style.transition = isCorrect ? "transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease-out" : "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out";
         document.body.appendChild(emoji);
-        const angle = Math.random() * Math.PI * 2; const distance = Math.random() * (isCorrect ? 80 : 60) + 40;
-        const tx = Math.cos(angle) * distance; const ty = Math.sin(angle) * distance - (isCorrect ? 60 : 40);
+        const angle = Math.random() * Math.PI * 2; const distance = Math.random() * (isCorrect ? 80 : 60) + 40; const tx = Math.cos(angle) * distance; const ty = Math.sin(angle) * distance - (isCorrect ? 60 : 40);
         requestAnimationFrame(() => { emoji.style.transform = `translate(${tx}px, ${ty}px) scale(1.2)`; emoji.style.opacity = "0"; });
         setTimeout(() => emoji.remove(), isCorrect ? 800 : 600);
       }
@@ -571,24 +636,14 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
     function pick(idx, btn) {
       if (answered) return; const curr = quiz[qIndex]; const all = el.answers.querySelectorAll(".answer-btn");
       if (idx === curr.c) {
-        answered = true; btn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Biết ngay mờ!"; all.forEach(b => b.disabled = true);
-        userAnswers[qIndex] = curr.a[idx]; // Lưu lại đáp án
-        el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct'); setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(() => { nextQ(); }, 1500);
+        answered = true; btn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Biết ngay mờ!"; all.forEach(b => b.disabled = true); userAnswers[qIndex] = curr.a[idx]; el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct'); setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(() => { nextQ(); }, 1500);
       } else {
-        btn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Shao lại chọn cái này kìa 😭!";
-        el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(btn, 'wrong');
+        btn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Shao lại chọn cái này kìa 😭!"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(btn, 'wrong');
         setTimeout(() => { btn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
       }
     }
 
-    function nextQ() { 
-      qIndex++; 
-      if (qIndex >= quiz.length) { 
-        show("stepLetter"); startTypingLetter(); 
-      } else { 
-        loadQ(); 
-      } 
-    }
+    function nextQ() { qIndex++; if (qIndex >= quiz.length) { show("stepLetter"); startTypingLetter(); } else { loadQ(); } }
 
     let typingIndex = 0; let typingDone = false;
     function startTypingLetter() { typingIndex = 0; typingDone = false; el.letterText.innerHTML = ""; el.doneBtn.style.display = "none"; typeOneChar(); }
@@ -599,7 +654,18 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
     }
 
     el.loveImg.addEventListener("click", () => { imgIndex++; if (imgIndex >= images.length) imgIndex = 0; el.loveImg.src = images[imgIndex]; });
-    el.doneBtn.addEventListener("click", () => { show("stepFinish"); setTimeout(() => { location.href = REDIRECT; }, 1500); });
+    
+    // Nút xong thư -> Chuyển qua Photobooth
+    el.doneBtn.addEventListener("click", () => { 
+      show("stepPhotobooth"); 
+      // Khởi động Camera chỉ khi vào bước Photobooth
+      navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
+        document.getElementById('pb-video').srcObject = s;
+      }).catch(e => {
+        document.getElementById('pb-status').textContent = "Không tìm thấy Camera. Bạn hãy cấp quyền nhé!";
+      });
+    });
+    
     el.keypad.addEventListener("click", e => { const b = e.target.closest(".btn"); if (!b || b.classList.contains("empty")) return; if (b.dataset.num) addNum(b.dataset.num); });
     el.delBtn.addEventListener("click", removeLast);
     document.addEventListener("keydown", e => { if (!document.getElementById("stepPassword").classList.contains("active")) return; if (e.key >= "0" && e.key <= "9") addNum(e.key); if (e.key === "Backspace") removeLast(); });
@@ -607,19 +673,169 @@ Chúc đằng ấy một ngày thật vui! 🌸`;
     function createParticles() {
       const container = document.getElementById("particles");
       for (let i = 0; i < 100; i++) {
-        const particle = document.createElement("i"); 
-        particle.className = Math.random() > 0.25 ? "fa-solid fa-heart particle" : "fa-solid fa-star particle";
-        particle.style.color = particle.classList.contains("fa-heart") ? "#ff4d6d" : "#fff";
-        particle.style.textShadow = "2px 2px 0px #2b2b2b";
-        particle.style.fontSize = (Math.random() * 15 + 10) + "px";
-        particle.style.left = Math.random() * 100 + "vw"; particle.style.top = Math.random() * -30 + "vh";
-        particle.style.animationDuration = (Math.random() * 16 + 12) + "s"; particle.style.animationDelay = "-" + Math.random() * 25 + "s";
-        container.appendChild(particle);
+        const particle = document.createElement("i"); particle.className = Math.random() > 0.25 ? "fa-solid fa-heart particle" : "fa-solid fa-star particle"; particle.style.color = particle.classList.contains("fa-heart") ? "#ff4d6d" : "#fff"; particle.style.textShadow = "2px 2px 0px #2b2b2b"; particle.style.fontSize = (Math.random() * 15 + 10) + "px"; particle.style.left = Math.random() * 100 + "vw"; particle.style.top = Math.random() * -30 + "vh"; particle.style.animationDuration = (Math.random() * 16 + 12) + "s"; particle.style.animationDelay = "-" + Math.random() * 25 + "s"; container.appendChild(particle);
       }
     }
     createParticles();
-
     el.musicBtn.onclick = () => { if (el.audio.paused) { el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }); } else { el.audio.pause(); el.musicBtn.innerHTML = '<i class="fas fa-music"></i>'; } };
+
+    // ==========================================
+    // LOGIC CHO TRẠM CHỤP ẢNH PHOTOBOOTH
+    // ==========================================
+    let pbCapturedPhotos = [], pbSelectedIndices = [], pbCurrentLayout = 4, pbCurrentTheme = 0;
+    const pbCanvas = document.getElementById('pb-photoStrip'), pbCtx = pbCanvas.getContext('2d'), pbVideo = document.getElementById('pb-video');
+    const pbBtnCapture = document.getElementById('pb-btnCapture'), pbBtnConfirm = document.getElementById('pb-btnConfirm'), pbStatus = document.getElementById('pb-status');
+    const defaultPbMsgs = ["Memories with you 🌸", "RETRO VIBES 🎞️", "Beary Cute 🧸🤎", "Sweet Youth 🎀"];
+
+    document.querySelectorAll('.pb-layout-btn').forEach(btn => {
+      btn.onclick = function() {
+        if(pbBtnCapture.disabled) return;
+        document.querySelectorAll('.pb-layout-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');
+        pbCurrentLayout = parseInt(this.getAttribute('data-layout'));
+        pbBtnCapture.innerHTML = `<i class="fa-solid fa-camera"></i> Bắt đầu chụp (${pbCurrentLayout === 4 ? 6 : 4} tấm)`;
+      }
+    });
+
+    function pbRenderCanvas() {
+      let stripWidth = (pbCurrentLayout === 4) ? 300 : 575;
+      let stripHeight = (pbCurrentLayout === 4) ? 920 : 320;
+      pbCanvas.width = stripWidth; pbCanvas.height = stripHeight;
+      
+      // Vẽ nền
+      if (pbCurrentTheme === 0) { pbCtx.fillStyle = '#ffffff'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); } 
+      else if (pbCurrentTheme === 1) { 
+        pbCtx.fillStyle = '#1a1a1a'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); pbCtx.fillStyle = '#ffffff';
+        if(pbCurrentLayout === 4) { for(let i=10; i<stripHeight; i+=30) { pbCtx.fillRect(4, i, 8, 12); pbCtx.fillRect(stripWidth - 12, i, 8, 12); } } 
+        else { for(let i=10; i<stripWidth; i+=30) { pbCtx.fillRect(i, 4, 12, 8); pbCtx.fillRect(i, stripHeight - 12, 12, 8); } }
+      } 
+      else if (pbCurrentTheme === 2) { pbCtx.fillStyle = '#f5ebd9'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); } 
+      else if (pbCurrentTheme === 3) { pbCtx.fillStyle = '#d6e9f5'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); }
+
+      // Vẽ Ảnh
+      let photosToDraw = pbCurrentLayout === 4 ? 4 : 2;
+      for (let i = 0; i < photosToDraw; i++) {
+        let xPos = pbCurrentLayout === 4 ? 20 : 20 + i * 275;
+        let yPos = pbCurrentLayout === 4 ? 20 + i * 210 : 20;
+        let img = pbCapturedPhotos[pbSelectedIndices[i]];
+        
+        if(img) pbCtx.drawImage(img, xPos, yPos, 260, 195);
+        else { pbCtx.fillStyle = pbCurrentTheme === 1 ? '#333333' : '#f0f0f0'; pbCtx.fillRect(xPos, yPos, 260, 195); }
+
+        pbCtx.lineWidth = 3; pbCtx.shadowBlur = 0; 
+        if (pbCurrentTheme === 0) { pbCtx.strokeStyle = '#ffb3c6'; pbCtx.setLineDash([]); pbCtx.strokeRect(xPos, yPos, 260, 195); } 
+        else if (pbCurrentTheme === 1) { pbCtx.strokeStyle = '#ffffff'; pbCtx.lineWidth = 2; pbCtx.setLineDash([]); pbCtx.strokeRect(xPos, yPos, 260, 195); } 
+        else if (pbCurrentTheme === 2) { pbCtx.strokeStyle = '#8b5a2b'; pbCtx.lineWidth = 4; pbCtx.setLineDash([8, 8]); pbCtx.strokeRect(xPos, yPos, 260, 195); pbCtx.setLineDash([]); } 
+        else if (pbCurrentTheme === 3) { pbCtx.strokeStyle = '#ffffff'; pbCtx.lineWidth = 4; pbCtx.setLineDash([10, 10]); pbCtx.strokeRect(xPos, yPos, 260, 195); pbCtx.setLineDash([]); }
+      }
+
+      // Vẽ Chữ
+      let text = document.getElementById('pb-customText').value.trim() || defaultPbMsgs[pbCurrentTheme];
+      pbCtx.textAlign = 'center';
+      const baseY = pbCurrentLayout === 4 ? 845 : 215; 
+      
+      pbCtx.shadowColor = 'transparent'; pbCtx.shadowBlur = 0;
+      if (pbCurrentTheme === 0) { pbCtx.fillStyle = '#f92f60'; pbCtx.font = 'bold 24px "Dancing Script", cursive'; pbCtx.fillText('Memories 🌸', stripWidth / 2, baseY + 35); pbCtx.fillStyle = '#333'; pbCtx.font = 'bold 20px "Dancing Script", cursive'; pbCtx.fillText(text, stripWidth / 2, baseY + 65); } 
+      else if (pbCurrentTheme === 1) { pbCtx.fillStyle = '#ffffff'; pbCtx.font = 'bold 18px "Courier Prime", monospace'; pbCtx.fillText('🎞️ CLASSIC', stripWidth / 2, baseY + 35); pbCtx.font = 'bold 16px "Courier Prime", monospace'; pbCtx.fillText(text, stripWidth / 2, baseY + 65); } 
+      else if (pbCurrentTheme === 2) { pbCtx.fillStyle = '#8b5a2b'; pbCtx.font = 'bold 26px "Dancing Script", cursive'; pbCtx.fillText('Beary Cute 🧸🤎', stripWidth / 2, baseY + 35); pbCtx.fillStyle = '#333'; pbCtx.font = 'bold 20px "Dancing Script", cursive'; pbCtx.fillText(text, stripWidth / 2, baseY + 65); } 
+      else if (pbCurrentTheme === 3) { pbCtx.fillStyle = '#ffffff'; pbCtx.font = 'bold 26px "Dancing Script", cursive'; pbCtx.shadowColor = 'rgba(0,0,0,0.2)'; pbCtx.shadowBlur = 4; pbCtx.shadowOffsetX = 2; pbCtx.shadowOffsetY = 2; pbCtx.fillText('Youth with You 🎀', stripWidth / 2, baseY + 35); pbCtx.fillText(text, stripWidth / 2, baseY + 65); pbCtx.shadowColor = 'transparent'; }
+
+      // Vẽ Ngày tháng tự động theo định dạng ngày/tháng/năm hiện tại
+      pbCtx.fillStyle = (pbCurrentTheme === 1) ? 'rgba(255,255,255,0.6)' : 'rgba(100,100,100,0.6)'; 
+      pbCtx.font = '700 12px "Courier Prime", monospace'; 
+      pbCtx.fillText(new Date().toLocaleDateString('vi-VN'), stripWidth / 2, baseY + 85);
+    }
+
+    function pbTriggerFlash() { document.getElementById('pb-flash').style.opacity = '1'; setTimeout(() => { document.getElementById('pb-flash').style.transition = 'opacity 0.5s ease-out'; document.getElementById('pb-flash').style.opacity = '0'; }, 50); setTimeout(() => { document.getElementById('pb-flash').style.transition = 'none'; }, 600); }
+
+    function pbTakeSinglePhoto(idx) {
+      return new Promise(resolve => {
+        let count = 3; document.getElementById('pb-countdown').style.opacity = '1'; document.getElementById('pb-countdown').textContent = count;
+        pbStatus.textContent = `Tạo dáng bức thứ ${idx + 1}...`;
+        const interval = setInterval(() => {
+          count--;
+          if (count > 0) document.getElementById('pb-countdown').textContent = count;
+          else {
+            clearInterval(interval); document.getElementById('pb-countdown').style.opacity = '0'; pbTriggerFlash();
+            const tempC = document.createElement('canvas'); tempC.width = 260; tempC.height = 195;
+            const tCtx = tempC.getContext('2d'); tCtx.translate(260, 0); tCtx.scale(-1, 1);
+            tCtx.drawImage(pbVideo, 0, 0, pbVideo.videoWidth, pbVideo.videoHeight, 0, 0, 260, 195);
+            pbCapturedPhotos[idx] = tempC;
+            document.querySelectorAll('.pb-thumbnail-wrap img')[idx].src = tempC.toDataURL();
+            resolve();
+          }
+        }, 1000);
+      });
+    }
+
+    pbBtnCapture.onclick = async () => {
+      pbBtnCapture.disabled = true; pbCapturedPhotos = []; pbSelectedIndices = []; pbBtnConfirm.style.display = 'none';
+      let totalToTake = pbCurrentLayout === 4 ? 6 : 4;
+      document.querySelectorAll('.pb-thumbnail-wrap').forEach((w, idx) => { w.classList.remove('selected'); w.querySelector('img').src = ''; w.style.display = (idx < totalToTake) ? 'block' : 'none'; });
+      document.getElementById('pb-selectionSection').style.display = 'none'; document.getElementById('pb-stripSection').style.display = 'none';
+
+      for (let i = 0; i < totalToTake; i++) { await pbTakeSinglePhoto(i); if (i < totalToTake - 1) await new Promise(r => setTimeout(r, 1000)); }
+      
+      let totalToSelect = pbCurrentLayout === 4 ? 4 : 2;
+      document.getElementById('pb-selectTitle').textContent = `✨ Chọn ${totalToSelect} tấm đỉnh nhất ✨`;
+      pbStatus.textContent = `Tuyệt vời! Chọn ${totalToSelect} tấm ở bảng bên nhé 🎉`;
+      document.getElementById('pb-selectionSection').style.display = 'flex';
+    };
+
+    document.querySelectorAll('.pb-thumbnail-wrap').forEach(wrap => {
+      wrap.onclick = function() {
+        const idx = parseInt(this.getAttribute('data-index'));
+        if (!pbCapturedPhotos[idx]) return;
+        const exists = pbSelectedIndices.indexOf(idx);
+        let totalToSelect = pbCurrentLayout === 4 ? 4 : 2;
+        if (exists === -1) { if (pbSelectedIndices.length >= totalToSelect) return; pbSelectedIndices.push(idx); this.classList.add('selected'); } 
+        else { pbSelectedIndices.splice(exists, 1); this.classList.remove('selected'); }
+
+        if (pbSelectedIndices.length === totalToSelect) { pbBtnConfirm.style.display = 'block'; pbStatus.textContent = `Bạn đã chọn đủ ${totalToSelect} tấm! Xác nhận nhé 🚀`; } 
+        else { pbBtnConfirm.style.display = 'none'; pbStatus.textContent = `Hãy chọn thêm ${totalToSelect - pbSelectedIndices.length} tấm nữa nhé!`; }
+      };
+    });
+
+    pbBtnConfirm.onclick = () => {
+      document.getElementById('pb-selectionSection').style.display = 'none';
+      pbRenderCanvas();
+      
+      let stripSec = document.getElementById('pb-stripSection');
+      if (pbCurrentLayout === 4) {
+        stripSec.className = 'pb-strip-section pb-strip-row';
+      } else {
+        stripSec.className = 'pb-strip-section pb-strip-col';
+      }
+      stripSec.style.display = 'flex';
+      
+      pbBtnCapture.innerHTML = '<i class="fa-solid fa-camera"></i> Chụp lại bộ khác'; pbBtnCapture.disabled = false;
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+      pbStatus.textContent = "Quá xuất sắc! Cậu có thể tải ảnh về rồi ấn nút Hoàn tất 🚀";
+    };
+
+    document.querySelectorAll('.pb-frame-btn').forEach(btn => {
+      btn.onclick = function() {
+        document.querySelectorAll('.pb-frame-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');
+        pbCurrentTheme = parseInt(this.getAttribute('data-theme'));
+        document.getElementById('pb-customText').placeholder = `Mặc định: ${defaultPbMsgs[pbCurrentTheme]}`;
+        pbRenderCanvas();
+      };
+    });
+
+    document.getElementById('pb-customText').oninput = pbRenderCanvas;
+    
+    document.getElementById('pb-btnDownload').onclick = () => { 
+      const a = document.createElement('a'); 
+      a.download = `Photobooth-${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.jpg`; 
+      a.href = pbCanvas.toDataURL('image/jpeg', 0.9); 
+      a.click(); 
+    };
+
+    // NÚT KẾT THÚC CẢ TRANG WEB
+    document.getElementById('finalFinishBtn').onclick = () => {
+      show("stepFinish");
+      const stream = pbVideo.srcObject; if (stream) { stream.getTracks().forEach(track => track.stop()); }
+      setTimeout(() => { location.href = REDIRECT; }, 1500);
+    };
   </script>
 </body>
 </html>
