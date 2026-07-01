@@ -526,7 +526,10 @@
     if(tvIcon && tvModal) {
       tvIcon.addEventListener('click', () => {
         tvModal.classList.add('show');
-        if (tvVideo) tvVideo.play();
+        if (tvVideo) {
+          tvVideo.currentTime = 0; // reset video mỗi lần mở
+          tvVideo.play();
+        }
       });
     }
 
