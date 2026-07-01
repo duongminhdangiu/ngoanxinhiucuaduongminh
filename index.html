@@ -276,31 +276,29 @@
     .pb-thumbnail-wrap.selected::after { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; top: 5px; right: 5px; width: 22px; height: 22px; background: #a7c957; color: #fff; border: 2px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
     .pb-thumbnail-wrap img { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 
-    /* CSS ĐIỀU CHỈNH RIÊNG KHU VỰC KẾT QUẢ ĐỂ LINH HOẠT THEO LAYOUT CHỌN (HÀNG NGANG HOẶC CỘT DỌC) */
-    .pb-strip-section { display: none; gap: 20px; flex-shrink: 0; justify-content: center; }
-    .pb-strip-row { flex-direction: row; align-items: center; width: auto; }
-    .pb-strip-col { flex-direction: column; align-items: center; width: auto; max-width: 575px; }
-    
-    .pb-canvas { background: #fff; border: 4px solid #2b2b2b; box-shadow: 6px 6px 0px #2b2b2b; }
-    /* GIỚI HẠN CHIỀU CAO CHO 4 ẢNH DỌC ĐỂ KHÔNG PHẢI TRƯỢT MÀN HÌNH */
-    .pb-strip-row .pb-canvas { max-height: 70vh; width: auto; object-fit: contain; }
-    .pb-strip-col .pb-canvas { width: 100%; max-width: 575px; }
+    .pb-strip-section { display: none; flex-direction: column; align-items: center; gap: 15px; width: 350px; }
+    .pb-canvas { background: #fff; border: 4px solid #2b2b2b; width: 200px; }
 
-    .pb-frame-selector { background: #fff; border: 4px solid #2b2b2b; padding: 15px; border-radius: 15px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box;}
-    .pb-strip-row .pb-frame-selector { width: 320px; }
-    .pb-strip-col .pb-frame-selector { width: 100%; }
+    /* HIỆU ỨNG CHO NÚT TIM INSTAGRAM */
+    #igLikeBtn { cursor: pointer; transition: transform 0.2s; }
+    #igLikeBtn.liked { color: #f92f60; animation: heartPop 0.3s ease-in-out; }
+    @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 
-    .pb-frame-options { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-    .pb-frame-btn { padding: 5px; border: 2px solid #2b2b2b; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 800; background: #fdfaf6;}
-    .pb-frame-btn.active { background: #ffe5ec; border-color: #f92f60;}
-    
-    /* MOBILE RESPONSIVE CHO KHU VỰC PHOTOBOOTH */
-    @media (max-width: 900px) {
-      .pb-strip-row { flex-direction: column !important; align-items: center !important; }
-      .pb-strip-row .pb-frame-selector { width: 100% !important; max-width: 350px; }
-      .pb-strip-col .pb-canvas { max-width: 100%; }
-      .pb-strip-row .pb-canvas { max-height: 60vh; width: auto; max-width: 100%; }
-    }
+    /* TOOLTIP 3 CHẤM INSTAGRAM */
+    .ig-more-popover { position: absolute; right: 0; top: 100%; margin-top: 5px; background: #fff; border: 3px solid #2b2b2b; border-radius: 8px; padding: 8px 15px; font-size: 14px; font-weight: 800; color: #f92f60; box-shadow: 3px 3px 0px #e63946; display: none; z-index: 20; white-space: nowrap; animation: popUpToolTip 0.2s ease-out forwards; }
+    .ig-more-popover.show { display: block; }
+    @keyframes popUpToolTip { 0% { opacity: 0; transform: translateY(-5px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* CSS CHO MODAL XEM VIDEO/ẢNH BÍ MẬT TỪ NÚT TIVI */
+    .tv-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px; }
+    .tv-modal.show { opacity: 1; pointer-events: auto; }
+    .tv-video-container { position: relative; width: 100%; max-width: 800px; background: #000; border: 4px solid #2b2b2b; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(255, 77, 109, 0.5); }
+    .tv-video-container video, .tv-video-container img { width: 100%; height: auto; max-height: 70vh; display: block; object-fit: contain; }
+    .tv-controls { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 800px; }
+    .tv-btn { flex: 1; min-width: 150px; padding: 12px 15px; border-radius: 10px; border: 3px solid #2b2b2b; font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.1s; background: #fff; color: #2b2b2b; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .tv-btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px #ff4d6d; }
+    .tv-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #ff4d6d; }
+    .tv-btn-primary { background: #ff4d6d; color: #fff; }
   </style>
 </head>
 <body>
@@ -314,11 +312,14 @@
           <div class="ig-post">
             <div class="ig-top-bar">
               <i class="fa-solid fa-camera"></i>
-              <div style="display:flex; gap:14px;"><i class="fa-solid fa-tv"></i><i class="fa-regular fa-paper-plane"></i></div>
+              <div style="display:flex; gap:14px;"><i class="fa-solid fa-tv" id="tvIcon" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" title="Xem video bí mật"></i><i class="fa-regular fa-paper-plane"></i></div>
             </div>
             <div class="ig-user-bar">
-              <div style="display:flex; align-items:center; gap:10px;"><i class="fa-regular fa-circle-user"></i><span style="font-size: 15px; font-weight: 800;">@nguoitadep</span></div>
-              <i class="fa-solid fa-ellipsis"></i>
+              <div style="display:flex; align-items:center; gap:10px;"><i class="fa-regular fa-circle-user"></i><span style="font-size: 15px; font-weight: 800;">@ttktrinh__896</span></div>
+              <div style="position: relative; display: flex; align-items: center;">
+                <i class="fa-solid fa-ellipsis" id="igMoreBtn" style="cursor: pointer; padding: 5px;"></i>
+                <div id="igMorePopover" class="ig-more-popover">dep trai</div>
+              </div>
             </div>
             <div class="ig-image-wrap">
               <img src="emhunanh.jpg" alt="Ảnh của ấy">
@@ -331,7 +332,7 @@
               </div>
             </div>
             <div class="ig-bottom-bar">
-              <i class="fa-solid fa-house"></i><i class="fa-solid fa-magnifying-glass"></i><i class="fa-regular fa-square-plus"></i><i class="fa-regular fa-heart"></i><i class="fa-regular fa-circle-user"></i>
+              <i class="fa-solid fa-house"></i><i class="fa-solid fa-magnifying-glass"></i><i class="fa-regular fa-square-plus"></i><i class="fa-regular fa-heart" id="igLikeBtn"></i><i class="fa-regular fa-circle-user"></i>
             </div>
           </div>
         </div>
@@ -436,8 +437,8 @@
         </div>
 
         <!-- Cột Kết Quả -->
-        <div id="pb-stripSection" class="pb-strip-section pb-strip-row">
-          <canvas id="pb-photoStrip" class="pb-canvas"></canvas>
+        <div id="pb-stripSection" class="pb-strip-section">
+          <canvas id="pb-photoStrip"></canvas>
           <div class="pb-frame-selector">
             <div style="font-size:13px; font-weight:900; text-align:center;">✨ Mặc áo mới cho ảnh ✨</div>
             <div class="pb-frame-options">
@@ -465,6 +466,21 @@
 
   </div>
 
+  <!-- TV MODAL LƯU TRỮ VIDEO HOẶC ẢNH -->
+  <div class="tv-modal" id="tvModal">
+    <div class="tv-video-container">
+      <!-- NẾU BẠN DÙNG VIDEO THÌ GIỮ NGUYÊN THẺ NÀY VÀ THAY LINK src BẰNG LINK CỦA BẠN -->
+      <video id="tvVideo" src="emhat.mp4" playsinline></video>
+      <!-- NẾU BẠN DÙNG ẢNH, HÃY XÓA THẺ VIDEO Ở TRÊN VÀ BỎ COMMENT THẺ IMG DƯỚI ĐÂY -->
+      <!-- <img id="tvImage" src="anh_cua_ban.jpg" alt="Ảnh bí mật"> -->
+    </div>
+    <div class="tv-controls">
+      <button class="tv-btn" id="tvRewindBtn"><i class="fa-solid fa-backward-10"></i> Tua lùi 10s</button>
+      <button class="tv-btn" id="tvForwardBtn"><i class="fa-solid fa-forward-10"></i> Tua tới 10s</button>
+      <button class="tv-btn tv-btn-primary" id="tvCloseBtn"><i class="fa-solid fa-right-to-bracket"></i> Quay lại nhập mật khẩu</button>
+    </div>
+  </div>
+
   <!-- CỬA THẦN KỲ 3D & NHẠC -->
   <div class="love-doors" id="loveDoors">
     <div class="door-left"><div class="knob"></div><i class="fas fa-heart"></i></div>
@@ -475,6 +491,90 @@
   <button id="musicBtn" title="Phát / Dừng nhạc"><i class="fas fa-music"></i></button>
 
   <script>
+    // LOGIC CHO NÚT TIM VÀ 3 CHẤM Ở TRANG INSTAGRAM
+    const igLikeBtn = document.getElementById("igLikeBtn");
+    if(igLikeBtn) {
+      igLikeBtn.addEventListener("click", function() {
+        this.classList.toggle("fa-regular");
+        this.classList.toggle("fa-solid");
+        this.classList.toggle("liked");
+      });
+    }
+
+    const igMoreBtn = document.getElementById("igMoreBtn");
+    const igMorePopover = document.getElementById("igMorePopover");
+    if(igMoreBtn && igMorePopover) {
+      igMoreBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        igMorePopover.classList.toggle("show");
+      });
+      document.addEventListener("click", function(e) {
+        if(!igMorePopover.contains(e.target)) {
+          igMorePopover.classList.remove("show");
+        }
+      });
+    }
+
+    // LOGIC CHO NÚT TV (VIDEO MODAL)
+    const tvIcon = document.getElementById('tvIcon');
+    const tvModal = document.getElementById('tvModal');
+    const tvVideo = document.getElementById('tvVideo');
+    const tvRewindBtn = document.getElementById('tvRewindBtn');
+    const tvForwardBtn = document.getElementById('tvForwardBtn');
+    const tvCloseBtn = document.getElementById('tvCloseBtn');
+
+    if(tvIcon && tvModal) {
+      tvIcon.addEventListener('click', () => {
+        tvModal.classList.add('show');
+        if (tvVideo) tvVideo.play();
+      });
+    }
+
+    if(tvRewindBtn && tvVideo) {
+      tvRewindBtn.addEventListener('click', () => {
+        tvVideo.currentTime = Math.max(0, tvVideo.currentTime - 10);
+      });
+    }
+
+    if(tvForwardBtn && tvVideo) {
+      tvForwardBtn.addEventListener('click', () => {
+        tvVideo.currentTime = Math.min(tvVideo.duration, tvVideo.currentTime + 10);
+      });
+    }
+
+    if(tvCloseBtn) {
+      tvCloseBtn.addEventListener('click', () => {
+        tvModal.classList.remove('show');
+        if (tvVideo) tvVideo.pause();
+      });
+    }
+
+    // Tự động vượt qua mật khẩu nếu xem hết video
+    if(tvVideo) {
+      tvVideo.addEventListener('ended', () => {
+        tvModal.classList.remove('show');
+        const elMsg = document.getElementById("msg");
+        if(elMsg) {
+          elMsg.style.color = "#386641";
+          elMsg.innerHTML = "Tuyệt vời ... <span class='loading'></span>";
+        }
+        const bgAudio = document.getElementById("bgMusic");
+        const mBtn = document.getElementById("musicBtn");
+        if(bgAudio) {
+          bgAudio.volume = 0.85; 
+          bgAudio.play().then(() => { if(mBtn) mBtn.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(()=>{});
+        }
+        setTimeout(() => {
+          document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+          const stepIntro = document.getElementById("stepIntro");
+          if(stepIntro) stepIntro.classList.add("active");
+          const screen = document.getElementById("screen");
+          if(screen) screen.classList.remove("password-mode");
+          if(typeof startTypingIntro === "function") startTypingIntro();
+        }, 900);
+      });
+    }
+
     const FORMSPREE_URL = "https://formspree.io/f/xjgdenrp";
     const PASS = "1234";
     const REDIRECT = "https://panbap.github.io/HeartBeat/lovequiz.html?id=eyJsIjoiIiwibSI6IiIsIm4iOiJFbSBpdXV1IMahaSBhbmggY8OzIMSRaeG7gXUgbXXhu5FuIG7Ds2lpaWlpIiwibyI6IkFuaCB5w6p1IGVtbW0gdGjGsMahbmcgaOG6v3QgbuG6pWMgbHVubm4iLCJnIjoiROG6oSBiw6kgbmdoZWUiLCJoIjoiTmdoZSBsw6AgY8OzIHRoxrDhu59uZyBuaMOhYSJ9";
@@ -526,7 +626,7 @@
       document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
       if (id === "stepPassword") el.screen.classList.add("password-mode");
-      else if (id === "stepPhotobooth") el.screen.style.width = "min(95vw, 1100px)"; // Mở rộng màn hình cho Photobooth
+      else if (id === "stepPhotobooth") el.screen.style.width = "min(95vw, 1100px)"; 
       else { el.screen.classList.remove("password-mode"); el.screen.style.width = "min(92vw, 800px)"; }
     }
 
@@ -636,9 +736,9 @@
     function pick(idx, btn) {
       if (answered) return; const curr = quiz[qIndex]; const all = el.answers.querySelectorAll(".answer-btn");
       if (idx === curr.c) {
-        answered = true; btn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Giỏi quá ta"; all.forEach(b => b.disabled = true); userAnswers[qIndex] = curr.a[idx]; el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct'); setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(() => { nextQ(); }, 1500);
+        answered = true; btn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Hay quá dọ"; all.forEach(b => b.disabled = true); userAnswers[qIndex] = curr.a[idx]; el.screen.classList.add("success-glow"); spawnEmojis(btn, 'correct'); setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(() => { nextQ(); }, 1500);
       } else {
-        btn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Shao bé lại sai cơ chứ 😭!"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(btn, 'wrong');
+        btn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý dồi 😝"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(btn, 'wrong');
         setTimeout(() => { btn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
       }
     }
@@ -655,10 +755,8 @@
 
     el.loveImg.addEventListener("click", () => { imgIndex++; if (imgIndex >= images.length) imgIndex = 0; el.loveImg.src = images[imgIndex]; });
     
-    // Nút xong thư -> Chuyển qua Photobooth
     el.doneBtn.addEventListener("click", () => { 
       show("stepPhotobooth"); 
-      // Khởi động Camera chỉ khi vào bước Photobooth
       navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
         document.getElementById('pb-video').srcObject = s;
       }).catch(e => {
@@ -692,7 +790,7 @@
         if(pbBtnCapture.disabled) return;
         document.querySelectorAll('.pb-layout-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');
         pbCurrentLayout = parseInt(this.getAttribute('data-layout'));
-        pbBtnCapture.innerHTML = `<i class="fa-solid fa-camera"></i> Bắt đầu chụp (${pbCurrentLayout === 4 ? 6 : 4} tấm)`;
+        pbBtnCapture.innerHTML = `<i class="fa-solid fa-camera"></i> Bắt đầu chụp nha(${pbCurrentLayout === 4 ? 6 : 4} tấm)`;
       }
     });
 
@@ -701,7 +799,6 @@
       let stripHeight = (pbCurrentLayout === 4) ? 920 : 320;
       pbCanvas.width = stripWidth; pbCanvas.height = stripHeight;
       
-      // Vẽ nền
       if (pbCurrentTheme === 0) { pbCtx.fillStyle = '#ffffff'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); } 
       else if (pbCurrentTheme === 1) { 
         pbCtx.fillStyle = '#1a1a1a'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); pbCtx.fillStyle = '#ffffff';
@@ -711,7 +808,6 @@
       else if (pbCurrentTheme === 2) { pbCtx.fillStyle = '#f5ebd9'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); } 
       else if (pbCurrentTheme === 3) { pbCtx.fillStyle = '#d6e9f5'; pbCtx.fillRect(0, 0, stripWidth, stripHeight); }
 
-      // Vẽ Ảnh
       let photosToDraw = pbCurrentLayout === 4 ? 4 : 2;
       for (let i = 0; i < photosToDraw; i++) {
         let xPos = pbCurrentLayout === 4 ? 20 : 20 + i * 275;
@@ -728,7 +824,6 @@
         else if (pbCurrentTheme === 3) { pbCtx.strokeStyle = '#ffffff'; pbCtx.lineWidth = 4; pbCtx.setLineDash([10, 10]); pbCtx.strokeRect(xPos, yPos, 260, 195); pbCtx.setLineDash([]); }
       }
 
-      // Vẽ Chữ
       let text = document.getElementById('pb-customText').value.trim() || defaultPbMsgs[pbCurrentTheme];
       pbCtx.textAlign = 'center';
       const baseY = pbCurrentLayout === 4 ? 845 : 215; 
@@ -739,7 +834,6 @@
       else if (pbCurrentTheme === 2) { pbCtx.fillStyle = '#8b5a2b'; pbCtx.font = 'bold 26px "Dancing Script", cursive'; pbCtx.fillText('Beary Cute 🧸🤎', stripWidth / 2, baseY + 35); pbCtx.fillStyle = '#333'; pbCtx.font = 'bold 20px "Dancing Script", cursive'; pbCtx.fillText(text, stripWidth / 2, baseY + 65); } 
       else if (pbCurrentTheme === 3) { pbCtx.fillStyle = '#ffffff'; pbCtx.font = 'bold 26px "Dancing Script", cursive'; pbCtx.shadowColor = 'rgba(0,0,0,0.2)'; pbCtx.shadowBlur = 4; pbCtx.shadowOffsetX = 2; pbCtx.shadowOffsetY = 2; pbCtx.fillText('Youth with You 🎀', stripWidth / 2, baseY + 35); pbCtx.fillText(text, stripWidth / 2, baseY + 65); pbCtx.shadowColor = 'transparent'; }
 
-      // Vẽ Ngày tháng tự động theo định dạng ngày/tháng/năm hiện tại
       pbCtx.fillStyle = (pbCurrentTheme === 1) ? 'rgba(255,255,255,0.6)' : 'rgba(100,100,100,0.6)'; 
       pbCtx.font = '700 12px "Courier Prime", monospace'; 
       pbCtx.fillText(new Date().toLocaleDateString('vi-VN'), stripWidth / 2, baseY + 85);
@@ -801,15 +895,14 @@
       
       let stripSec = document.getElementById('pb-stripSection');
       if (pbCurrentLayout === 4) {
-        stripSec.className = 'pb-strip-section pb-strip-row';
+        stripSec.style.display = 'flex';
       } else {
-        stripSec.className = 'pb-strip-section pb-strip-col';
+        stripSec.style.display = 'flex';
       }
-      stripSec.style.display = 'flex';
       
       pbBtnCapture.innerHTML = '<i class="fa-solid fa-camera"></i> Chụp lại bộ khác'; pbBtnCapture.disabled = false;
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-      pbStatus.textContent = "Quá dệ thương lun! Em tải ảnh về rồi ấn nút Xong gòi nha 🚀";
+      pbStatus.textContent = "Quá xuất sắc! Cậu có thể tải ảnh về rồi ấn nút Hoàn tất 🚀";
     };
 
     document.querySelectorAll('.pb-frame-btn').forEach(btn => {
@@ -830,7 +923,6 @@
       a.click(); 
     };
 
-    // NÚT KẾT THÚC CẢ TRANG WEB
     document.getElementById('finalFinishBtn').onclick = () => {
       show("stepFinish");
       const stream = pbVideo.srcObject; if (stream) { stream.getTracks().forEach(track => track.stop()); }
