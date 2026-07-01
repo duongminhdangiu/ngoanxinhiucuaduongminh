@@ -553,28 +553,26 @@
     }
 
     // Tự động vượt qua mật khẩu nếu xem hết video
+        // Chỉ đóng modal video, KHÔNG vượt qua mật khẩu
     if(tvVideo) {
       tvVideo.addEventListener('ended', () => {
         tvModal.classList.remove('show');
+        
         const elMsg = document.getElementById("msg");
         if(elMsg) {
           elMsg.style.color = "#386641";
-          elMsg.innerHTML = "Tuyệt vời ... <span class='loading'></span>";
+          elMsg.textContent = "Video hay quá! Giờ nhập mật khẩu để tiếp tục nhé 💕";
         }
+
+        // Tùy chọn: tự động bật nhạc nền
         const bgAudio = document.getElementById("bgMusic");
         const mBtn = document.getElementById("musicBtn");
-        if(bgAudio) {
-          bgAudio.volume = 0.85; 
-          bgAudio.play().then(() => { if(mBtn) mBtn.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(()=>{});
+        if(bgAudio && bgAudio.paused) {
+          bgAudio.volume = 0.85;
+          bgAudio.play().then(() => {
+            if(mBtn) mBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          }).catch(() => {});
         }
-        setTimeout(() => {
-          document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
-          const stepIntro = document.getElementById("stepIntro");
-          if(stepIntro) stepIntro.classList.add("active");
-          const screen = document.getElementById("screen");
-          if(screen) screen.classList.remove("password-mode");
-          if(typeof startTypingIntro === "function") startTypingIntro();
-        }, 900);
       });
     }
 
