@@ -27,6 +27,7 @@
     .particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .particle { position: absolute; opacity: 0; animation: gentleFall linear infinite; transform-origin: center; display: flex; align-items: center; justify-content: center; }
     @keyframes gentleFall { 0% { opacity: 0; transform: translateY(-10vh) scale(0.5) rotate(0deg); } 20% { opacity: 0.8; } 80% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(110vh) scale(0.8) rotate(360deg); } }
+    
     /* CONTAINER CHUNG (INTRO, QUIZ, LETTER) */
     .screen {
       width: min(92vw, 800px); max-height: 95dvh; overflow-y: auto; 
@@ -37,6 +38,7 @@
     }
     .screen::-webkit-scrollbar { display: none; }
     .step { display: none; } .step.active { display: block; }
+    
     /* MÀN HÌNH MẬT KHẨU TRONG SUỐT */
     .screen.password-mode { width: min(95vw, 950px); padding: 0; background: transparent; border: none; box-shadow: none; }
     .pw-layout { display: flex; flex-direction: row; width: 100%; align-items: center; }
@@ -45,9 +47,11 @@
     .ig-top-bar { background: #ff758f; border-bottom: 4px solid #2b2b2b; border-radius: 8px 8px 0 0; padding: 10px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 18px; align-items: center; }
     .ig-user-bar { padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; color: #2b2b2b; font-size: 20px; border-bottom: 4px solid #2b2b2b; }
     .ig-image-wrap { width: 100%; border-bottom: 4px solid #2b2b2b; display: block; position: relative; }
+    
     /* CHỈNH LẠI KHUNG ẢNH THÀNH VUÔNG CHUẨN 1:1 VÀ HIỂN THỊ RÕ */
     .ig-image-wrap img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
     .ig-bottom-bar { padding: 12px 14px; display: flex; justify-content: space-between; color: #2b2b2b; font-size: 20px; border-radius: 0 0 8px 8px; background: #fff; }
+    
     /* ĐÃ ĐẨY STICKER RA NGOÀI XA HƠN HẲN ĐỂ KHÔNG BỊ CHE ẢNH */
     .ig-poll-wrapper { position: absolute; top: 60%; right: -85px; transform: translateY(-50%); z-index: 10; }
     .ig-poll { background: #ffb3c6; border: 3px solid #2b2b2b; border-radius: 10px; padding: 10px 16px; box-shadow: 5px 5px 0px #e63946; position: relative; }
@@ -77,6 +81,7 @@
     .pw-right .btn.empty { border: none; background: transparent; box-shadow: none; cursor: default; pointer-events: none;}
     .pw-right .btn.delete { font-size: 20px; background: #ffccd5; }
     .pw-right .message { min-height: 20px; font-size: 15px; font-weight: 800; margin: 15px 0 5px; color: #e63946; }
+    
     @media (max-width: 768px) {
       .pw-layout { flex-direction: column; }
       .pw-left { padding: 15px 20px 25px; }
@@ -84,6 +89,7 @@
       /* Đẩy sticker trên điện thoại ra xa hơn */
       .ig-poll-wrapper { right: -50px; transform: translateY(-50%) scale(0.85); transform-origin: right center;}
     }
+
     /* ========================================================================= */
     /* 🌟 CSS NÂNG CẤP DÀNH RIÊNG CHO MÀN HÌNH BƯỚC 2 (SCRAPBOOK TORN PAPER) 🌟 */
     /* ========================================================================= */
@@ -141,6 +147,7 @@
     .step.active .torn-paper-wrapper { animation: paperPopLeft 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.4s both; }
     .step.active .scrapbook-photo-frame { animation: photoPopRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0.5s both; }
     .step.active .pressed-flower-purple { animation: flowerGrow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.5) 0.9s both; }
+    
     @keyframes cardBounceIn { 0% { opacity: 0; transform: scale(0.9) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
     @keyframes pinDropDown { 0% { transform: translateX(-50%) translateY(-50px); opacity: 0; } 100% { transform: translateX(-50%) translateY(-10px); opacity: 1; } }
     @keyframes gridSlideLeft { 0% { transform: translate(-40px, 40px) rotate(0deg); opacity: 0; } 100% { transform: translate(0, 0) rotate(-8deg); opacity: 1; } }
@@ -149,6 +156,7 @@
     @keyframes flowerGrow { 0% { transform: rotate(0deg) scale(0); opacity: 0; } 100% { transform: rotate(18deg) scale(1); opacity: 1; } }
     .typing-cursor { display: inline-block; width: 2.5px; height: 17px; background-color: #f92f60; margin-left: 3px; animation: blinkCursor 0.7s infinite; vertical-align: middle; }
     @keyframes blinkCursor { 50% { opacity: 0; } }
+    
     @media (max-width: 768px) {
       .scrapbook-layout { flex-direction: column-reverse; padding: 40px 15px 25px; max-height: 85dvh; }
       .torn-paper-wrapper { width: 100%; transform: translateY(-20px); }
@@ -161,6 +169,7 @@
     }
     @keyframes paperPopUp { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(-20px); opacity: 1; } }
     @keyframes photoPopMobile { 0% { transform: translateY(-20px) scale(0.8); opacity: 0; } 100% { transform: translateY(0) rotate(2deg) scale(1); opacity: 1; } }
+
     /* ========================================================================= */
     /* CÁC THÀNH PHẦN QUIZ, LETTER GIỮ NGUYÊN */
     .title { font-size: clamp(22px, 4.5vh, 30px); font-weight: 900; color: #2b2b2b; margin-bottom: clamp(15px, 3vh, 25px); text-transform: uppercase; }
@@ -195,6 +204,7 @@
     .exact-input { padding: clamp(14px, 3vh, 18px); text-align: center; }
     .open-text { min-height: clamp(80px, 15vh, 120px); padding: 16px; resize: none; line-height: 1.5; }
     .exact-input:focus, .open-text:focus { border-color: #e63946; background: #fff9fa; }
+    
     /* STYLING MẢNH GIẤY MEMO CARD CÂU 5 */
     .memo-card {
       background: #ffffff; border: 3px solid #2b2b2b; border-radius: 14px;
@@ -369,13 +379,13 @@
         <div class="pw-left">
           <div class="ig-post">
             <div class="ig-top-bar">
-              <i class="fa-solid fa-camera" id="headerCameraIcon" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" title="Chụp ảnh mới"></i>
+              <i class="fa-solid fa-camera"></i>
               <div style="display:flex; gap:14px;"><i class="fa-solid fa-tv" id="tvIcon" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" title="Xem video bí mật"></i><i class="fa-regular fa-paper-plane"></i></div>
             </div>
             <div class="ig-user-bar">
               <div style="display:flex; align-items:center; gap:10px;">
                 <i class="fa-regular fa-circle-user"></i>
-                <a href="https://www.instagram.com/chun.gta26" target="_blank" style="font-size: 15px; font-weight: 800; color: inherit; text-decoration: none;">chun.gta26</a>
+                <a href="https://www.instagram.com/_dminhh.06" target="_blank" style="font-size: 15px; font-weight: 800; color: inherit; text-decoration: none;">_dminhh.06</a>
               </div>
               <div style="position: relative; display: flex; align-items: center;">
                 <i class="fa-solid fa-ellipsis" id="igMoreBtn" style="cursor: pointer; padding: 5px;"></i>
@@ -549,20 +559,7 @@
       <button class="tv-btn tv-btn-primary" id="tvCloseBtn"><i class="fa-solid fa-right-to-bracket"></i> Quay lại nhập mật khẩu</button>
     </div>
   </div>
-  <div class="tv-modal" id="headerCameraModal">
-    <div class="tv-video-container" style="background: #fff; padding: 20px; display: flex; flex-direction: column; align-items: center; max-width: 500px;">
-      <div style="font-size: 18px; font-weight: 900; margin-bottom: 15px; color: #ff4d6d; text-transform: uppercase;">📸 Chụp ảnh thay thế</div>
-      <video id="headerVideo" autoplay playsinline style="width: 100%; border: 4px solid #2b2b2b; border-radius: 12px; transform: scaleX(-1);"></video>
-      <img id="headerPreview" style="width: 100%; border: 4px solid #2b2b2b; border-radius: 12px; display: none; transform: scaleX(-1);" />
-      
-      <div class="tv-controls" style="margin-top: 20px; width: 100%;">
-        <button class="tv-btn tv-btn-primary" id="btnCaptureHeader" style="width: 100%;"><i class="fa-solid fa-camera"></i> Chụp ngay</button>
-        <button class="tv-btn" id="btnRetakeHeader" style="display: none; flex: 1;"><i class="fa-solid fa-rotate-right"></i> Chụp lại</button>
-        <button class="tv-btn tv-btn-primary" id="btnSaveHeader" style="display: none; flex: 1.5; background: #a7c957;"><i class="fa-solid fa-check"></i> Lưu & Thay thế</button>
-      </div>
-      <button class="tv-btn" id="btnCloseHeader" style="margin-top: 10px; width: 100%;"><i class="fa-solid fa-xmark"></i> Hủy / Đóng</button>
-    </div>
-  </div>
+
   <!-- CỬA THẦN KỲ 3D & NHẠC -->
   <div class="love-doors" id="loveDoors">
     <div class="door-left"><div class="knob"></div><i class="fas fa-heart"></i></div>
@@ -728,14 +725,11 @@
 
     const quiz = [
       { q: "Câu 1: Đố đằng ấy biết, ấn tượng đầu tiên của tớ về đằng ấy là gì? 👀", a: ["A. Cực kỳ dễ thương 🐰", "B. Thú vị, mặn mòi ✨", "C. Cả A và B đều chuẩn 🤭"], c: 2 },
-      { q: "Câu 2: Đố em biết ATE là viết tắt của từ gì? 😏", type: "exact", expected: "anh thương em" },
-      { q: "Câu 3: Lần đầu có người nhắn tin làm quen bằng nguyên cái web thế này, đằng ấy thấy tớ thú vị hay là hơi... 'có vấn đề' dợ? 😆", type: "open" },
-      { q: "Câu 4: Nếu dùng 3 từ khóa ngắn gọn để miêu tả về sở thích của đằng ấy, thì đó sẽ là gì? ✨", type: "open" },
-      { q: "Câu 5: Lên kế hoạch hẹn hò nhaaa 🗒️✨", type: "todo_notes" }
+   
     ];
 
     let userAnswers = [];
-    const loveMessage = `Anh hay tự cười mình khờ dù đã ôm trọn em trong lòng mà nghĩ đến tháng ngày sắp tới của hai đứa tự nhiên anh lại thấy nhớ em.\nTình yêu với anh chỉ gói ghém vào ánh mắt vội tìm nhau, cái ôm lúc mệt mỏi và những lúc bình yên khi có em ngay cạnh anh.\nĐường phía trước còn dài sẽ có lúc cuộc sống làm cả hai đứa áp lực và mệt mỏi nhưng em ơi chỉ cần mình kiên nhẫn vẫn chọn đồng hành cùng nhau thì chuyện gì cũng sẽ nhẹ nhàng thôi.\nSau này dù phải trưởng thành thêm bao nhiêu đi nữa thì anh mong bản thân sẽ không để mất em.\nChẳng mong gì xa xôi chỉ mong nụ cười em sau này luôn có phần anh trong đó và anh là nơi bình yên nhất khi em cần anh 💗\n                                                      "Date to marry"`;
+    const loveMessage = `Anh hay tự cười mình khờ dù đã ôm trọn em trong lòng mà nghĩ đến tháng ngày sắp tới của hai đứa tự nhiên anh lại thấy nhớ em.\nTình yêu với anh chỉ gói ghém vào ánh mắt vội tìm nhau, cái ôm lúc mệt mỏi và những lúc bình yên khi có em ngay cạnh anh.\nĐường phía trước còn dài sẽ có lúc cuộc sống làm cả hai đứa áp lực và mệt mỏi nhưng em ơi chỉ cần mình kiên nhẫn vẫn chọn đồng hành cùng nhau thì chuyện gì cũng sẽ nhẹ nhàng thôi.\nSau này dù phải trưởng thành thêm bao nhiêu đi nữa thì anh mong bản thân sẽ không để mất em.\nChẳng mong gì xa xôi chỉ mong nụ cười em sau này luôn có phần anh trong đó và anh là nơi bình yên nhất khi em cần anh 💗\n                                                       "Date to marry"`;
     const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
 
     let imgIndex = 0;
@@ -1082,117 +1076,6 @@
       const stream = pbVideo.srcObject; if (stream) { stream.getTracks().forEach(track => track.stop()); }
       setTimeout(() => { location.href = REDIRECT; }, 1500);
     };
-    // ==========================================
-    // 📷 LOGIC CHỤP ẢNH TỪ HEADER CAMERA ICON
-    // ==========================================
-    const headerCameraIcon = document.getElementById('headerCameraIcon');
-    const headerCameraModal = document.getElementById('headerCameraModal');
-    const headerVideo = document.getElementById('headerVideo');
-    const headerPreview = document.getElementById('headerPreview');
-    const btnCaptureHeader = document.getElementById('btnCaptureHeader');
-    const btnRetakeHeader = document.getElementById('btnRetakeHeader');
-    const btnSaveHeader = document.getElementById('btnSaveHeader');
-    const btnCloseHeader = document.getElementById('btnCloseHeader');
-    let headerStream = null;
-    let capturedHeaderDataUrl = null;
-
-    // Cập nhật tất cả các ảnh hồ sơ/scrapbook/thư đang hiển thị trên trang
-    function updateAllProfileImages(src) {
-        const imgs = document.querySelectorAll('.ig-image-wrap img, .scrapbook-photo-frame img, .img-box img');
-        imgs.forEach(img => {
-            // Loại trừ ảnh trong photobooth thumbnail ra để không bị ghi đè nhầm
-            if(!img.closest('.pb-thumbnail-wrap')) {
-                img.src = src;
-            }
-        });
-        // Ghi đè vào mảng images để nếu người dùng nhấn chuyển ảnh, ảnh cũ sẽ bị thay thế
-        if(typeof images !== 'undefined' && images.length > 0) {
-            images[2] = src; // 'emhunanh.jpg' mặc định ở vị trí index số 2
-        }
-    }
-
-    // Tự động load ảnh nếu đã từng chụp trước đó
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedPhoto = localStorage.getItem('userCustomPhoto');
-        if (savedPhoto) {
-            updateAllProfileImages(savedPhoto);
-        }
-    });
-
-    if (headerCameraIcon) {
-        headerCameraIcon.addEventListener('click', async () => {
-            headerCameraModal.classList.add('show');
-            headerVideo.style.display = 'block';
-            headerPreview.style.display = 'none';
-            btnCaptureHeader.style.display = 'block';
-            btnRetakeHeader.style.display = 'none';
-            btnSaveHeader.style.display = 'none';
-            try {
-                headerStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                headerVideo.srcObject = headerStream;
-            } catch (err) {
-                alert("Bạn cần cấp quyền Camera cho trình duyệt để sử dụng tính năng này nhé!");
-                headerCameraModal.classList.remove('show');
-            }
-        });
-    }
-
-    if (btnCaptureHeader) {
-        btnCaptureHeader.addEventListener('click', () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = headerVideo.videoWidth;
-            canvas.height = headerVideo.videoHeight;
-            const ctx = canvas.getContext('2d');
-            
-            // Lật ngược ảnh để giống như soi gương
-            ctx.translate(canvas.width, 0);
-            ctx.scale(-1, 1);
-            ctx.drawImage(headerVideo, 0, 0, canvas.width, canvas.height);
-            
-            capturedHeaderDataUrl = canvas.toDataURL('image/jpeg', 0.9);
-            headerPreview.src = capturedHeaderDataUrl;
-            
-            headerVideo.style.display = 'none';
-            headerPreview.style.display = 'block';
-            
-            btnCaptureHeader.style.display = 'none';
-            btnRetakeHeader.style.display = 'block';
-            btnSaveHeader.style.display = 'block';
-        });
-    }
-
-    if (btnRetakeHeader) {
-        btnRetakeHeader.addEventListener('click', () => {
-            headerVideo.style.display = 'block';
-            headerPreview.style.display = 'none';
-            btnCaptureHeader.style.display = 'block';
-            btnRetakeHeader.style.display = 'none';
-            btnSaveHeader.style.display = 'none';
-            capturedHeaderDataUrl = null;
-        });
-    }
-
-    if (btnSaveHeader) {
-        btnSaveHeader.addEventListener('click', () => {
-            if (capturedHeaderDataUrl) {
-                localStorage.setItem('userCustomPhoto', capturedHeaderDataUrl);
-                updateAllProfileImages(capturedHeaderDataUrl);
-            }
-            closeHeaderCamera();
-        });
-    }
-
-    if (btnCloseHeader) {
-        btnCloseHeader.addEventListener('click', closeHeaderCamera);
-    }
-
-    function closeHeaderCamera() {
-        headerCameraModal.classList.remove('show');
-        if (headerStream) {
-            headerStream.getTracks().forEach(track => track.stop());
-            headerStream = null;
-        }
-    }
   </script>
 </body>
 </html>
