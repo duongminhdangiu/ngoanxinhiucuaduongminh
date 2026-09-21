@@ -83,11 +83,19 @@
     .pw-right .message { min-height: 20px; font-size: 15px; font-weight: 800; margin: 15px 0 5px; color: #e63946; }
     
     @media (max-width: 768px) {
-      .pw-layout { flex-direction: column; }
-      .pw-left { padding: 15px 20px 25px; }
-      .pw-right { padding: 15px 20px 25px; }
-      /* Đẩy sticker trên điện thoại ra xa hơn */
-      .ig-poll-wrapper { right: -50px; transform: translateY(-50%) scale(0.85); transform-origin: right center;}
+      .pw-layout { flex-direction: column; overflow-x: hidden; }
+      .pw-left { padding: 15px 10px 10px; display: flex; justify-content: center; width: 100%; }
+      .pw-right { padding: 10px 20px 25px; width: 100%; }
+      
+      /* Thu nhỏ khung IG để chừa khoảng trống cho sticker không bị tràn viền */
+      .ig-post { max-width: 270px; margin: 0 auto; }
+      
+      /* Kéo sticker lại gần hơn và thu nhỏ tỷ lệ */
+      .ig-poll-wrapper { right: -35px; transform: translateY(-50%) scale(0.75); }
+      
+      /* Chỉnh lại khoảng cách bàn phím cho cân đối */
+      .pw-right .keypad { gap: 12px; max-width: 240px; }
+      .pw-main-title { font-size: 22px; margin-top: 10px; }
     }
 
     /* ========================================================================= */
