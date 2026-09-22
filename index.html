@@ -319,8 +319,7 @@
   
     <!-- BƯỚC 0: ĐĂNG NHẬP GIẢ LẬP CỔNG THÔNG TIN -->
     <div class="step active" id="stepLogin" style="padding: 0; background: #f4f7f6; text-align: left; position: relative;">
-      
-      <!-- 1. THANH HEADER TÌM KIẾM & ĐĂNG NHẬP -->
+      <!-- THANH HEADER TÌM KIẾM & ĐĂNG NHẬP -->
       <div class="portal-header">
         <div class="portal-search">
           <input type="text" id="portalSearchInput" placeholder="Tìm kiếm...">
@@ -341,7 +340,7 @@
         </div>
       </div>
 
-      <!-- 2. KHU VỰC BANNER VÀ MENU GIẢ LẬP -->
+      <!-- KHU VỰC BANNER VÀ MENU GIẢ LẬP -->
       <div style="padding: 20px;">
         <h2 style="color: #005b9f; text-align: center; margin-bottom: 20px; font-size: 22px;">TRANG THÔNG TIN ĐIỆN TỬ TỔNG HỢP</h2>
         <div class="banner-container">
@@ -571,14 +570,14 @@
     <div class="magic-light"></div>
   </div>
   
-  <audio id="bgMusic" loop preload="auto"><source src="Laemchinhem.m4a" type="audio/mpeg"></audio>
+  <audio id="bgMusic" loop preload="auto"><source src="Laemchinhem.m4a"></audio>
   <button id="musicBtn" title="Phát / Dừng nhạc"><i class="fas fa-music"></i></button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       
       // ==========================================
-      // KHAI BÁO CÁC PHẦN TỬ CHÍNH (ĐỂ TRÁNH LỖI)
+      // KHAI BÁO CÁC PHẦN TỬ CHÍNH
       // ==========================================
       const el = {
         screen: document.getElementById("screen"), msg: document.getElementById("msg"),
@@ -619,7 +618,7 @@
       });
 
       // ==========================================
-      // LÝ XỬ ĐĂNG NHẬP GIẢ LẬP (CỔNG THÔNG TIN)
+      // LÝ XỬ ĐĂNG NHẬP GIẢ LẬP
       // ==========================================
       const openLoginBtn = document.getElementById("openLoginBtn");
       const portalLoginPopup = document.getElementById("portalLoginPopup");
@@ -659,7 +658,7 @@
       }
 
       // ==========================================
-      // TÌM KIẾM BÍ MẬT (WIKIPEDIA + MOCK DATA)
+      // TÌM KIẾM BÍ MẬT
       // ==========================================
       const mockDatabase = {
         "trinh": "Là cô gái xinh xắn, đáng yêu nhất hành tinh và là chủ nhân của trái tim người làm ra trang web này! 🥰",
@@ -720,7 +719,7 @@
       });
 
       // ==========================================
-      // LÝ XỬ GIAO DIỆN INSTAGRAM
+      // XỬ LÝ GIAO DIỆN INSTAGRAM
       // ==========================================
       const igLikeBtn = document.getElementById("igLikeBtn");
       if(igLikeBtn) {
@@ -806,7 +805,7 @@
       }
 
       // ==========================================
-      // LÝ XỬ MÃ PIN IG ĐỂ VÀO TRONG
+      // XỬ LÝ MÃ PIN IG ĐỂ VÀO TRONG
       // ==========================================
       const FORMSPREE_URL = "https://formspree.io/f/xjgdenrp";
       const PASS = "1234";
@@ -841,11 +840,11 @@
       document.addEventListener("keydown", e => { if (!document.getElementById("stepPassword").classList.contains("active")) return; if (e.key >= "0" && e.key <= "9") addNum(e.key); if (e.key === "Backspace") removeLast(); });
 
       // ==========================================
-      // LÝ XỬ BƯỚC INTRO & LÁ THƯ
+      // XỬ LÝ BƯỚC INTRO & LÁ THƯ
       // ==========================================
       const introMessage = `Chắc em hơi bất ngờ khi tự nhiên nhận được cái link này đúng hong? 😆 \nAnh tình cờ biết được in4 của em và thấy em rất đáng yêu.\nAnh không muốn bắt chuyện kiểu nhàm chán, nên anh tự tay làm cái thiệp nhỏ này thay cho lời chào chính thức.\n\nCùng nhau có thêm nhiều kĩ niệm nhé!✨`;
       
-      const loveMessage = 'Anh hay tự cười mình khờ dù đã ôm trọn em trong lòng mà nghĩ đến tháng ngày sắp tới của hai đứa tự nhiên anh lại thấy nhớ em.\nTình yêu với anh chỉ gói ghém vào ánh mắt vội tìm nhau, cái ôm lúc mệt mỏi và những lúc bình yên khi có em ngay cạnh anh.\nĐường phía trước còn dài sẽ có lúc cuộc sống làm cả hai đứa áp lực và mệt mỏi nhưng em ơi chỉ cần mình kiên nhẫn vẫn chọn đồng hành cùng nhau thì chuyện gì cũng sẽ nhẹ nhàng thôi.\nSau này dù phải trưởng thành thêm bao nhiêu đi nữa thì anh mong bản thân sẽ không để mất em.\nChẳng mong gì xa xôi chỉ mong nụ cười em sau này luôn có phần anh trong đó và anh là nơi bình yên nhất khi em cần anh 💗\n                                                                "Date to marry"';
+      const loveMessage =  `Anh hay tự cười mình khờ dù đã ôm trọn em trong lòng mà nghĩ đến tháng ngày sắp tới của hai đứa tự nhiên anh lại thấy nhớ em.\nTình yêu với anh chỉ gói ghém vào ánh mắt vội tìm nhau, cái ôm lúc mệt mỏi và những lúc bình yên khi có em ngay cạnh anh.\nĐường phía trước còn dài sẽ có lúc cuộc sống làm cả hai đứa áp lực và mệt mỏi nhưng em ơi chỉ cần mình kiên nhẫn vẫn chọn đồng hành cùng nhau thì chuyện gì cũng sẽ nhẹ nhàng thôi.\nSau này dù phải trưởng thành thêm bao nhiêu đi nữa thì anh mong bản thân sẽ không để mất em.\nChẳng mong gì xa xôi chỉ mong nụ cười em sau này luôn có phần anh trong đó và anh là nơi bình yên nhất khi em cần anh 💗\n                                                                "Date to marry"`;
       
       const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
       let imgIndex = 0;
@@ -882,140 +881,77 @@
         });
       }
 
-      // Quiz Logic
+      // Quiz Logic - ĐẦY ĐỦ 5 CÂU
       const quiz = [
-        { q: "Câu 1: Đố đằng ấy biết, ấn tượng đầu tiên của tớ về đằng ấy là gì? 👀", a: ["A. Cực kỳ dễ thương 🐰", "B. Thú vị, mặn mòi ✨", "C. Cả A và B đều chuẩn 🤭"], c: 2 }
+        { q: "Câu 1: Đố đằng ấy biết, ấn tượng đầu tiên của tớ về đằng ấy là gì? 👀", a: ["A. Cực kỳ dễ thương 🐰", "B. Thú vị, mặn mòi ✨", "C. Cả A và B đều chuẩn 🤭"], c: 2 },
+        { q: "Câu 2: Đố em biết ATE là viết tắt của từ gì? 😏", type: "exact", expected: "anh thương em" },
+        { q: "Câu 3: Lần đầu có người nhắn tin làm quen bằng nguyên cái web thế này, đằng ấy thấy tớ thú vị hay là hơi... 'có vấn đề' dợ? 😆", type: "open" },
+        { q: "Câu 4: Nếu dùng 3 từ khóa ngắn gọn để miêu tả về sở thích của đằng ấy, thì đó sẽ là gì? ✨", type: "open" },
+        { q: "Câu 5: Lên kế hoạch hẹn hò nhaaa 🗒️✨", type: "todo_notes" }
       ];
       let userAnswers = [];
-    const loveMessage = `Anh hay tự cười mình khờ dù đã ôm trọn em trong lòng mà nghĩ đến tháng ngày sắp tới của hai đứa tự nhiên anh lại thấy nhớ em.\nTình yêu với anh chỉ gói ghém vào ánh mắt vội tìm nhau, cái ôm lúc mệt mỏi và những lúc bình yên khi có em ngay cạnh anh.\nĐường phía trước còn dài sẽ có lúc cuộc sống làm cả hai đứa áp lực và mệt mỏi nhưng em ơi chỉ cần mình kiên nhẫn vẫn chọn đồng hành cùng nhau thì chuyện gì cũng sẽ nhẹ nhàng thôi.\nSau này dù phải trưởng thành thêm bao nhiêu đi nữa thì anh mong bản thân sẽ không để mất em.\nChẳng mong gì xa xôi chỉ mong nụ cười em sau này luôn có phần anh trong đó và anh là nơi bình yên nhất khi em cần anh 💗\n                                                                "Date to marry"`;
-    const images = ["anhdoimu.jpg", "choem.jpg", "emhunanh.jpg", "photobook.jpg", "xemphim.jpg"];
 
-    let imgIndex = 0;
-    const el = {
-      screen: document.getElementById("screen"), msg: document.getElementById("msg"),
-      quizMsg: document.getElementById("quizMsg"), dots: document.querySelectorAll("#dots .dot"),
-      keypad: document.getElementById("keypad"), delBtn: document.getElementById("delBtn"),
-      startQuizBtn: document.getElementById("startQuizBtn"), loveDoors: document.getElementById("loveDoors"),
-      answers: document.getElementById("answers"), qText: document.getElementById("qText"),
-      musicBtn: document.getElementById("musicBtn"), audio: document.getElementById("bgMusic"),
-      letterText: document.getElementById("letterText"), loveImg: document.getElementById("loveImg"),
-      doneBtn: document.getElementById("doneBtn"), introTypingBox: document.getElementById("introTypingBox")
-    };
+      function startQuiz() { qIndex = 0; userAnswers = []; loadQ(); }
 
-    let pin = ""; let qIndex = 0; let answered = false;
+      function loadQ() {
+        answered = false; el.quizMsg.textContent = "";
+        const curr = quiz[qIndex]; el.qText.textContent = curr.q; el.answers.innerHTML = "";
 
-    function updateDots() { el.dots.forEach((d, i) => d.classList.toggle("filled", i < pin.length)); }
-    function playMusicSafe() { el.audio.volume = 0.85; el.audio.play().then(() => { el.musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }).catch(() => { el.msg.style.color = "#e63946"; el.msg.innerText = "Cậu bấm nút 🎵 để bật nhạc nha 😘"; }); }
-    function addNum(num) { if (pin.length >= 4) return; pin += num; updateDots(); if (pin.length === 4) checkPin(); }
-    function removeLast() { pin = pin.slice(0, -1); updateDots(); el.msg.textContent = ""; }
-
-    function checkPin() {
-      if (pin === PASS) {
-        el.msg.style.color = "#386641"; el.msg.innerHTML = "Tuyệt vời ... <span class='loading'></span>"; playMusicSafe();
-        setTimeout(() => { show("stepIntro"); startTypingIntro(); }, 900);
-      } else {
-        el.msg.style.color = "#e63946"; el.msg.textContent = "Chưa đúng mật mã dồi 😭"; el.screen.classList.add("shake");
-        setTimeout(() => { el.screen.classList.remove("shake"); pin = ""; updateDots(); el.msg.textContent = ""; }, 900);
-      }
-    }
-
-    function show(id) {
-      document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      if (id === "stepPassword") el.screen.classList.add("password-mode");
-      else if (id === "stepPhotobooth") el.screen.style.width = "min(95vw, 1100px)"; // Mở rộng màn hình cho Photobooth
-      else { el.screen.classList.remove("password-mode"); el.screen.style.width = "min(92vw, 800px)"; }
-    }
-
-    let introIndex = 0;
-    function startTypingIntro() {
-      introIndex = 0; el.introTypingBox.innerHTML = ""; typeIntroChar();
-    }
-    function typeIntroChar() {
-      if (introIndex < introMessage.length) {
-        let char = introMessage[introIndex];
-        if (char === "\n") { el.introTypingBox.innerHTML += "<br>"; } else { el.introTypingBox.innerHTML += char; }
-        let currentHTML = el.introTypingBox.innerHTML;
-        el.introTypingBox.innerHTML = currentHTML.replace('<span class="typing-cursor"></span>', '') + `<span class="typing-cursor"></span>`;
-        introIndex++; setTimeout(typeIntroChar, 40);
-      } else { el.introTypingBox.innerHTML = el.introTypingBox.innerHTML.replace('<span class="typing-cursor"></span>', ''); }
-    }
-
-    const pollOpts = document.querySelectorAll('.poll-opt');
-    if (pollOpts.length >= 2) {
-      pollOpts[0].addEventListener('click', function() { pollOpts.forEach(o => o.classList.remove('selected')); this.classList.add('selected'); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, zIndex: 10000 }); });
-      pollOpts[1].addEventListener('click', function() {
-        pollOpts.forEach(o => o.classList.remove('selected')); this.classList.add('selected'); el.screen.classList.add("shake", "error-glow"); spawnEmojis(this, 'wrong');
-        setTimeout(() => { el.screen.classList.remove("shake", "error-glow"); this.classList.remove('selected'); }, 600);
-      });
-    }
-
-    el.startQuizBtn.addEventListener("click", () => {
-      el.loveDoors.classList.add("ready"); show("stepQuiz"); startQuiz(); void el.loveDoors.offsetWidth;
-      setTimeout(() => {
-        el.loveDoors.classList.add("opening"); confetti({ particleCount: 150, spread: 120, origin: { y: 0.5 }, colors: ['#ff4d6d', '#ffb3c6', '#ffe259'], zIndex: 10000 });
-        setTimeout(() => { el.loveDoors.classList.remove("ready", "opening"); }, 1400);
-      }, 500);
-    });
-
-    function startQuiz() { qIndex = 0; userAnswers = []; loadQ(); }
-
-    function loadQ() {
-      answered = false; el.quizMsg.textContent = "";
-      const curr = quiz[qIndex]; el.qText.textContent = curr.q; el.answers.innerHTML = "";
-
-      if (curr.type === "open") {
-        const textarea = document.createElement("textarea"); textarea.className = "open-text"; textarea.placeholder = "Gõ nhè nhẹ câu trả lời vào đây nha...";
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Tiếp nhó 🚀";
-        submitBtn.addEventListener("click", () => {
-          const val = textarea.value.trim();
-          if(!val) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em chưa nhập gì kìa 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
-          userAnswers[qIndex] = val; qIndex++; loadQ();
-        });
-        el.answers.appendChild(textarea); el.answers.appendChild(submitBtn);
-      } else if (curr.type === "exact") {
-        const inputBox = document.createElement("input"); inputBox.type = "text"; inputBox.className = "exact-input"; inputBox.placeholder = "(Nhập tiếng Việt có dấu nhó...)";
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Anh xem nàoo 🔍";
-        submitBtn.addEventListener("click", () => {
-          if(answered) return;
-          const val = inputBox.value.trim().toLowerCase(); const expectedAns = curr.expected.toLowerCase();
-          if(val === expectedAns) {
-            answered = true; submitBtn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Hay quá dọ";
-            inputBox.disabled = true; submitBtn.disabled = true; userAnswers[qIndex] = val; el.screen.classList.add("success-glow"); spawnEmojis(submitBtn, 'correct');
-            setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(nextQ, 1800);
-          } else {
-            submitBtn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý dồi 😝"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(submitBtn, 'wrong');
-            setTimeout(() => { submitBtn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
-          }
-        });
-        el.answers.appendChild(inputBox); el.answers.appendChild(submitBtn);
-      } else if (curr.type === "todo_notes") {
-        const memoCard = document.createElement("div"); memoCard.className = "memo-card";
-        memoCard.innerHTML = `<div class="washi-tape"></div><div class="memo-sticker sticker-1">🌸</div><div class="memo-sticker sticker-2">🧸</div><div class="memo-quote">“though she be but little, she loves you big”</div><div class="memo-section-title"><i class="fa-solid fa-list-check"></i> Việc cần làm:</div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 1 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 2 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 3 mún đi cùng tớ..."></div><div class="memo-section-title" style="margin-top: 15px;"><i class="fa-solid fa-pen-to-square"></i> Ghi chú thêm:</div><textarea class="open-text note-in" style="min-height: 80px; margin-bottom: 5px;" placeholder="Ghi chú hay nhắn nhủ thêm gì đó dới tớ nhó..."></textarea>`;
-        const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Gửi cho anh nè 💌";
-        submitBtn.addEventListener("click", () => {
-          const checkboxes = memoCard.querySelectorAll(".memo-checkbox"); const todoInputs = memoCard.querySelectorAll(".todo-in"); const noteInput = memoCard.querySelector(".note-in");
-          let valid = false; todoInputs.forEach(i => { if(i.value.trim()) valid = true; }); if(noteInput.value.trim()) valid = true;
-          if(!valid) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em điền sương sương vài chữ cho anh biết với nha 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
-          submitBtn.textContent = "Đang gửi cho anh nè... 🚀"; submitBtn.disabled = true; memoCard.querySelectorAll("input, textarea").forEach(i => i.disabled = true);
-          const payload = {};
-          quiz.forEach((qObj, index) => {
-            if (index === 4) {
-              payload["Câu 5 - Việc 1"] = (checkboxes[0].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[0].value.trim() || "(Không viết gì)");
-              payload["Câu 5 - Việc 2"] = (checkboxes[1].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[1].value.trim() || "(Không viết gì)");
-              payload["Câu 5 - Việc 3"] = (checkboxes[2].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[2].value.trim() || "(Không viết gì)");
-              payload["Câu 5 - Ghi chú"] = noteInput.value.trim() || "(Không viết gì)";
-            } else { payload[qObj.q] = userAnswers[index]; }
+        if (curr.type === "open") {
+          const textarea = document.createElement("textarea"); textarea.className = "open-text"; textarea.placeholder = "Gõ nhè nhẹ câu trả lời vào đây nha...";
+          const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Tiếp nhó 🚀";
+          submitBtn.addEventListener("click", () => {
+            const val = textarea.value.trim();
+            if(!val) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em chưa nhập gì kìa 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
+            userAnswers[qIndex] = val; qIndex++; loadQ();
           });
-          fetch(FORMSPREE_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
-          .then(response => { el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰"; el.screen.style.borderColor = "#a7c957"; setTimeout(() => { el.screen.style.borderColor = "#2b2b2b"; }, 600); setTimeout(nextQ, 1500); })
-          .catch(error => { setTimeout(nextQ, 1500); });
-        });
-        el.answers.appendChild(memoCard); el.answers.appendChild(submitBtn);
-      } else {
-        curr.a.forEach((txt, i) => { const b = document.createElement("button"); b.className = "answer-btn"; b.textContent = txt; b.addEventListener("click", () => pick(i, b)); el.answers.appendChild(b); });
+          el.answers.appendChild(textarea); el.answers.appendChild(submitBtn);
+        } else if (curr.type === "exact") {
+          const inputBox = document.createElement("input"); inputBox.type = "text"; inputBox.className = "exact-input"; inputBox.placeholder = "(Nhập tiếng Việt có dấu nhó...)";
+          const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Anh xem nàoo 🔍";
+          submitBtn.addEventListener("click", () => {
+            if(answered) return;
+            const val = inputBox.value.trim().toLowerCase(); const expectedAns = curr.expected.toLowerCase();
+            if(val === expectedAns) {
+              answered = true; submitBtn.classList.add("correct"); el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Hay quá dọ";
+              inputBox.disabled = true; submitBtn.disabled = true; userAnswers[qIndex] = val; el.screen.classList.add("success-glow"); spawnEmojis(submitBtn, 'correct');
+              setTimeout(() => { el.screen.classList.remove("success-glow"); }, 600); setTimeout(nextQ, 1800);
+            } else {
+              submitBtn.classList.add("wrong"); el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Tẹt tẹt!! Chưa đúng ý dồi 😝"; el.screen.classList.add("shake"); el.screen.classList.add("error-glow"); spawnEmojis(submitBtn, 'wrong');
+              setTimeout(() => { submitBtn.classList.remove("wrong"); el.screen.classList.remove("shake"); el.screen.classList.remove("error-glow"); el.quizMsg.textContent = ""; }, 600);
+            }
+          });
+          el.answers.appendChild(inputBox); el.answers.appendChild(submitBtn);
+        } else if (curr.type === "todo_notes") {
+          const memoCard = document.createElement("div"); memoCard.className = "memo-card";
+          memoCard.innerHTML = `<div class="washi-tape"></div><div class="memo-sticker sticker-1">🌸</div><div class="memo-sticker sticker-2">🧸</div><div class="memo-quote">“though she be but little, she loves you big”</div><div class="memo-section-title"><i class="fa-solid fa-list-check"></i> Việc cần làm:</div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 1 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 2 mún đi cùng tớ..."></div><div class="memo-todo-item"><input type="checkbox" class="memo-checkbox"><input type="text" class="memo-input todo-in" placeholder="Việc thứ 3 mún đi cùng tớ..."></div><div class="memo-section-title" style="margin-top: 15px;"><i class="fa-solid fa-pen-to-square"></i> Ghi chú thêm:</div><textarea class="open-text note-in" style="min-height: 80px; margin-bottom: 5px;" placeholder="Ghi chú hay nhắn nhủ thêm gì đó dới tớ nhó..."></textarea>`;
+          const submitBtn = document.createElement("button"); submitBtn.className = "answer-btn action-submit"; submitBtn.textContent = "Gửi cho anh nè 💌";
+          submitBtn.addEventListener("click", () => {
+            const checkboxes = memoCard.querySelectorAll(".memo-checkbox"); const todoInputs = memoCard.querySelectorAll(".todo-in"); const noteInput = memoCard.querySelector(".note-in");
+            let valid = false; todoInputs.forEach(i => { if(i.value.trim()) valid = true; }); if(noteInput.value.trim()) valid = true;
+            if(!valid) { el.quizMsg.style.color = "#e63946"; el.quizMsg.textContent = "Em điền sương sương vài chữ cho anh biết với nha 🥺"; el.screen.classList.add("shake"); setTimeout(() => el.screen.classList.remove("shake"), 400); return; }
+            submitBtn.textContent = "Đang gửi cho anh nè... 🚀"; submitBtn.disabled = true; memoCard.querySelectorAll("input, textarea").forEach(i => i.disabled = true);
+            
+            const payload = {};
+            quiz.forEach((qObj, index) => {
+              if (index === 4) {
+                payload["Câu 5 - Việc 1"] = (checkboxes[0].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[0].value.trim() || "(Không viết gì)");
+                payload["Câu 5 - Việc 2"] = (checkboxes[1].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[1].value.trim() || "(Không viết gì)");
+                payload["Câu 5 - Việc 3"] = (checkboxes[2].checked ? "[☑️ Có Tick] " : "[☐ Trống] ") + (todoInputs[2].value.trim() || "(Không viết gì)");
+                payload["Câu 5 - Ghi chú"] = noteInput.value.trim() || "(Không viết gì)";
+              } else { payload[qObj.q] = userAnswers[index]; }
+            });
+            
+            fetch(FORMSPREE_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+            .then(response => { el.quizMsg.style.color = "#386641"; el.quizMsg.textContent = "Anh đã nhận được rồi nha! 🥰"; el.screen.style.borderColor = "#a7c957"; setTimeout(() => { el.screen.style.borderColor = "#2b2b2b"; }, 600); setTimeout(nextQ, 1500); })
+            .catch(error => { setTimeout(nextQ, 1500); });
+          });
+          el.answers.appendChild(memoCard); el.answers.appendChild(submitBtn);
+        } else {
+          curr.a.forEach((txt, i) => { const b = document.createElement("button"); b.className = "answer-btn"; b.textContent = txt; b.addEventListener("click", () => pick(i, b)); el.answers.appendChild(b); });
+        }
       }
-    }
+
       function spawnEmojis(btn, type) {
         const rect = btn.getBoundingClientRect(); const isCorrect = type === 'correct';
         const emojiList = isCorrect ? ["💖", "😍", "🥰", "✨"] : ["😭", "💔", "🙄"]; const count = isCorrect ? 12 : 8;
@@ -1069,7 +1005,7 @@
       });
 
       // ==========================================
-      // LÝ XỬ TV MODAL & CAMERA TRÊN IG
+      // XỬ LÝ TV MODAL & CAMERA TRÊN IG
       // ==========================================
       const tvIcon = document.getElementById('tvIcon');
       const tvModal = document.getElementById('tvModal');
@@ -1176,7 +1112,7 @@
       }
 
       // ==========================================
-      // LÝ XỬ PHOTOBOOTH BƯỚC 5
+      // XỬ LÝ PHOTOBOOTH BƯỚC 5
       // ==========================================
       let pbCapturedPhotos = [], pbSelectedIndices = [], pbCurrentLayout = 4, pbCurrentTheme = 0;
       const pbCanvas = document.getElementById('pb-photoStrip'), pbCtx = pbCanvas.getContext('2d'), pbVideo = document.getElementById('pb-video');
