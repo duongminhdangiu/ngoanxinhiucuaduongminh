@@ -370,7 +370,7 @@
       <div class="love-scene">
         <div class="dash-search">
           <label class="visually-hidden" for="dashSearch">Tìm kiếm</label>
-          <input id="dashSearch" type="search" value="trinh" placeholder="Tìm kiếm..." />
+          <input id="dashSearch" type="search" placeholder="Tìm kiếm..." />
           <button id="dashSearchBtn" type="button" aria-label="Tìm kiếm">⌕</button>
         </div>
         <nav class="dash-sidebar" aria-label="Thanh điều hướng">
@@ -383,11 +383,11 @@
         <button class="dash-heart" id="dashHeart" aria-label="Gửi một trái tim" title="Gửi trái tim"></button>
         <button class="dash-login-link" id="dashLoginToggle" aria-label="Mở khung đăng nhập" title="Đăng nhập"></button>
 
-        <form class="dash-login" id="dashLoginForm" autocomplete="on">
+        <form class="dash-login" id="dashLoginForm" autocomplete="off">
           <label class="visually-hidden" for="dashUsername">Tên đăng nhập</label>
-          <input id="dashUsername" name="username" autocomplete="username" placeholder="Tên đăng nhập / Mã SV" required />
+          <input id="dashUsername" name="username" autocomplete="off" placeholder="Tên đăng nhập / Mã SV" required />
           <label class="visually-hidden" for="dashPassword">Mật khẩu</label>
-          <input id="dashPassword" name="password" type="password" autocomplete="current-password" placeholder="Mật khẩu" required />
+          <input id="dashPassword" name="password" type="password" autocomplete="new-password" placeholder="Mật khẩu" required />
           <button type="button" class="dash-eye" id="dashShowPassword" aria-label="Hiện hoặc ẩn mật khẩu">◉</button>
           <input id="dashRemember" type="checkbox" checked class="visually-hidden" aria-label="Ghi nhớ tài khoản" />
           <button type="button" class="dash-remember-hit" id="dashRememberHit" aria-label="Ghi nhớ tài khoản"></button>
