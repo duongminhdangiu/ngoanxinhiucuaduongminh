@@ -126,5 +126,5 @@
       if(typeof show==='function')show('stepPassword');else $('stepPassword').classList.add('active');
     },600);
   });
-  try {const saved=localStorage.getItem(rememberKey);if(saved)$('dashUsername').value=saved;}catch{}
+  //try {const saved=localStorage.getItem(rememberKey);if(saved)$('dashUsername').value=saved;}catch{}
 })();
