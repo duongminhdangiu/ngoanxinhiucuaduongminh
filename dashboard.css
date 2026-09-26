@@ -1,1 +1,483 @@
+/* =============================================================
+   DASHBOARD PIXEL-ALIGN — ARTBOARD GỐC: 1821 × 864 PX
+   Mọi vùng tương tác đều trong suốt; hình nền đã chứa sẵn
+   khung, chữ, icon và nút nên không vẽ chồng thêm giao diện.
+   ============================================================= */
+.visually-hidden{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
 
+/* Dashboard luôn giữ đúng tỉ lệ 1821/864, không méo, không crop. */
+#screen:has(#stepDashboard.active){
+  width:min(100vw, 1821px, calc(100dvh * 1821 / 864))!important;
+  height:auto!important;
+  max-height:none!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#stepDashboard{
+  padding:0!important;
+  margin:0!important;
+  background:transparent!important;
+}
+
+#screen:has(#stepDashboard.active) #stepPassword{
+  display:none!important;
+}
+
+.love-dashboard,
+.love-scene{
+  width:100%;
+  margin:0;
+}
+
+.love-scene{
+  position:relative;
+  aspect-ratio:1821 / 864;
+  background:url("background.png") center center / 100% 100% no-repeat;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* Không tạo hiệu ứng phủ lên ảnh khi hover: giữ đúng thẩm mỹ của bản gốc. */
+.love-scene button{
+  appearance:none;
+  -webkit-appearance:none;
+  font:inherit;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.love-scene button:focus-visible,
+.love-scene input:focus-visible{
+  outline:2px solid rgba(213,63,121,.95)!important;
+  outline-offset:2px;
+}
+
+/* -------------------------------------------------------------
+   1. THANH TÌM KIẾM — KHUNG ẢNH GỐC x≈308..790, y≈119..170
+   ------------------------------------------------------------- */
+
+
+   
+#stepDashboard .dash-search{
+  position:absolute;
+  left:17.9149%;
+  top:13.9999%;
+  width:30.3%;
+  height:5.9028%;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  overflow:visible;
+  display:block;
+}
+
+#stepDashboard .dash-search input{
+  transform: rotate(-0.7deg);
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0 12% 0 12.2%;
+  border:0!important;
+  border-radius:999px;
+  background:transparent!important;
+  box-shadow:none!important;
+  outline:none!important;
+  color:#7b3c59;
+  font-family:"Inter",Arial,sans-serif;
+  font-size:clamp(12px, 1.03vw, 18px);
+  font-weight:500;
+  line-height:1;
+}
+
+#stepDashboard .dash-search input::placeholder{
+  color:transparent;
+  opacity:0;
+}
+
+#stepDashboard .dash-search input::-webkit-search-cancel-button,
+#stepDashboard .dash-search input::-webkit-search-decoration{
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+#stepDashboard .dash-search button{
+  position:absolute;
+  top:0;
+  right:0;
+  width:12%;
+  height:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:transparent;
+  font-size:0;
+  border-radius:999px;
+}
+
+/* -------------------------------------------------------------
+   2. SIDEBAR — chỉ tạo vùng click, không vẽ lại nút.
+   ------------------------------------------------------------- */
+#stepDashboard .dash-sidebar{
+  position:absolute;
+  left:3.35%;
+  top:22.8%;
+  width:7.65%;
+  height:25.6%;
+  display:grid;
+  grid-template-rows:repeat(4,1fr);
+  gap:0;
+  padding:0;
+  margin:0;
+}
+
+#stepDashboard .dash-sidebar button,
+#stepDashboard .dash-categories button{
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+#stepDashboard .dash-sidebar button:hover,
+#stepDashboard .dash-sidebar button:active,
+#stepDashboard .dash-categories button:hover,
+#stepDashboard .dash-categories button:active{
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+
+/* -------------------------------------------------------------
+   3. GÓC TRÊN BÊN PHẢI — icon đã có sẵn trong hình.
+   ------------------------------------------------------------- */
+#stepDashboard .dash-theme{
+  position:absolute;
+  left:84.92%;
+  top:2.25%;
+  width:2.35%;
+  height:5.4%;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+}
+
+#stepDashboard .dash-heart{
+  position:absolute;
+  left:89.30%;
+  top:2.25%;
+  width:2.45%;
+  height:5.4%;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+}
+
+#stepDashboard .dash-login-link{
+  position:absolute;
+  left:91.80%;
+  top:2.10%;
+  width:5.75%;
+  height:5.7%;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+
+/* -------------------------------------------------------------
+   4. Ô TÊN ĐĂNG NHẬP / MẬT KHẨU — khớp đúng khung ảnh.
+   Chỉ có chữ nhập liệu được render; viền và icon lấy từ ảnh nền.
+   ------------------------------------------------------------- */
+#stepDashboard .dash-login{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  display:block;
+  text-align:left;
+  pointer-events:none;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  border-radius:0;
+}
+
+#stepDashboard .dash-login > *{
+  pointer-events:auto;
+}
+
+#stepDashboard .dash-login > input:not(#dashRemember){
+  position:absolute;
+  left:59.96%;
+  width:22.5%;
+  height:5.40%;
+  padding:0 3.4% 0 3.45%;
+  margin:0;
+  border:0!important;
+  border-radius:18px;
+  background:transparent!important;
+  box-shadow:none!important;
+  outline:none!important;
+  color:#73475d;
+  font-family:"Inter",Arial,sans-serif;
+  font-size:clamp(12px, 1.00vw, 18px);
+  font-weight:500;
+  line-height:1;
+}
+
+#stepDashboard #dashUsername{
+  top:30.4%;
+  transform: rotate(2.3deg);
+}
+
+#stepDashboard #dashPassword{
+  top:37.5%;
+  padding-right:11%;
+  transform: rotate(2deg);
+
+}
+
+#stepDashboard .dash-login > input::placeholder{
+  color:#7a5969;
+  opacity:.90;
+}
+
+/* Icon mắt đã có sẵn trong artwork. */
+#stepDashboard .dash-eye{
+  position:absolute;
+  left:78.05%;
+  top:36.38%;
+  width:2.30%;
+  height:6.30%;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:transparent;
+  font-size:0;
+}
+
+/* Checkbox thật được đưa ra khỏi màn hình: artwork đã có checkbox + chữ. */
+#stepDashboard #dashRemember{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  margin:-1px!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* Vùng click trong suốt phủ lên dòng “Ghi nhớ tài khoản” có sẵn trên ảnh. */
+#stepDashboard .dash-remember-hit{
+  position:absolute;
+  left:60.0%;
+  top:42.75%;
+  width:13.6%;
+  height:4.0%;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+
+/* Chữ “Quên mật khẩu?” đã có sẵn trong artwork. */
+#stepDashboard .dash-forgot{
+  position:absolute;
+  left:71.9%;
+  top:42.6%;
+  width:8.2%;
+  height:4.2%;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:transparent!important;
+  font-size:0!important;
+  line-height:0;
+  overflow:hidden;
+}
+
+/* Nút đăng nhập trong artwork: vùng click trong suốt. */
+#stepDashboard .dash-submit{
+  position:absolute;
+  left:59.72%;
+  top:47.50%;
+  width:19.75%;
+  height:7.20%;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:26px;
+  background:transparent;
+  box-shadow:none;
+}
+
+#stepDashboard .dash-submit:hover,
+#stepDashboard .dash-submit:active{
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+
+#stepDashboard .dash-feedback{
+  position:absolute;
+  left:59.7%;
+  top:56.0%;
+  width:19.8%;
+  min-height:0;
+  margin:0;
+  padding:4px 8px;
+  border-radius:10px;
+  background:rgba(255,248,251,.96);
+  color:#9d3159;
+  font-size:clamp(10px,.82vw,14px);
+  font-weight:700;
+  line-height:1.3;
+  text-align:center;
+  z-index:10;
+  transform: rotate(2deg);
+}
+#stepDashboard .dash-feedback:empty{display:none}
+
+/* -------------------------------------------------------------
+   5. 5 CARD CHỨC NĂNG — phủ đúng lên 5 card có sẵn.
+   ------------------------------------------------------------- */
+#stepDashboard .dash-categories{
+  position:absolute;
+  left:23.00%;
+  top:70.85%;
+  width:53.05%;
+  height:16.20%;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1.15%;
+  padding:0;
+  margin:0;
+}
+
+/* -------------------------------------------------------------
+   6. MODAL CHỨC NĂNG — không ảnh hưởng artwork dashboard.
+   ------------------------------------------------------------- */
+#stepDashboard .dash-dialog{
+  position:fixed;
+  inset:0;
+  margin:auto;
+  width:min(92vw,480px);
+  max-height:80dvh;
+  overflow:auto;
+  border:2px solid #eeb6cb;
+  border-radius:22px;
+  padding:26px;
+  background:#fff9fc;
+  color:#6e3653;
+  box-shadow:0 18px 70px rgba(61,21,53,.40);
+  text-align:left;
+  z-index:200;
+}
+
+#stepDashboard .dash-dialog::backdrop{
+  background:rgba(53,21,45,.61);
+  backdrop-filter:blur(5px);
+}
+
+#stepDashboard .dash-dialog h2{
+  margin:0 0 16px;
+  color:#bd4277;
+  font-family:"Inter",Arial,sans-serif;
+  font-size:23px;
+}
+
+#stepDashboard .dash-dialog p{
+  margin:8px 0;
+  font-size:14px;
+  line-height:1.6;
+}
+
+#stepDashboard .dash-dialog form:not(:first-child){
+  display:grid;
+  gap:10px;
+}
+
+#stepDashboard .dash-dialog label{
+  font-size:13px;
+  font-weight:700;
+}
+
+#stepDashboard .dash-dialog input{
+  width:100%;
+  height:42px;
+  padding:10px 12px;
+  border:1px solid #dfafc3;
+  border-radius:10px;
+  background:#fff;
+}
+
+#stepDashboard .dash-dialog .dash-dialog-close{
+  float:right;
+  width:34px;
+  height:34px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#ffe1ec;
+  color:#b63870;
+  font-size:23px;
+  cursor:pointer;
+}
+
+#stepDashboard .dash-dialog .dash-action{
+  margin:12px 5px 0 0;
+  padding:11px 16px;
+  border:0;
+  border-radius:10px;
+  background:#e45b8b;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+#stepDashboard .dash-dialog .dash-action.secondary{background:#9c7092}
+#stepDashboard .dash-dialog .dash-dialog-msg{color:#b33263;font-size:13px;font-weight:700}
+
+/* Chế độ ánh sáng chỉ thay màu tổng thể khi người dùng bấm. */
+.love-scene.dimmed{filter:saturate(.8) brightness(.75)}
+
+/* Portrait / màn hình hẹp: vẫn giữ đúng tỉ lệ artwork, không co méo. */
+@media(max-width:900px){
+  #screen:has(#stepDashboard.active){
+    width:100vw!important;
+    max-width:none!important;
+  }
+  .love-scene{
+    min-width:760px;
+  }
+  #stepDashboard .dash-login > input:not(#dashRemember){
+    font-size:12px;
+  }
+}
