@@ -373,14 +373,6 @@
           <label class="visually-hidden" for="dashSearch">Tìm kiếm</label>
           <input id="dashSearch" type="search" placeholder="Tìm kiếm..." />
           <button id="dashSearchBtn" type="button" aria-label="Tìm kiếm">⌕</button>
-
-          <!-- Kết quả tìm kiếm trực tiếp trên dashboard -->
-          <div id="dashSearchResults"
-               class="dash-search-results"
-               role="dialog"
-               aria-label="Kết quả tìm kiếm"
-               aria-live="polite"
-               aria-hidden="true"></div>
         </div>
         <nav class="dash-sidebar" aria-label="Thanh điều hướng">
           <button type="button" data-action="home" aria-label="Trang chủ"></button>
@@ -394,9 +386,9 @@
 
         <form class="dash-login" id="dashLoginForm" autocomplete="off">
           <label class="visually-hidden" for="dashUsername">Tên đăng nhập</label>
-          <input id="dashUsername" name="username" autocomplete="username" placeholder="Tên đăng nhập / Mã SV" required />
+          <input id="dashUsername" name="username" autocomplete="nope" placeholder="Tên đăng nhập / Mã SV" required />
           <label class="visually-hidden" for="dashPassword">Mật khẩu</label>
-          <input id="dashPassword" name="password" type="password" autocomplete="current-password" placeholder="Mật khẩu" required />
+          <input id="dashPassword" name="password" type="password" autocomplete="new-password" placeholder="Mật khẩu" required />
           <button type="button" class="dash-eye" id="dashShowPassword" aria-label="Hiện hoặc ẩn mật khẩu">◉</button>
           <input id="dashRemember" type="checkbox" checked class="visually-hidden" aria-label="Ghi nhớ tài khoản" />
           <button type="button" class="dash-remember-hit" id="dashRememberHit" aria-label="Ghi nhớ tài khoản"></button>
@@ -628,7 +620,7 @@
     <div class="door-right"><div class="knob"></div><i class="fas fa-heart"></i></div>
     <div class="magic-light"></div>
   </div>
-  <audio id="bgMusic" loop preload="auto"><source src="Khongthoigiannew.mp3" type="audio/mpeg"></audio>
+  <audio id="bgMusic" loop preload="auto"><source src="Laemchinhem.m4a" type="audio/mpeg"></audio>
   <button id="musicBtn" title="Phát / Dừng nhạc"><i class="fas fa-music"></i></button>
 
   <script>
