@@ -468,16 +468,130 @@
 /* Chế độ ánh sáng chỉ thay màu tổng thể khi người dùng bấm. */
 .love-scene.dimmed{filter:saturate(.8) brightness(.75)}
 
-/* Portrait / màn hình hẹp: vẫn giữ đúng tỉ lệ artwork, không co méo. */
-@media(max-width:900px){
+/* =============================================================
+   RESPONSIVE V2 — ĐIỆN THOẠI / IPAD / TABLET / LAPTOP / PC
+   Giữ nguyên artwork 1821 × 864 và toàn bộ tọa độ pixel-align.
+   Chỉ thay cách container co theo viewport.
+   ============================================================= */
+
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+/* DESKTOP / PC / LAPTOP */
+@media (min-width:901px){
+  #screen:has(#stepDashboard.active){
+    width:min(100vw,1821px,calc(100dvh * 1821 / 864))!important;
+    max-width:1821px!important;
+    max-height:none!important;
+    height:auto!important;
+    margin:0 auto!important;
+  }
+
+  .love-dashboard,
+  .love-scene{
+    width:100%;
+    min-width:0;
+    max-width:1821px;
+  }
+
+  .love-scene{
+    aspect-ratio:1821 / 864;
+  }
+}
+
+/* IPAD / TABLET */
+@media (min-width:768px) and (max-width:900px){
   #screen:has(#stepDashboard.active){
     width:100vw!important;
-    max-width:none!important;
+    max-width:100vw!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    padding:0!important;
+    overflow:visible!important;
   }
+
+  .love-dashboard,
   .love-scene{
-    min-width:760px;
+    width:100%;
+    min-width:0!important;
+    max-width:100%;
   }
+
+  .love-scene{
+    aspect-ratio:1821 / 864;
+  }
+
+  #stepDashboard .dash-search input,
   #stepDashboard .dash-login > input:not(#dashRemember){
-    font-size:12px;
+    font-size:clamp(11px,1.55vw,15px);
+  }
+}
+
+/* ĐIỆN THOẠI */
+@media (max-width:767px){
+  #screen:has(#stepDashboard.active){
+    width:100vw!important;
+    max-width:100vw!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  .love-dashboard,
+  .love-scene{
+    width:100%;
+    min-width:0!important;
+    max-width:100%;
+  }
+
+  .love-scene{
+    aspect-ratio:1821 / 864;
+  }
+
+  #stepDashboard .dash-search input,
+  #stepDashboard .dash-login > input:not(#dashRemember){
+    font-size:clamp(10px,3.05vw,13px);
+  }
+
+  .love-scene button{
+    touch-action:manipulation;
+  }
+}
+
+/* ĐIỆN THOẠI RẤT NHỎ */
+@media (max-width:390px){
+  #stepDashboard .dash-search input,
+  #stepDashboard .dash-login > input:not(#dashRemember){
+    font-size:10px;
+  }
+}
+
+/* PORTRAIT */
+@media (orientation:portrait){
+  #screen:has(#stepDashboard.active){
+    width:min(100vw,1821px)!important;
+  }
+
+  .love-scene{
+    width:100%;
+    height:auto;
+  }
+}
+
+/* TOUCH / MÀN HÌNH DPR CAO */
+@media (hover:none) and (pointer:coarse){
+  #stepDashboard .dash-search input,
+  #stepDashboard .dash-login > input:not(#dashRemember){
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
   }
 }
